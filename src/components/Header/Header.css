@@ -1,0 +1,76 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(32,32,32);
+    /*filter: drop-shadow(0 0 10px rgb);*/
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.logo {
+    align-items: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 60px;
+    width: 70px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(255,238,0);
+}
+
+.title h1{
+    text-align: right;
+    margin: 0 10px 0 0;
+    font-size: 30px;
+}
+
+ul.home-links {
+    display: block;
+    list-style-type: none;
+    padding-right: 0px;
+    overflow: hidden;
+    margin: 10px 120px 0 0;
+}
+
+ul.home-links li {
+    float: left;
+}
+
+ul.home-links li a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    color: rgb(255,238,0);
+    margin-left: 0;
+}
+
+ul.home-links li a:hover {
+    background-color: #333333;
+}
+
+.loginlinks {
+    display: flex;
+    padding-left: 0;
+    line-height: 24px;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 20%;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.loginlinks a:hover  {
+    background-color: #333333;
+    text-decoration-line: underline;
+}
+
+
+@media screen and (max-width: 500px){
+   
+}
+  

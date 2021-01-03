@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import RegisterForm from '../components/RegisterForm'
-import Header from '../components/Header'
+import Header from '../components/Header/Header'
 
 
 class Register extends Component {
@@ -9,7 +9,7 @@ class Register extends Component {
     
     return (
       <div className='register-container'>
-        Implement me!
+        <Header />
       </div>
       )
       
