@@ -55,18 +55,8 @@ ul.home-links li a:hover {
 
 .loginlinks {
     display: flex;
-    padding-left: 0;
-    line-height: 24px;
     align-items: flex-start;
     justify-content: space-evenly;
-    width: 20%;
-    text-decoration: none;
-    margin-top: 15px;
-}
-
-.loginlinks a:hover  {
-    background-color: #333333;
-    text-decoration-line: underline;
 }
 
 

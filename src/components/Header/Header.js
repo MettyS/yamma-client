@@ -29,10 +29,10 @@ class Header extends Component {
 
     renderLoginLink() {
         return (
-            <nav>
-                <Link to="/login">Login</Link>
+            <nav className="login-links">
+                <Link to="/login"><button className="user-button">Login</button></Link>
                 {' '}<br></br>
-                <Link to="/register">Sign up</Link>
+                <Link to="/register"><button className="user-button">Sign up</button></Link>
             </nav>
         )
     }
@@ -63,7 +63,7 @@ class Header extends Component {
                     {this.renderHomeLink()}
                 </div>
 
-                <div className="loginlinks">
+                <div>
                     {TokenService.hasAuthToken()
                         ? this.renderLogoutLink()
                         : this.renderLoginLink()}
