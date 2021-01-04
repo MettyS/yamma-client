@@ -55,10 +55,10 @@ class Header extends Component {
         return (
             <header className="header">
                 <div>
-                        <Link to='/' className="title">
-                            <img className="logo" src={YammaLogo} alt="Yamma-Logo" />
-                            <h1>Yamma</h1>
-                        </Link>
+                    <Link to='/' className="title">
+                        <img className="logo" src={YammaLogo} alt="Yamma-Logo" />
+                        <h1>Yamma</h1>
+                    </Link>
                 </div>
 
                 <div>
