@@ -1,19 +1,31 @@
-import React, { Component } from "react";
-import RegisterForm from '../components/RegisterForm'
-import Header from '../components/Header/Header'
+import React, { Component } from 'react'
+import RegistrationForm from '../../src/components/RegistrationForm/RegisterForm'
 
 
-class Register extends Component {
+class RegistrationRoute extends Component {
+  static defaultProps = {
+    history: {
+      push: () => {},
+    },
+  }
+
+  handleRegistrationSuccess = () => {
+    const { history } = this.props
+    history.push('/login')
+  }
 
   render() {
-    
     return (
-      <div className='register-container'>
-        <Header />
-      </div>
-      )
-      
+      <section className='RegistrationRoute'>
+        <div className='text'>
+          <h2>Sign up</h2>
+        </div>
+        <RegistrationForm
+          onRegistrationSuccess={this.handleRegistrationSuccess}
+        />
+      </section>
+    );
   }
 }
 
-export default Register;
+export default RegistrationRoute
