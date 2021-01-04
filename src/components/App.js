@@ -5,7 +5,7 @@ import EventPageRoute from "../routes/EventPageRoute";
 import FilterRoute from "../routes/FilterRoute";
 import LoginRoute from "../routes/LoginRoute";
 import RegisterRoute from "../routes/RegisterRoute";
-import Footer from "./Footer";
+import Footer from "../components/Footer/Footer";
 
 class App extends Component {
   state = { hasError: false }
@@ -44,6 +44,34 @@ class App extends Component {
             />
 
           </Switch>
+
+          {/*for footer tester-->*/}
+          <br></br>
+          <br></br> 
+          <br></br> 
+          <br></br> 
+          <br></br> 
+          <br></br>
+          <br></br> 
+          <br></br> 
+          <br></br> 
+          <br></br> 
+          <br></br>
+          <br></br> 
+          <br></br> 
+          <br></br> 
+          <br></br> 
+          <br></br>
+          <br></br> 
+          <br></br> 
+          <br></br> 
+          <br></br> 
+          <br></br> 
+          <br></br> 
+          <br></br>
+          <br></br> 
+          <br></br> 
+          <br></br>
 
         </main>
         <Footer />
