@@ -41,9 +41,11 @@ class Header extends Component {
         return (
             <nav>
                 <ul className="home-links">
-                    <li><Link to='/aboutus'>About Us</Link></li>
+                    <li><Link to='/aboutus'>About</Link></li>
+                    <li className='bars'>|</li>
                     <li><Link to='/important'>Important Notice</Link></li>
-                    <li><Link to='/contactus'>Contact Us</Link></li>
+                    <li className='bars'>|</li>
+                    <li><Link to='/contactus'>Contact</Link></li>
                 </ul>
             </nav>
         )
@@ -52,12 +54,12 @@ class Header extends Component {
     render() {
         return (
             <header className="header">
-                <img className="logo" src={YammaLogo} alt="Yamma-Logo" />
-                <h1>
-                    <Link to='/' className="title">
-                        <h1>Yamma</h1>
-                    </Link>
-                </h1>
+                <div>
+                        <Link to='/' className="title">
+                            <img className="logo" src={YammaLogo} alt="Yamma-Logo" />
+                            <h1>Yamma</h1>
+                        </Link>
+                </div>
 
                 <div>
                     {this.renderHomeLink()}
