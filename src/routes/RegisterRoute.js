@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
-import RegistrationForm from '../../src/components/RegistrationForm/RegisterForm'
-
+import React, { Component } from 'react';
+import RegistrationForm from '../../src/components/RegistrationForm/RegisterForm';
 
 class RegistrationRoute extends Component {
   static defaultProps = {
     history: {
       push: () => {},
     },
-  }
+  };
 
   handleRegistrationSuccess = () => {
-    const { history } = this.props
-    history.push('/login')
-  }
+    const { history } = this.props;
+    history.push('/login');
+  };
 
   render() {
     return (
@@ -28,4 +27,4 @@ class RegistrationRoute extends Component {
   }
 }
 
-export default RegistrationRoute
+export default RegistrationRoute;
