@@ -22,56 +22,38 @@ class Header extends Component {
     );
   }
 
-  renderLoginLink() {
-    return (
-      <nav className='login-links'>
-        <Link to='/login'>
-          <button className='user-button'>Login</button>
-        </Link>{' '}
-        <br></br>
-        <Link to='/register'>
-          <button className='user-button'>Sign up</button>
-        </Link>
-      </nav>
-    );
-  }
+    renderHomeLink() {
+        return (
+            <nav>
+                <ul className="home-links">
+                    <li><Link to='/aboutus'>About</Link></li>
+                    <li className='bars'>|</li>
+                    <li><Link to='/important'>Important Notice</Link></li>
+                    <li className='bars'>|</li>
+                    <li><Link to='/contactus'>Contact</Link></li>
+                </ul>
+            </nav>
+        )
+    }
 
-  renderHomeLink() {
-    return (
-      <nav>
-        <ul className='home-links'>
-          <li>
-            <Link to='/aboutus'>About Us</Link>
-          </li>
-          <li>
-            <Link to='/important'>Important Notice</Link>
-          </li>
-          <li>
-            <Link to='/contactus'>Contact Us</Link>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
+    render() {
+        return (
+            <header className="header">
+                <div>
+                        <Link to='/' className="title">
+                            <img className="logo" src={YammaLogo} alt="Yamma-Logo" />
+                            <h1>Yamma</h1>
+                        </Link>
+                </div>
 
-  render() {
-    return (
-      <header className='header'>
-        <img className='logo' src={YammaLogo} alt='Yamma-Logo' />
-        <h1>
-          <Link to='/' className='title'>
-            <h1>Yamma</h1>
-          </Link>
-        </h1>
+              <div>{this.renderHomeLink()}</div>
 
-        <div>{this.renderHomeLink()}</div>
-
-        <div>
-          {TokenService.hasAuthToken()
-            ? this.renderLogoutLink()
-            : this.renderLoginLink()}
-        </div>
-      </header>
+              <div>
+                {TokenService.hasAuthToken()
+                  ? this.renderLogoutLink()
+                  : this.renderLoginLink()}
+              </div>
+            </header>
     );
   }
 }
