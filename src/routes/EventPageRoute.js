@@ -6,14 +6,13 @@ import RelatedArticleList from '../components/RelatedArticleList';
 import Header from '../components/Header/Header';
 
 class EventPage extends Component {
-    render() {
-        return (
-            <div className='eventpage-container'>
-              <Header />
-            </div>
-        )
-    }
-
+  render() {
+    return (
+      <div className='eventpage-container'>
+        <Header />
+      </div>
+    );
+  }
 }
 
 export default EventPage;
