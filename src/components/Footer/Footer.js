@@ -11,9 +11,11 @@ class Footer extends Component {
           <li>
             <Link to='/'>Back top</Link>
           </li>
+          <li className='bars'>|</li>
           <li>
             <Link>Private Policy</Link>
           </li>
+          <li className='bars'>|</li>
           <li>
             <Link>Copyright</Link>
           </li>
@@ -25,10 +27,12 @@ class Footer extends Component {
   render() {
     return (
       <footer className='footer'>
-        <img src={YammaLogo} alt='logo' className='footer-logo' />
-        <h1 title='footer-title'>Yamma</h1>
+        {/* <img src={YammaLogo} alt='logo' className='footer-logo' /> */}
+        <div className='footer-group'>
+          <h1 className='footer-title'>Yamma</h1>
+          <p className='footer-copyright'>All rights reserved @Yamma</p>
+        </div>
         <div>{this.renderFooterLinks()}</div>
-        <h3>All rights reserve @Yamma</h3>
       </footer>
     );
   }

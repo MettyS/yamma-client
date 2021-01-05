@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 import './Header.css';
-import YammaLogo from '../../images/YammaLogo.png';
+import yammalogored from '../../images/yammalogored.PNG';
 import TokenService from '../../services/token-service';
 import AboutUs from './AboutUs'
 import Important from './Important'
@@ -70,7 +70,7 @@ class Header extends Component {
             <header className="header">
                 <div>
                     <Link to='/' className="title">
-                        <img className="logo" src={YammaLogo} alt="Yamma-Logo" />
+                        <img className="logo" src={yammalogored} alt="Yamma-Logo" />
                         <h1>Yamma</h1>
                     </Link>
                 </div>
