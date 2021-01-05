@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import DashboardRoute from '../../routes/DashboardRoute';
 import EventPageRoute from '../../routes/EventPageRoute';
-import FilterRoute from '../../routes/FilterRoute';
+//import FilterRoute from '../../routes/FilterRoute';
 import LoginRoute from '../../routes/LoginRoute';
 import RegisterRoute from '../../routes/RegisterRoute';
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 
 class App extends Component {
   state = { hasError: false };
@@ -19,6 +20,7 @@ class App extends Component {
     const { hasError } = this.state;
     return (
       <div className='App'>
+        <Header />
         <main>
           {hasError && <p>There was an error! Oh no!</p>}
 
@@ -30,32 +32,7 @@ class App extends Component {
           </Switch>
 
           {/*for footer tester-->*/}
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
+          
         </main>
         <Footer />
       </div>

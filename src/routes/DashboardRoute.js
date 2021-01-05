@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import Map from '../components/Map';
-import EventList from '../components/EventList';
-import Sidebar from '../components/Sidebar';
-
-import Header from '../components/Header/Header';
+import ArticlePanel from '../components/ArticlePanel/ArticlePanel'
 
 class DashBoard extends Component {
   render() {
     return (
-      <div className='dashboard-container'>
-        <Header />
-      </div>
+      <section className='dashboard-container'>
+        <ArticlePanel />
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        
+      </section>
     );
   }
 }
