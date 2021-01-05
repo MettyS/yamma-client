@@ -1,9 +1,9 @@
 .header {
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
     justify-content: space-between;
     background-color: rgb(32,32,32);
-    /*filter: drop-shadow(0 0 10px rgb);*/
+    /* filter: drop-shadow(0 0 10px rgb); */
     position: fixed;
     top: 0;
     width: 100%;
@@ -11,51 +11,127 @@
 
 .logo {
     align-items: left;
-    margin-left: 10px;
-    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
     height: 60px;
     width: 70px;
+    margin: 5px;
+    padding: 0;
 }
 
 a {
     text-decoration: none;
-    color: rgb(255,238,0);
-}
-
-h1.title {
-    text-align: right;
-    margin: 10px 120px 0 0;
-    font-size: 30px;
-}
-
-ul.home-links {
+    color: WHITE;
     display: block;
-    list-style-type: none;
-    padding-right: 0px;
-    overflow: hidden;
-    margin: 10px 120px 0 0;
 }
 
-ul.home-links li {
-    float: left;
-}
-
-ul.home-links li a {
-    display: block;
+.title {
     text-align: center;
-    padding: 16px;
-    text-decoration: none;
-    color: rgb(255,238,0);
-    margin-left: 0;
+    font-size: 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 5px;
 }
 
-ul.home-links li a:hover {
-    background-color: #333333;
+.title h1 {
+    display: block;
+    margin: 5px;
+    color: yellow;
+}
+
+.user-button {
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: bolder;
+    font-size: 18px;
+    padding: 10px;
+    width: 160px;
+    /* margin: 10px; */
+    color: white;
+    background-color: rgb(32,32,32);
+    border-color: #333333;
+}
+
+.bars {
+    color: black;
+}
+
+.login-links {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.home-links {
+    text-align: justify;
+    font-size: 16px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    margin-right: 30px;
+    justify-content: space-between;
 }
 
 
 
-@media screen and (max-width: 500px){
-   
+@media only screen and (min-width: 768px) {
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: rgb(32,32,32);
+        /* filter: drop-shadow(0 0 10px rgb); */
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    
+    .logo {
+        align-items: left;
+        margin-left: 10px;
+        margin-top: 10px;
+        height: 60px;
+        width: 70px;
+    }
+
+    .title h1{
+        text-align: right;
+        margin: 0 10px 0 0;
+        font-size: 30px;
+    }
+    
+    ul.home-links {
+        display: block;
+        list-style-type: none;
+        padding-right: 0px;
+        overflow: hidden;
+        margin: 10px 120px 0 0;
+    }
+    
+    ul.home-links li {
+        float: left;
+    }
+    
+    ul.home-links li a {
+        display: block;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+        color: #b70005;
+        margin-left: 0;
+    }
+    
+    ul.home-links li a:hover {
+        background-color: #333333;
+    }
+    
+    .login-links {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-evenly;
+    }
 }
   
+
