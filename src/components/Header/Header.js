@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 import './Header.css';
 import yammalogored from '../../images/yammalogored.PNG';
 import TokenService from '../../services/token-service';
+import AboutUs from './AboutUs'
+import Important from './Important'
+import ContactUs from './ContactUs'
 
 class Header extends Component {
-  handleLogoutClick = () => {
-    TokenService.clearAuthToken();
-  };
+    handleLogoutClick = () => {
+        TokenService.clearAuthToken();
+    };
 
-  renderLogoutLink() {
-    return (
-      <div>
-        <span className='user_name'>Hi, {this.context.user.name}</span>
-        <nav>
-          <Link onClick={this.handleLogoutClick} to='/login'>
-            Logout
+    renderLogoutLink() {
+        return (
+            <div>
+                <span className='user_name'>Hi, {this.context.user.name}</span>
+                <nav>
+                    <Link onClick={this.handleLogoutClick} to='/login'>
+                        Logout
           </Link>
-        </nav>
-      </div>
-    );
-  }
+                </nav>
+            </div>
+        );
+    }
 
   renderLoginLink() {
     return (

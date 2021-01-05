@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArticlePanel from '../components/ArticlePanel';
+import ArticlePanel from '../components/ArticlePanel/ArticlePanel';
 import ChatPanel from '../components/ChatPanel';
 import RelatedArticleList from '../components/RelatedArticleList';
 

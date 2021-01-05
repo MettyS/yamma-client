@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+
 .header {
     /* display: flex;
     flex-direction: row; */
     justify-content: space-between;
     background-color: rgb(32,32,32);
-    /* filter: drop-shadow(0 0 10px rgb); */
+    filter: drop-shadow(0 0 10px black);
     position: fixed;
     top: 0;
     width: 100%;
@@ -38,13 +42,14 @@ a {
 }
 
 .title h1 {
+    font-family: 'MuseoModerno', cursive;
     display: block;
     margin: 5px;
     color: red;
 }
 
 .user-button {
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Poppins', sans-serif;
     /* font-weight: bolder; */
     font-size: 14px;
     padding: 10px;
@@ -66,6 +71,7 @@ a {
 }
 
 .home-links {
+    font-family: 'Poppins', sans-serif;
     text-align: justify;
     font-size: 15px;
     list-style-type: none;
@@ -79,11 +85,92 @@ a {
 
 @media only screen and (min-width: 768px) {
     .header {
+        /* display: flex;
+        flex-direction: row; */
+        /* justify-content: space-between; */
+        background-color: rgb(32,32,32);
+        filter: drop-shadow(0 0 20px black);
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    
+    .logo {
+        align-items: left;
+        margin-left: auto;
+        margin-right: auto;
+        height: 60px;
+        width: 70px;
+        margin: 5px;
+        padding: 0;
+    }
+    
+    a {
+        text-decoration: none;
+        color: white;
+        /* display: block; */
+    }
+    
+    .title {
+        text-align: left;
+        font-size: 20px;
+        /* display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center; */
+        /* gap: 10px; */
+        margin: 0;
+        padding: 5px;
+    }
+    
+    .title h1 {
+        font-family: 'MuseoModerno', cursive;
+        /* display: block; */
+        margin: 5px;
+        color: red;
+    }
+    
+    .user-button {
+        font-family: 'Poppins', sans-serif;
+        /* font-weight: bolder; */
+        font-size: 14px;
+        padding: 10px;
+        width: 160px;
+        /* margin: 10px; */
+        color: white;
+        background-color: rgb(32,32,32);
+        border-color: #333333;
+    }
+    
+    .bars {
+        color: red;
+    }
+    
+    .login-links {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-evenly;
+    }
+    
+    /* .home-links {
+        font-family: 'Poppins', sans-serif;
+        text-align: justify;
+        font-size: 15px;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        margin-right: 30px;
+        justify-content: space-between;
+    } */
+
+
+
+    /* .header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         background-color: rgb(32,32,32);
-        /* filter: drop-shadow(0 0 10px rgb); */
+        filter: drop-shadow(0 0 10px rgb);
         position: fixed;
         top: 0;
         width: 100%;
@@ -132,7 +219,7 @@ a {
         display: flex;
         align-items: flex-start;
         justify-content: space-evenly;
-    }
+    } */
 }
   
 
