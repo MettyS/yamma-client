@@ -8,9 +8,6 @@ export default class ArticlePanel extends Component {
 
   render() {
     const { articles=[] } = this.context
-    console.log("context:", this.context)
-    console.log("articles:", articles)
-
     return( 
       <div className='articlepanel-container'>
 

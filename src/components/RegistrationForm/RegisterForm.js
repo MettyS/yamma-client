@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Required, Label } from '../Form/Form';
 import AuthApiService from '../../services/auth-api-service';
-import Button from '../Button/Button';
+
 
 class RegistrationForm extends Component {
   static defaultProps = {
@@ -73,7 +73,7 @@ class RegistrationForm extends Component {
           />
         </div>
         <footer>
-          <Button type='submit'>Sign up</Button>{' '}
+          <button type='submit'>Sign up</button>{' '}
           <Link to='/login'>Already have an account?</Link>
         </footer>
       </form>

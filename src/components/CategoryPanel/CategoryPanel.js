@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import UserContext from '../../context/UserContext'
-import Button from '../Button/Button'
+import { Link } from 'react-router-dom'
 
 export class CategoryList extends Component {
   static contextType = UserContext
 
   render() {
     const {categories = []} = this.context
-    console.log("categories: ", categories)
     return (
       <div className='categorylist-container'>
         <ul>
-          <Button>
             {categories.map((category) => 
+            <Link to={`/${category.name}`}>
             <li key={category.id}>
-              {category.name}
-            </li>)}
-          </Button>
+              {category.name}<br></br>{' '}
+            </li>
+            </Link>
+            )}
         </ul>
       </div>
     )
