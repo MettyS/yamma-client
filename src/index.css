@@ -1,15 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #2C2C2C;
+  /* font-family: 'Inter', sans-serif; */
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #2c2c2c;
 }
 
 :root {
   --font-size: calc(10px + 1vmin);
+}
+
+.App {
+  margin-top: 187px;
+}
+
+.App > div {
+  min-height: 100vh;
+  padding: 8px 12px;
+}
+
+@media only screen and (min-width: 768px) {
+  .App {
+    margin-top: 86px;
+  }
+
+  .App > div {
+    min-height: 100vh;
+    padding: 24px 36px;
+  }
 }
