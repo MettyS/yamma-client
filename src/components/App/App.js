@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import DashboardRoute from '../../routes/DashboardRoute';
 import EventPageRoute from '../../routes/EventPageRoute';
-import FilterRoute from '../../routes/FilterRoute';
+//import FilterRoute from '../../routes/FilterRoute';
 import LoginRoute from '../../routes/LoginRoute';
 import RegisterRoute from '../../routes/RegisterRoute';
 import Footer from '../Footer/Footer';
@@ -37,3 +37,4 @@ class App extends Component {
 }
 
 export default App;
+
