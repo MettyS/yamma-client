@@ -11,10 +11,6 @@ class DashBoard extends Component {
     categories: DummyData.categories
   }
 
-  componentDidMount() {
-    // fake date loading from API call
-  }
-
   renderArticlePanel() {
     console.log(this.state)
     return (

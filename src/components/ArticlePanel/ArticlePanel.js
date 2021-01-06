@@ -34,5 +34,3 @@ export default class ArticlePanel extends Component {
   }
   
 }
-
-
