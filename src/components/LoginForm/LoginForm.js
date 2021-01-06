@@ -48,7 +48,7 @@ class LoginForm extends Component {
         <div>
           <Label htmlFor='login-username-input'>Username</Label>
           <Input
-            ref={this.firstInput}
+            ref={toString(this.firstInput)}
             id='login-username-input'
             name='username'
             required
@@ -63,7 +63,7 @@ class LoginForm extends Component {
             required
           />
         </div>
-        <button type='submit'>Login</button>
+        <button>Login</button>
       </form>
     );
   }
