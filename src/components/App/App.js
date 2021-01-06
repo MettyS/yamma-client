@@ -6,6 +6,7 @@ import FilterRoute from '../../routes/FilterRoute';
 import LoginRoute from '../../routes/LoginRoute';
 import RegisterRoute from '../../routes/RegisterRoute';
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 
 class App extends Component {
   state = { hasError: false };
@@ -19,44 +20,16 @@ class App extends Component {
     const { hasError } = this.state;
     return (
       <div className='App'>
-        <main>
-          {hasError && <p>There was an error! Oh no!</p>}
+        {hasError && <p>There was an error! Oh no!</p>}
+        <Header />
 
-          <Switch>
-            <Route exact path={'/'} component={DashboardRoute} />
-            <Route path={'/event/:event_id'} component={EventPageRoute} />
-            <Route path={'/register'} component={RegisterRoute} />
-            <Route path={'/login'} component={LoginRoute} />
-          </Switch>
-
-          {/*for footer tester-->*/}
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-        </main>
+        <Switch>
+          <Route exact path={'/'} component={DashboardRoute} />
+          <Route path={'/event/:event_id'} component={EventPageRoute} />
+          <Route path={'/register'} component={RegisterRoute} />
+          <Route path={'/login'} component={LoginRoute} />
+        </Switch>
+        
         <Footer />
       </div>
     );

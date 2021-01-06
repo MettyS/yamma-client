@@ -16,3 +16,23 @@ body {
 :root {
   --font-size: calc(10px + 1vmin);
 }
+
+.App {
+  margin-top: 187px;
+}
+
+.App > div {
+  min-height: 100vh;
+  padding: 8px 12px;
+}
+
+@media only screen and (min-width: 768px) {
+  .App {
+    margin-top: 86px;
+  }
+
+  .App > div {
+    min-height: 100vh;
+    padding: 24px 36px;
+  }
+}
