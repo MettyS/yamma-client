@@ -7,13 +7,8 @@ import UserContext from '../context/UserContext'
 
 class DashBoard extends Component {
   state = {
-    articles: [],
-    categories: []
-  }
-
-  componentDidMount() {
-    // fake date loading from API call
-    setTimeout(() => this.setState(DummyData), 600);
+    articles: [DummyData.articles],
+    categories: [DummyData.categories]
   }
 
   renderArticlePanel() {
