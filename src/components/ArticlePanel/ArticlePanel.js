@@ -15,21 +15,21 @@ export default class ArticlePanel extends Component {
     return( 
       <div className='articlepanel-container'>
 
-        <h1>US News</h1>
+      <h1>US News</h1>
 
-        <div>
-          <ul>     
-          {/*needs to change when we have a correct path for the article-->*/}
-          {articles.map((article) =>
-            <li key={article.id}> 
-              <Link to={`/article/${article.id}`}>{article.title}<br></br>{' '}</Link>
-              <Button>View</Button>
-              <Button>Share</Button></li>)}
+      <div>
+        <ul>     
+        {/*needs to change when we have a correct path for the article-->*/}
+        {articles.map((article) =>
+          <li key={parseInt(article.id)}> 
+            <Link to={`/article/${parseInt(article.id)}`}>{article.title}<br></br>{' '}</Link>
+            <button type='click'>View</button>
+            <button type='click'>Share</button></li>)}
 
-          </ul>
-        </div>
-
+        </ul>
       </div>
+
+    </div>
     )
   }
   
