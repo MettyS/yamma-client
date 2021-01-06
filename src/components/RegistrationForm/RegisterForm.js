@@ -1,84 +1,85 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Input, Required, Label } from '../Form/Form';
 import AuthApiService from '../../services/auth-api-service';
+import { Link } from 'react-router-dom'
+import UserContext from '../../context/UserContext';
 
 
 class RegistrationForm extends Component {
   static defaultProps = {
-    onRegistrationSuccess: () => {},
-  };
+    onRegistrationSuccess: () => {}
+  }
 
-  state = { error: null };
+  state = {
+    email: ' ',
+    username: ' ',
+    password: ' ',
+    error: null
+  }
 
-  firstInput = React.createRef();
+  static contextType = UserContext
 
-  handleSubmit = (ev) => {
-    ev.preventDefault();
-    const { name, username, password } = ev.target;
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    const {email, username, password} = event.target
+
     AuthApiService.postUser({
-      name: name.value,
+      email: email.value,
       username: username.value,
-      password: password.value,
+      password: password.value
+    }).then(res => {
+      email.value = ' '
+      username.value = ' '
+      password.value = ' '
+      this.context.onRegistrationSuccess()
+    }).catch(res => {
+      this.setState({ error: res.error })
     })
-      .then((user) => {
-        name.value = '';
-        username.value = '';
-        password.value = '';
-        this.props.onRegistrationSuccess();
-      })
-      .catch((res) => {
-        this.setState({ error: res.error });
-      });
-  };
-
-  componentDidMount() {
-    this.firstInput.current.focus();
   }
 
   render() {
-    const { error } = this.state;
-    return (
-      <form onSubmit={this.handleSubmit} className='RegistrationForm'>
-        <div role='alert'>{error && <p>{error}</p>}</div>
-        <div>
-          <Label htmlFor='registration-name-input'>
-            Enter your name
-            <Required />
-          </Label>
-          <Input
-            ref={this.firstInput}
-            id='registration-name-input'
-            name='name'
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor='registration-username-input'>
-            Choose a username
-            <Required />
-          </Label>
-          <Input id='registration-username-input' name='username' required />
-        </div>
-        <div>
-          <Label htmlFor='registration-password-input'>
-            Choose a password
-            <Required />
-          </Label>
-          <Input
-            id='registration-password-input'
-            name='password'
-            type='password'
-            required
-          />
-        </div>
-        <footer>
-          <button type='submit'>Sign up</button>{' '}
+    const { error } = this.state
+    return(
+      <div>
+        <form onSubmit={this.handleSubmit}>
+
+          <div role='alert'>
+            {error && <p>{error}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="reg-email">Email</label>
+            <input required type="text" placeholder="Enter your email here" name="Email" onChange={this.handleChange}/>
+          </div>
+
+          <div>
+            <label htmlFor="reg-username">Username</label>
+            <input required type="text" placeholder="Enter username here" name="Username" onChange={this.handleChange}/>
+          </div>
+
+          <div>
+            <label htmlFor="reg-password">Password</label>
+            <input required type="password" placeholder="Enter password here" name="Password" onChange={this.handleChange}/>
+          </div>
+
+          <div className="signup-button">
+            <button type="submit">Sign Up</button>
+            <button type="submit">Cancel</button>
+          </div>
+
           <Link to='/login'>Already have an account?</Link>
-        </footer>
-      </form>
-    );
+
+        </form>
+      </div>
+    )
   }
+
+  
 }
 
 export default RegistrationForm;
