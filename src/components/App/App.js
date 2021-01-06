@@ -20,20 +20,16 @@ class App extends Component {
     const { hasError } = this.state;
     return (
       <div className='App'>
+        {hasError && <p>There was an error! Oh no!</p>}
         <Header />
-        <main>
-          {hasError && <p>There was an error! Oh no!</p>}
 
-          <Switch>
-            <Route exact path={'/'} component={DashboardRoute} />
-            <Route path={'/event/:event_id'} component={EventPageRoute} />
-            <Route path={'/register'} component={RegisterRoute} />
-            <Route path={'/login'} component={LoginRoute} />
-          </Switch>
-
-          {/*for footer tester-->*/}
-          
-        </main>
+        <Switch>
+          <Route exact path={'/'} component={DashboardRoute} />
+          <Route path={'/event/:event_id'} component={EventPageRoute} />
+          <Route path={'/register'} component={RegisterRoute} />
+          <Route path={'/login'} component={LoginRoute} />
+        </Switch>
+        
         <Footer />
       </div>
     );

@@ -4,7 +4,7 @@ import './ArticlePanel.css'
 import Button from '../Button/Button'
 
 export default function ArticlePanel(props) {
-  console.log("props,", props.articles)
+  console.log("props,", props)
 
   return( 
     <div className='articlepanel-container'>
@@ -16,10 +16,9 @@ export default function ArticlePanel(props) {
       
       <div>
         <ul>     
-        {/*needs to change when we have a correct path for the article-->*/}
         {props.articles.map((article) =>
           <li key={article.id}> 
-            <Link to='/article'>{article.title}<br></br>{' '}</Link>
+            <Link to={`/article/${article.id}`}>{article.title}<br></br>{' '}</Link>
             <Button type='click'>View</Button>
             <Button type='click'>Share</Button>
           </li>
