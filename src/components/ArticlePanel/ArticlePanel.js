@@ -1,37 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import './ArticlePanel.css'
 import Button from '../Button/Button'
 
-class ArticlePanel extends Component {
+export default function ArticlePanel(props) {
+  console.log("props,", props.articles)
 
-  render() {
-    const article_array = ['Article1', 'Article2', 'Article3', 'Article4']
-    return( 
-      <div className='articlepanel-container'>
-        <br></br>
-        <br></br>
-        <br></br>
+  return( 
+    <div className='articlepanel-container'>
+      <br></br>
+      <br></br>
+      <br></br>
 
-        <h1>US News</h1>
-        
-        <div>
-          <ul>     
-          {/*needs to change when we have a correct path for the article-->*/}
-          {article_array.map((para, i) =>
-            <li> 
-              <Link key={i} to='/article/article:id'>{para}<br></br>{' '}</Link>
-              <Button key={i} type='click'>View</Button>
-              <Button key={i} type='click'>Share</Button>
-            </li>
-          )}
-          </ul>
-        </div>
-
-
+      <h1>US News</h1>
+      
+      <div>
+        <ul>     
+        {/*needs to change when we have a correct path for the article-->*/}
+        {props.articles.map((article) =>
+          <li key={article.id}> 
+            <Link to='/article'>{article.title}<br></br>{' '}</Link>
+            <Button type='click'>View</Button>
+            <Button type='click'>Share</Button>
+          </li>
+        )}
+        </ul>
       </div>
-    )
-  }
-}
 
-export default ArticlePanel;
+
+    </div>
+  )
+}
