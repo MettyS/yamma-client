@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Input, Label } from '../../components/Form/Form';
 import AuthApiService from '../../services/auth-api-service';
 import UserContext from '../../context/UserContext';
-import Button from '../Button/Button';
+
 
 class LoginForm extends Component {
   static defaultProps = {
@@ -63,7 +63,7 @@ class LoginForm extends Component {
             required
           />
         </div>
-        <Button type='submit'>Login</Button>
+        <button type='submit'>Login</button>
       </form>
     );
   }
