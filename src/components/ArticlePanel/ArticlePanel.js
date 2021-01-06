@@ -1,32 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './ArticlePanel.css'
 import Button from '../Button/Button'
+import UserContext from '../../context/UserContext'
 
-export default function ArticlePanel(props) {
-  console.log("props,", props)
+export default class ArticlePanel extends Component {
+  static contextType = UserContext
 
-  return( 
-    <div className='articlepanel-container'>
-      <br></br>
-      <br></br>
-      <br></br>
+  render() {
+    const { articles=[] } = this.context
+    console.log("context:", this.context)
+    console.log("articles:", articles)
 
-      <h1>US News</h1>
-      
-      <div>
-        <ul>     
-        {props.articles.map((article) =>
-          <li key={article.id}> 
-            <Link to={`/article/${article.id}`}>{article.title}<br></br>{' '}</Link>
-            <Button type='click'>View</Button>
-            <Button type='click'>Share</Button>
-          </li>
-        )}
-        </ul>
+    return( 
+      <div className='articlepanel-container'>
+
+        <h1>US News</h1>
+
+        <div>
+          <ul>     
+          {/*needs to change when we have a correct path for the article-->*/}
+          {articles.map((article) =>
+            <li key={article.id}> 
+              <Link to={`/article/${article.id}`}>{article.title}<br></br>{' '}</Link>
+              <Button>View</Button>
+              <Button>Share</Button></li>)}
+
+          </ul>
+        </div>
+
       </div>
-
-
-    </div>
-  )
+    )
+  }
+  
 }
+
+

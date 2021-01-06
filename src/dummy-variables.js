@@ -1,4 +1,4 @@
-export default{
+export default {
     "articles": [
         {
             "id": "001",
@@ -22,43 +22,38 @@ export default{
         },
     ],
 
-    "categories":[
-        {"maps": [
-            {
-                "id": "001",
-                "name": "West"
-            },
-            {
-                "id": "002",
-                "name": "Midwest"
-            },
-            {
-                "id": "003",
-                "name": "South"
-            },
-            {
-                "id": "004",
-                "name": "East"
-            },
-        ]},
-
-        {"others":[
-            {
-                "id": "001",
-                "name": "Politics"
-            },
-            {
-                "id": "002",
-                "name": "Business"
-            },
-            {
-                "id": "003",
-                "name": "Health"
-            },
-            {
-                "id": "004",
-                "name": "Tech"
-            },
-        ]}
+    "categories": [
+        {
+            "id": "001",
+            "name": "West"
+        },
+        {
+            "id": "002",
+            "name": "Midwest"
+        },
+        {
+            "id": "003",
+            "name": "South"
+        },
+        {
+            "id": "004",
+            "name": "East"
+        },
+        {
+            "id": "005",
+            "name": "Politics"
+        },
+        {
+            "id": "006",
+            "name": "Business"
+        },
+        {
+            "id": "007",
+            "name": "Health"
+        },
+        {
+            "id": "008",
+            "name": "Tech"
+        },
     ]
 }

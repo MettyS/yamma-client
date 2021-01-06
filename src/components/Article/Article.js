@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import UserContext from '../../context/UserContext'
 
-export default function Article(props) {
-  
+export default class Article extends Component{
+    static contextType = UserContext
+    
+    render(){
+        const { id, title, content } = this.props;
+        console.log("this.props: ", this.props)
         return(
             <div>
-                <Link to={`/article/${props.id}`}>
-                    <h2>{props.title}</h2>
+                <Link to={`/article/${id}`}>
+                    <h2>{title}</h2>
                 </Link>
                 <div>
-                    <p>{props.content}</p>
+                    <p>{content}</p>
                 </div>
             </div>
         )
+    }
+
 }
 
