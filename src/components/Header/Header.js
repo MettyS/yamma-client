@@ -25,66 +25,60 @@ class Header extends Component {
         );
     }
 
-    renderLoginLink() {
-        return (
-            <nav>
-                <Link to='/login'>Login</Link>
-                {' '}<br></br>
-                <Link to='/register'>Sign up</Link>
-            </nav>
-        )
-    }
+  renderLoginLink() {
+    return (
+      <nav className='login-links'>
+        <Link to='/login'>
+          <button className='user-button'>Login</button>
+        </Link>{' '}
+        <br></br>
+        <Link to='/register'>
+          <button className='user-button'>Sign up</button>
+        </Link>
+      </nav>
+    );
+  }
 
-    renderIntroLink() {
-        return (
-            <Router>
-                <div>
-                <ul className="home-links">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to='/aboutus'>About us</Link></li>
-                    <li className='bars'>|</li>
-                    <li><Link to='/important'>Important Notice</Link></li>
-                    <li className='bars'>|</li>
-                    <li><Link to='/contactus'>Contact Us</Link></li>
-                </ul>
-                </div>
+  renderHomeLink() {
+    return (
+      <nav>
+        <ul className='home-links'>
+          <li>
+            <Link to='/aboutus'>About</Link>
+          </li>
+          <li className='bars'>|</li>
+          <li>
+            <Link to='/important'>Important Notice</Link>
+          </li>
+          <li className='bars'>|</li>
+          <li>
+            <Link to='/contactus'>Contact</Link>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
 
-                <Switch>
-                    <Route path="/aboutus">
-                        <AboutUs />
-                    </Route>
-                    <Route path="/important">
-                        <Important />
-                    </Route>
-                    <Route path="/contactus">
-                        <ContactUs />
-                    </Route>
-                </Switch>
-            </Router>
-            
-        )
-    }
+  render() {
+    return (
+      <header className='header'>
+        <div>
+          <Link to='/' className='title'>
+            <img className='logo' src={yammalogored} alt='Yamma-Logo' />
+            <h1>Yamma</h1>
+          </Link>
+        </div>
 
-    render() {
-        return (
-            <header className="header">
-                <div>
-                    <Link to='/' className="title">
-                        <img className="logo" src={yammalogored} alt="Yamma-Logo" />
-                        <h1>Yamma</h1>
-                    </Link>
-                </div>
+        <div>{this.renderHomeLink()}</div>
 
-                <div>{this.renderIntroLink()}</div>
-
-                <div>
-                    {TokenService.hasAuthToken()
-                        ? this.renderLogoutLink()
-                        : this.renderLoginLink()}
-                </div>
-            </header>
-        );
-    }
+        <div>
+          {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
+        </div>
+      </header>
+    );
+  }
 }
 
 export default Header;

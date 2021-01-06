@@ -11,11 +11,11 @@ class Footer extends Component {
           <li>
             <Link to='/'>Back top</Link>
           </li>
-          <li className='bars'>|</li>
+          <li className='footer-bars'>|</li>
           <li>
             <Link>Private Policy</Link>
           </li>
-          <li className='bars'>|</li>
+          <li className='footer-bars'>|</li>
           <li>
             <Link>Copyright</Link>
           </li>
