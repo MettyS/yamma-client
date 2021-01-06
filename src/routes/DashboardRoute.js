@@ -7,8 +7,8 @@ import UserContext from '../context/UserContext'
 
 class DashBoard extends Component {
   state = {
-    articles: [DummyData.articles],
-    categories: [DummyData.categories]
+    articles: DummyData.articles,
+    categories: DummyData.categories
   }
 
   renderArticlePanel() {
