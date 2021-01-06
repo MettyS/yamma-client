@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './ArticlePanel.css'
-import Button from '../Button/Button'
 import UserContext from '../../context/UserContext'
 
 export default class ArticlePanel extends Component {
