@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 import './Header.css';
-import YammaLogo from '../../images/YammaLogo.png';
+import yammalogored from '../../images/yammalogored.PNG';
 import TokenService from '../../services/token-service';
+import AboutUs from './AboutUs'
+import Important from './Important'
+import ContactUs from './ContactUs'
 
 class Header extends Component {
-  handleLogoutClick = () => {
-    TokenService.clearAuthToken();
-  };
+    handleLogoutClick = () => {
+        TokenService.clearAuthToken();
+    };
 
-  renderLogoutLink() {
-    return (
-      <div>
-        <span className='user_name'>Hi, {this.context.user.name}</span>
-        <nav>
-          <Link onClick={this.handleLogoutClick} to='/login'>
-            Logout
+    renderLogoutLink() {
+        return (
+            <div>
+                <span className='user_name'>Hi, {this.context.user.name}</span>
+                <nav>
+                    <Link onClick={this.handleLogoutClick} to='/login'>
+                        Logout
           </Link>
-        </nav>
-      </div>
-    );
-  }
+                </nav>
+            </div>
+        );
+    }
 
   renderLoginLink() {
     return (
@@ -41,13 +44,15 @@ class Header extends Component {
       <nav>
         <ul className='home-links'>
           <li>
-            <Link to='/aboutus'>About Us</Link>
+            <Link to='/aboutus'>About</Link>
           </li>
+          <li className='bars'>|</li>
           <li>
             <Link to='/important'>Important Notice</Link>
           </li>
+          <li className='bars'>|</li>
           <li>
-            <Link to='/contactus'>Contact Us</Link>
+            <Link to='/contactus'>Contact</Link>
           </li>
         </ul>
       </nav>
@@ -57,12 +62,12 @@ class Header extends Component {
   render() {
     return (
       <header className='header'>
-        <img className='logo' src={YammaLogo} alt='Yamma-Logo' />
-        <h1>
+        <div>
           <Link to='/' className='title'>
+            <img className='logo' src={yammalogored} alt='Yamma-Logo' />
             <h1>Yamma</h1>
           </Link>
-        </h1>
+        </div>
 
         <div>{this.renderHomeLink()}</div>
 
