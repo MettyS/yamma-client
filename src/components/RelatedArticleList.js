@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RelatedArticleCard from './RelatedArticleCard';
+//import RelatedArticleCard from './RelatedArticleCard';
 
 class RelatedArticleList extends Component {
   render() {
