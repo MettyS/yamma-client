@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Footer.css';
-import YammaLogo from '../../images/YammaLogo.png';
 import { Link } from 'react-router-dom';
 
 class Footer extends Component {

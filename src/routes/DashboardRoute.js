@@ -1,21 +1,17 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import ArticlePanel from '../components/ArticlePanel/ArticlePanel'
-import DummyData from '../dummy-variables'
 import UserContext from '../context/UserContext'
-import CategoryPanel from  '../components/CategoryPanel/CategoryPanel'
+import CategoryList from  '../components/CategoryList/CategoryList'
+
 
 class DashBoard extends Component {
-  state = {
-    articles: DummyData.articles,
-    categories: DummyData.categories
-  }
+  static contextType = UserContext
 
   renderArticlePanel() {
-    console.log(this.state)
     return (
       <div>
-        {['/', '/article/:id'].map(path => (
+        {['/', '/event/article/:id'].map(path => (
           <Route
             key={path}
             path={path}
@@ -25,32 +21,28 @@ class DashBoard extends Component {
     )
   }
 
-  renderCategoryPanel() {
+  renderCategoryList() {
     return(
       <div>
-        {['/', '/category/:id'].map(path => (
+        {['/', '/event/:category/:id'].map(path => (
           <Route
             key={path}
             path={path}
-            component={CategoryPanel} />
+            component={CategoryList} />
         ))}
       </div>
     )
   }
 
   render() {
-    const value = {
-      articles: this.state.articles,
-      categories: this.state.categories
-    }
 
     return (
-      <UserContext.Provider value={value}>
+      
         <div className='dashboard-container'>
           {this.renderArticlePanel()}
-          {this.renderCategoryPanel()}
+          {this.renderCategoryList()}
         </div>
-      </UserContext.Provider>
+
     );
   }
 }

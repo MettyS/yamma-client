@@ -11,7 +11,7 @@ export class CategoryList extends Component {
       <div className='categorylist-container'>
         <ul>
             {categories.map((category) => 
-            <Link to={`/${category.name}`}>
+            <Link key={category.id} to={`/event/${category.name}/${parseInt(category.id)}`}>
             <li key={category.id}>
               {category.name}<br></br>{' '}
             </li>

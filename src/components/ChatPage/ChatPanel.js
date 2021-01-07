@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import ChatFeed from './ChatFeed';
-import ChatForm from './ChatForm';
 
 class ChatPanel extends Component {
   render() {
