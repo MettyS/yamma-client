@@ -10,8 +10,6 @@ export default class CategoryPage extends Component{
         const { id } = this.props.match.params
         const category = categories.find(cat => parseInt(cat.id) === parseInt(id))
 
-        console.log(category)
-
         return(
             <div className="category-page">
                 <h1>{category.name}</h1>
