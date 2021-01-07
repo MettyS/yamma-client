@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
+import ArticlePage from '../components/ArticlePage/ArticlePage'
 import ArticlePanel from '../components/ArticlePanel/ArticlePanel'
 import DummyData from '../dummy-variables'
 import UserContext from '../context/UserContext'
@@ -12,7 +13,6 @@ class DashBoard extends Component {
   }
 
   renderArticlePanel() {
-    console.log(this.state)
     return (
       <div>
         {['/', '/article/:id'].map(path => (
@@ -21,6 +21,8 @@ class DashBoard extends Component {
             path={path}
             component={ArticlePanel} />
         ))}
+
+        <Route path='/article/:id' component={ArticlePage} />
       </div>
     )
   }
