@@ -8,12 +8,14 @@ import RegisterRoute from '../../routes/RegisterRoute';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import UserContext from '../../context/UserContext';
-import DummyData from '../../dummy-variables'
+import DummyData from '../../dummy-variables';
+import DummyChat from '../../dummy-chat';
 
 class App extends Component {
   state = {
     articles: DummyData.articles,
     categories: DummyData.categories,
+    messages: DummyChat,
     hasError: false
   }
 
@@ -26,7 +28,8 @@ class App extends Component {
     const { hasError } = this.state;
     const value = {
       articles: this.state.articles,
-      categories: this.state.categories
+      categories: this.state.categories,
+      messages: this.state.messages
     }
     return (
       <UserContext.Provider value={value}>

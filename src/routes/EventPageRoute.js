@@ -12,7 +12,7 @@ class EventPage extends Component {
   renderArticlePage() {
     return (
       <div>
-        <Route exact path='/event/article/:id' component={ArticlePage} />
+        <Route exact path='/event/article/:title' component={ArticlePage} />
       </div>
     )
   }
@@ -20,7 +20,7 @@ class EventPage extends Component {
   renderCategoryPage() {
     return (
       <div>
-        <Route exact path='/event/category/:category/:id' component={CategoryPage} />
+        <Route exact path='/event/category/:name' component={CategoryPage} />
       </div>
     )
   }
