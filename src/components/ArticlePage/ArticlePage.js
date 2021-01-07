@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
 import UserContext from '../../context/UserContext'
+import './ArticlePage.css'
 
 export default class ArticlePage extends Component{
     static contextType = UserContext
     
     render(){
-        console.log("is this passing")
-        const { article = [] } = this.context
-        console.log(article)
+        const { articles = [] } = this.context
+        const { id } = this.props.match.params
+        const article = articles.find(art => parseInt(art.id) === parseInt(id))
+
         return(
-            <div>
-                <h2>{article.title}</h2>
+            <div className="article-page">
+                <h1>{article.title}</h1>
                 <p>{article.content}</p>
+
+
             </div>
         )
     }
