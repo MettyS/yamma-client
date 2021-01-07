@@ -9,13 +9,12 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import UserContext from '../../context/UserContext';
 import DummyData from '../../dummy-variables';
-import DummyChat from '../../dummy-chat';
+
 
 class App extends Component {
   state = {
     articles: DummyData.articles,
     categories: DummyData.categories,
-    messages: DummyChat,
     hasError: false
   }
 
@@ -29,23 +28,22 @@ class App extends Component {
     const value = {
       articles: this.state.articles,
       categories: this.state.categories,
-      messages: this.state.messages
     }
     return (
       <UserContext.Provider value={value}>
-      <div className='App'>
-        {hasError && <p>There was an error! Oh no!</p>}
-        <Header />
+        <div className='App'>
+          {hasError && <p>There was an error! Oh no!</p>}
+          <Header />
 
 
-        <Route exact path={'/'} component={DashboardRoute} />
-        <Route path={'/event/:event'} component={EventPageRoute} />
-        <Route path={'/register'} component={RegisterRoute} />
-        <Route path={'/login'} component={LoginRoute} />
+          <Route exact path={'/'} component={DashboardRoute} />
+          <Route path={'/event/:event'} component={EventPageRoute} />
+          <Route path={'/register'} component={RegisterRoute} />
+          <Route path={'/login'} component={LoginRoute} />
 
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
       </UserContext.Provider>
     );
   }

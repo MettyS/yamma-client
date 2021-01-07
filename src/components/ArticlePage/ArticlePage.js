@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import UserContext from '../../context/UserContext'
 import './ArticlePage.css'
 import { Link } from 'react-router-dom'
-import ChatPage from '../ChatPage/ChatPage'
+import ChatPage from '../ChatApp/ChatApp'
 
 export default class ArticlePage extends Component {
     static defaultProps = {

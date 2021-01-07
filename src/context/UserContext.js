@@ -15,7 +15,6 @@ const UserContext = React.createContext({
   processLogout: () => {},
   articles: [],
   categories: [],
-  messages: []
 });
 
 export default UserContext;
