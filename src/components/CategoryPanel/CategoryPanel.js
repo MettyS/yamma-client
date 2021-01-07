@@ -27,7 +27,7 @@ export class CategoryList extends Component {
               height='80px'
               className='subregion-img'
             />
-            <Link to='/west'>West</Link>
+            <Link to='/west' className='subregion-title'>West</Link>
           </li>
           <li className='subregion-item'>
             <img
@@ -36,7 +36,7 @@ export class CategoryList extends Component {
               height='80px'
               className='subregion-img'
             />
-            <Link to='/midwest'>Midwest</Link>
+            <Link to='/midwest' className='subregion-title'>Midwest</Link>
           </li>
 
           <li className='subregion-item'>
@@ -46,7 +46,7 @@ export class CategoryList extends Component {
               height='80px'
               className='subregion-img'
             />
-            <Link to='/south'>South</Link>
+            <Link to='/south' className='subregion-title'>South</Link>
           </li>
           <li className='subregion-item'>
             <img
@@ -55,7 +55,7 @@ export class CategoryList extends Component {
               height='80px'
               className='subregion-img'
             />
-            <Link to='/east'>East</Link>
+            <Link to='/east' className='subregion-title'>East</Link>
           </li>
         </ul>
 
@@ -63,7 +63,7 @@ export class CategoryList extends Component {
 
         <ul className='category-ul'>
           <li className='category-item'>
-            <Link to='/politics'>Politics</Link>
+            <Link to='/politics' className='category-title'>Politics</Link>
             <img
               src={politicsicon}
               width='80px'
@@ -72,7 +72,7 @@ export class CategoryList extends Component {
             />
           </li>
           <li className='category-item'>
-            <Link to='/business'>Business</Link>
+            <Link to='/business' className='category-title'>Business</Link>
             <img
               src={businessicon}
               width='80px'
@@ -81,7 +81,7 @@ export class CategoryList extends Component {
             />
           </li>
           <li className='category-item'>
-            <Link to='/health'>Health</Link>
+            <Link to='/health' className='category-title'>Health</Link>
             <img
               src={healthicon}
               width='80px'
@@ -90,7 +90,7 @@ export class CategoryList extends Component {
             />
           </li>
           <li className='category-item'>
-            <Link to='/tech'>Tech</Link>
+            <Link to='/tech' className='category-title'>Tech</Link>
             <img
               src={techicon}
               width='80px'

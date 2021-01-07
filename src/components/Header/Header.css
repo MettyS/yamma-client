@@ -8,21 +8,19 @@
     position: fixed;
     top: 0;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .logo {
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    height: 60px;
-    width: 70px;
+    max-height: 32px;
     margin: 5px;
     padding: 0;
 }
 
 a {
     text-decoration: none;
-    color: white;
 }
 
 .title {
@@ -45,12 +43,14 @@ a {
 
 .user-button {
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    padding: 10px;
-    width: 160px;
+    font-size: 10px;
+    padding: 5px;
+    margin: 5px;
+    width: 80px;
     color: white;
     background-color: rgb(32,32,32);
     border-color: #333333;
+    border-radius: 15px;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -64,20 +64,6 @@ a {
     justify-content: space-evenly;
 }
 
-.home-links {
-    font-family: 'Poppins', sans-serif;
-    text-align: justify;
-    font-size: 15px;
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    margin-right: 30px;
-    justify-content: space-between;
-    font-family: 'Poppins', sans-serif;
-}
-
-
-
 @media only screen and (min-width: 768px) {
     .header {
         display: flex;
@@ -90,51 +76,42 @@ a {
     }
     
     .logo {
-        align-items: left;
+        /* align-items: left;
         margin-left: auto;
         margin-right: auto;
         height: 60px;
         width: 70px;
         margin: 5px;
-        padding: 0;
+        padding: 0; */
     }
     
     a {
         text-decoration: none;
-        color: white;
     }
     
     .title {
-        text-align: left;
+        /* text-align: left;
         font-size: 20px;
         margin: 0;
-        padding: 5px;
+        padding: 5px; */
     }
     
     .title h1 {
         font-family: 'MuseoModerno', cursive;
+        font-size: 18px;
         margin: 5px;
         color: red;
     }
     
     .user-button {
-        font-family: 'Poppins', sans-serif;
+        /* font-family: 'Poppins', sans-serif;
         font-size: 14px;
         padding: 10px;
+        margin: 0;
         width: 160px;
         color: white;
         background-color: rgb(32,32,32);
-        border-color: #333333;
-    }
-    
-    .bars {
-        color: red;
-    }
-    
-    .login-links {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-evenly;
+        border-color: #333333; */
     }
 
     .title {
@@ -146,27 +123,6 @@ a {
         align-items: center;
         margin: 0;
         padding: 5px;
-    }
-    
-    .title h1 {
-        font-family: 'MuseoModerno', cursive;
-        display: block;
-        margin: 5px;
-        padding-top: 5px;
-        color: red;
-    }
-    
-    .user-button {
-        font-family: 'Poppins', sans-serif;
-        font-size: 14px;
-        padding: 0px;
-        width: 100px;
-        margin-top: 30px;
-        margin-right: 20px;
-        color: white;
-        background-color: rgb(32,32,32);
-        border-color: #333333;
-        font-family: 'Poppins', sans-serif;
     }
     
     .bars {
@@ -181,15 +137,9 @@ a {
         align-items: flex-start;
         justify-content: space-evenly;
     }
-    
-    .home-links {
-        text-align: center;
-        font-size: 14px;
-        list-style-type: none;
-        margin-top: 30px;
-        margin-right: 30px;
-        justify-content: space-between;
-        font-family: 'Poppins', sans-serif;
+
+    .li-links {
+        color: white;
     }
 }
   

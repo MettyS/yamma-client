@@ -14,7 +14,7 @@ export default class ArticlePanel extends Component {
         {/*needs to change when we have a correct path for the article-->*/}
         {articles.map((article) =>
           <li key={parseInt(article.id)} className='article-list-item'> 
-            <Link to={`/article/${parseInt(article.id)}`}>{article.title}<br></br>{' '}</Link>
+            <Link to={`/article/${parseInt(article.id)}`} className='article-title'>{article.title}<br></br>{' '}</Link>
             <button type='click' className='article-buttons'>View</button>
             <button type='click' className='article-buttons'>Share</button></li>)}
         </ul>

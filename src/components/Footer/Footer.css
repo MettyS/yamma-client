@@ -50,12 +50,16 @@
   justify-content: space-between;
 }
 
-.bars {
+.footer-bars {
   color: red;
 }
 
 ul.footer-links li a:hover {
   background-color: #333333;
+}
+
+.li-links {
+  color: white;
 }
 
 
@@ -115,5 +119,9 @@ ul.footer-links li a:hover {
   .footer-bars {
     display: none;
     color: red;
+  }
+
+  .li-links {
+    color: white;
   }
 }
