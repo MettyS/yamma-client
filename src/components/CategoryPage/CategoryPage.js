@@ -16,7 +16,8 @@ export default class CategoryPage extends Component{
         const { categories=[] } = this.context
         const { name } = this.props.match.params
         const category = categories.find(cat => cat.name === name)
-        const relatedArticles = category.related_articles.split(', ')      
+        const relatedArticles = category.related_articles.split(', ')
+        
 
         return(
             <div className="category-page">
@@ -27,7 +28,7 @@ export default class CategoryPage extends Component{
                 <h3>Related Articles: </h3>
                 <p>{relatedArticles.map((para, i) => 
                     <Link className="related-articles" key={i} to={`/event/article/${para}`}>{para}<br></br>{' '}
-                    </Link>)}
+                </Link>)}
                 </p>
             </div>
         )

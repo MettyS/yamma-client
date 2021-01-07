@@ -10,11 +10,7 @@ export default class ArticlePanel extends Component {
     const { articles=[] } = this.context
     return( 
       <div className='articlepanel-container'>
-
-      <h1>US News</h1>
-
-      <div>
-        <ul>     
+        <ul className='article-ul'>     
         {/*needs to change when we have a correct path for the article-->*/}
         {articles.map((article) =>
           <li key={parseInt(article.id)}> 
@@ -25,9 +21,6 @@ export default class ArticlePanel extends Component {
 
         </ul>
       </div>
-
-    </div>
     )
   }
-  
 }
