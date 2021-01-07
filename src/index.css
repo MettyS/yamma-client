@@ -29,6 +29,10 @@ body {
   padding: 8px 12px;
 }
 
+section {
+  min-height: 100vh;
+}
+
 @media only screen and (min-width: 768px) {
   .App {
     margin-top: 32px;
