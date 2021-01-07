@@ -6,12 +6,12 @@ export class CategoryList extends Component {
   static contextType = UserContext
 
   render() {
-    const {categories = []} = this.context
+    const { categories = []} = this.context
     return (
       <div className='categorylist-container'>
         <ul>
             {categories.map((category) => 
-            <Link key={category.id} to={`/event/${category.name}/${parseInt(category.id)}`}>
+            <Link key={category.id} to={`/event/category/${category.name}/${parseInt(category.id)}`}>
             <li key={category.id}>
               {category.name}<br></br>{' '}
             </li>
