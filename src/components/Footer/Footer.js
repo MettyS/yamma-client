@@ -8,15 +8,15 @@ class Footer extends Component {
       <nav>
         <ul className='footer-links'>
           <li>
-            <Link to='/'>Back top</Link>
+            <Link to='/' className='li-links'>▲ Top ▲</Link>
           </li>
           <li className='footer-bars'>|</li>
           <li>
-            <Link>Private Policy</Link>
+            <Link to='/about' className='li-links'>About</Link>
           </li>
           <li className='footer-bars'>|</li>
           <li>
-            <Link>Copyright</Link>
+            <Link to='/contact' className='li-links'>Contact</Link>
           </li>
         </ul>
       </nav>
@@ -26,7 +26,6 @@ class Footer extends Component {
   render() {
     return (
       <footer className='footer'>
-        {/* <img src={YammaLogo} alt='logo' className='footer-logo' /> */}
         <div className='footer-group'>
           <h1 className='footer-title'>Yamma</h1>
           <p className='footer-copyright'>All rights reserved @Yamma</p>
