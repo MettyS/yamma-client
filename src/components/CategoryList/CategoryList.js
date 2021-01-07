@@ -11,10 +11,8 @@ import healthicon from '../../images/healthicon.png';
 import techicon from '../../images/techicon.png';
 
 export class CategoryList extends Component {
-  static contextType = UserContext;
 
   render() {
-    const { categories = [] } = this.context;
     return (
       <div className='categorylist-container'>
         <hr></hr>
@@ -27,7 +25,7 @@ export class CategoryList extends Component {
               height='80px'
               className='subregion-img'
             />
-            <Link to='/west' className='subregion-title'>West</Link>
+            <Link to='/event/category/West' className='subregion-title'>West</Link>
           </li>
           <li className='subregion-item'>
             <img
@@ -36,7 +34,7 @@ export class CategoryList extends Component {
               height='80px'
               className='subregion-img'
             />
-            <Link to='/midwest' className='subregion-title'>Midwest</Link>
+            <Link to='/event/category/Midwest' className='subregion-title'>Midwest</Link>
           </li>
 
           <li className='subregion-item'>
@@ -46,7 +44,7 @@ export class CategoryList extends Component {
               height='80px'
               className='subregion-img'
             />
-            <Link to='/south' className='subregion-title'>South</Link>
+            <Link to='/event/category/South' className='subregion-title'>South</Link>
           </li>
           <li className='subregion-item'>
             <img
@@ -55,7 +53,7 @@ export class CategoryList extends Component {
               height='80px'
               className='subregion-img'
             />
-            <Link to='/east' className='subregion-title'>East</Link>
+            <Link to='/event/category/East' className='subregion-title'>East</Link>
           </li>
         </ul>
 
@@ -63,7 +61,7 @@ export class CategoryList extends Component {
 
         <ul className='category-ul'>
           <li className='category-item'>
-            <Link to='/politics' className='category-title'>Politics</Link>
+            <Link to='/event/category/Politics' className='category-title'>Politics</Link>
             <img
               src={politicsicon}
               width='80px'
@@ -72,7 +70,7 @@ export class CategoryList extends Component {
             />
           </li>
           <li className='category-item'>
-            <Link to='/business' className='category-title'>Business</Link>
+            <Link to='/event/category/Business' className='category-title'>Business</Link>
             <img
               src={businessicon}
               width='80px'
@@ -81,7 +79,7 @@ export class CategoryList extends Component {
             />
           </li>
           <li className='category-item'>
-            <Link to='/health' className='category-title'>Health</Link>
+            <Link to='/event/category/Health' className='category-title'>Health</Link>
             <img
               src={healthicon}
               width='80px'
@@ -90,15 +88,15 @@ export class CategoryList extends Component {
             />
           </li>
           <li className='category-item'>
-            <Link to='/tech' className='category-title'>Tech</Link>
+            <Link to='/event/category/Tech' className='category-title'>Tech</Link>
             <img
               src={techicon}
               width='80px'
               height='80px'
               className='category-img'
             />
-          </li>
-        </ul>
+            </li>
+            </ul>
       </div>
     );
   }

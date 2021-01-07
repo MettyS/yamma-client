@@ -11,7 +11,7 @@ class DashBoard extends Component {
   renderArticlePanel() {
     return (
       <div>
-        {['/', '/event/article/:id'].map(path => (
+        {['/', '/event/article/:title'].map(path => (
           <Route
             key={path}
             path={path}
@@ -24,7 +24,7 @@ class DashBoard extends Component {
   renderCategoryList() {
     return(
       <div>
-        {['/', '/event/:category/:id'].map(path => (
+        {['/', '/event/category/:name'].map(path => (
           <Route
             key={path}
             path={path}
