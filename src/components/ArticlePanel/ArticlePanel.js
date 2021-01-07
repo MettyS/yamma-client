@@ -10,23 +10,15 @@ export default class ArticlePanel extends Component {
     const { articles=[] } = this.context
     return( 
       <div className='articlepanel-container'>
-
-      <h1>US News</h1>
-
-      <div>
-        <ul>     
+        <ul className='article-ul'>     
         {/*needs to change when we have a correct path for the article-->*/}
         {articles.map((article) =>
-          <li key={parseInt(article.id)}> 
+          <li key={parseInt(article.id)} className='article-list-item'> 
             <Link to={`/article/${parseInt(article.id)}`}>{article.title}<br></br>{' '}</Link>
-            <button type='click'>View</button>
-            <button type='click'>Share</button></li>)}
-
+            <button type='click' className='article-buttons'>View</button>
+            <button type='click' className='article-buttons'>Share</button></li>)}
         </ul>
       </div>
-
-    </div>
     )
   }
-  
 }

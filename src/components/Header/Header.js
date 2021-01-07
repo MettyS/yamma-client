@@ -43,15 +43,15 @@ class Header extends Component {
     return (
       <nav>
         <ul className='home-links'>
-          <li>
+          <li className='li-links'>
             <Link to='/aboutus'>About</Link>
           </li>
           <li className='bars'>|</li>
-          <li>
+          <li className='li-links'>
             <Link to='/important'>Important Notice</Link>
           </li>
           <li className='bars'>|</li>
-          <li>
+          <li className='li-links'>
             <Link to='/contactus'>Contact</Link>
           </li>
         </ul>

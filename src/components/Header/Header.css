@@ -2,8 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 .header {
-    /* display: flex;
-    flex-direction: row; */
     justify-content: space-between;
     background-color: rgb(32,32,32);
     filter: drop-shadow(0 0 10px black);
@@ -25,7 +23,6 @@
 a {
     text-decoration: none;
     color: white;
-    /* display: block; */
 }
 
 .title {
@@ -35,7 +32,6 @@ a {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    /* gap: 10px; */
     margin: 0;
     padding: 5px;
 }
@@ -49,11 +45,9 @@ a {
 
 .user-button {
     font-family: 'Poppins', sans-serif;
-    /* font-weight: bolder; */
     font-size: 14px;
     padding: 10px;
     width: 160px;
-    /* margin: 10px; */
     color: white;
     background-color: rgb(32,32,32);
     border-color: #333333;
@@ -86,9 +80,8 @@ a {
 
 @media only screen and (min-width: 768px) {
     .header {
-        /* display: flex;
-        flex-direction: row; */
-        /* justify-content: space-between; */
+        display: flex;
+        flex-direction: row;
         background-color: rgb(32,32,32);
         filter: drop-shadow(0 0 20px black);
         position: fixed;
@@ -109,35 +102,26 @@ a {
     a {
         text-decoration: none;
         color: white;
-        /* display: block; */
     }
     
     .title {
         text-align: left;
         font-size: 20px;
-        /* display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center; */
-        /* gap: 10px; */
         margin: 0;
         padding: 5px;
     }
     
     .title h1 {
         font-family: 'MuseoModerno', cursive;
-        /* display: block; */
         margin: 5px;
         color: red;
     }
     
     .user-button {
         font-family: 'Poppins', sans-serif;
-        /* font-weight: bolder; */
         font-size: 14px;
         padding: 10px;
         width: 160px;
-        /* margin: 10px; */
         color: white;
         background-color: rgb(32,32,32);
         border-color: #333333;
@@ -152,48 +136,7 @@ a {
         align-items: flex-start;
         justify-content: space-evenly;
     }
-    
-    /* .home-links {
-        font-family: 'Poppins', sans-serif;
-        text-align: justify;
-        font-size: 15px;
-        list-style-type: none;
-        display: flex;
-        flex-direction: row;
-        margin-right: 30px;
-        justify-content: space-between;
-    } */
 
-
-
-    /* .header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        background-color: rgb(32,32,32);
-        filter: drop-shadow(0 0 10px black);
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 86px;
-    }
-    
-    .logo {
-        align-items: center;
-        margin-left: auto;
-        margin-right: auto;
-        height: 60px;
-        width: 70px;
-        margin: 5px;
-        padding: 0;
-    }
-    
-    a {
-        text-decoration: none;
-        color: white;
-        /* display: block; */
-    
-    
     .title {
         text-align: center;
         font-size: 16px;
@@ -201,7 +144,6 @@ a {
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
-        /* gap: 10px; */
         margin: 0;
         padding: 5px;
     }
@@ -249,63 +191,6 @@ a {
         justify-content: space-between;
         font-family: 'Poppins', sans-serif;
     }
-
-
-    /* .header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        background-color: rgb(32,32,32);
-        filter: drop-shadow(0 0 10px rgb);
-        position: fixed;
-        top: 0;
-        width: 100%;
-    }
-    
-    .logo {
-        align-items: left;
-        margin-left: 10px;
-        margin-top: 10px;
-        height: 60px;
-        width: 70px;
-    }
-
-    .title h1{
-        text-align: right;
-        margin: 0 10px 0 0;
-        font-size: 30px;
-    }
-    
-    ul.home-links {
-        display: block;
-        list-style-type: none;
-        padding-right: 0px;
-        overflow: hidden;
-        margin: 10px 120px 0 0;
-    }
-    
-    ul.home-links li {
-        float: left;
-    }
-    
-    ul.home-links li a {
-        display: block;
-        text-align: center;
-        padding: 16px;
-        text-decoration: none;
-        color: white;
-        margin-left: 0;
-    }
-    
-    ul.home-links li a:hover {
-        background-color: #333333;
-    }
-    
-    .login-links {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-evenly;
-    } */
 }
   
 

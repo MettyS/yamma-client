@@ -2,8 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 .footer {
-  /* display: flex;
-  flex-direction: row; */
   justify-content: space-between;
   background-color: rgb(32, 32, 32);
   width: 100%;
@@ -52,38 +50,9 @@
   justify-content: space-between;
 }
 
-/* .footer-logo {
-  align-items: left;
-  margin-left: 10px;
-  margin-top: 10px;
-  height: 60px;
-  width: 70px;
-} */
-
 .bars {
   color: red;
 }
-
-/* ul.footer-links {
-  display: block;
-  list-style-type: none;
-  padding-right: 0px;
-  overflow: hidden;
-  margin: 10px 120px 0 0;
-}
-
-ul.footer-links li {
-  float: left;
-}
-
-ul.footer-links li a {
-  display: block;
-  text-align: center;
-  padding: 16px;
-  text-decoration: none;
-  color: rgb(255, 238, 0);
-  margin-left: 0;
-} */
 
 ul.footer-links li a:hover {
   background-color: #333333;
@@ -112,8 +81,6 @@ ul.footer-links li a:hover {
     margin: 0;
     margin-left: 10px;
     padding: 5px;
-    /* margin-top: 31px; */
-    /* margin-left: 30px; */
   }
   
   .footer-title {
@@ -127,14 +94,6 @@ ul.footer-links li a:hover {
     margin: 0;
     margin-left: 10px;
   }
-  
-  /* .footer-logo {
-    align-items: left;
-    margin-left: 10px;
-    margin-top: 10px;
-    height: 60px;
-    width: 70px;
-  } */
 
   .footer-links {
     font-family: 'Poppins', sans-serif;
@@ -157,29 +116,4 @@ ul.footer-links li a:hover {
     display: none;
     color: red;
   }
-  
-  /* ul.footer-links {
-    display: block;
-    list-style-type: none;
-    padding-right: 0px;
-    overflow: hidden;
-    margin: 10px 120px 0 0;
-  }
-  
-  ul.footer-links li {
-    float: left;
-  }
-  
-  ul.footer-links li a {
-    display: block;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-    color: white;
-    margin-left: 0;
-  }
-  
-  ul.footer-links li a:hover {
-    background-color: #333333;
-  } */
 }

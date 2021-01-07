@@ -48,6 +48,7 @@ class DashBoard extends Component {
     return (
       <UserContext.Provider value={value}>
         <div className='dashboard-container'>
+          <h1 className='hero-title'>US News</h1>
           {this.renderArticlePanel()}
           {this.renderCategoryPanel()}
         </div>
