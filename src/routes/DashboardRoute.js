@@ -43,7 +43,6 @@ class DashBoard extends Component {
       articles: this.state.articles,
       categories: this.state.categories
     }
-    console.log("value: ", value)
 
     return (
       <UserContext.Provider value={value}>

@@ -6,15 +6,13 @@ export default class Article extends Component{
     static contextType = UserContext
     
     render(){
-        const { id, title, content } = this.props;
-        console.log("this.props: ", this.props)
         return(
             <div>
-                <Link to={`/article/${id}`}>
-                    <h2>{title}</h2>
+                <Link to={`/article/${parseInt(this.props.id)}`}>
+                    <h2>{this.props.title}</h2>
                 </Link>
                 <div>
-                    <p>{content}</p>
+                    <p>{this.props.content}</p>
                 </div>
             </div>
         )
