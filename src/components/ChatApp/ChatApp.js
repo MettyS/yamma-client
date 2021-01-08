@@ -83,7 +83,7 @@ class ChatApp extends Component {
     return (
       <div>
         <div>
-          <h1>My Chat App</h1>
+          <h1>Live Chat</h1>
         </div>
         <Messages
           messages={this.state.messages}
