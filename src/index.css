@@ -6,6 +6,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,7 +18,7 @@ body {
 }
 
 .App {
-  margin-top: 187px;
+  margin-top: 72px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,7 +36,7 @@ section {
 
 @media only screen and (min-width: 768px) {
   .App {
-    margin-top: 32px;
+    margin-top: 72px;
   }
 
   .App > div {
