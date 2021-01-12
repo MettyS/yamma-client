@@ -1,5 +1,5 @@
 .dashboard-container {
-  max-width: 1080px;
+  width: 700px;
 }
 
 hr {
@@ -41,6 +41,8 @@ hr {
 
 .subregion-title {
   color: black;
+  justify-content: right;
+  text-align: right;
 }
 
 .subregion-ul {
@@ -60,8 +62,6 @@ hr {
   min-height: 128px;
   padding: 5px;
   margin: 20px 20px;
-  display: flex;
-  flex-direction: row;
 }
 
 .subregion-img {
@@ -70,7 +70,8 @@ hr {
   margin: 0;
   padding: 0;
   width: 125px;
-  height: 100px;
+  height: 125px;
+  vertical-align: middle;
 }
 
 .categorylist-container {
@@ -182,12 +183,12 @@ hr {
   }
 
   .subregion-img {
-    justify-content: center;
+    /* justify-content: center;
     text-align: center;
     margin: 0;
     padding: 0;
     width: 125px;
-    height: 100px;
+    height: 100px; */
   }
 
   .categorylist-container {
