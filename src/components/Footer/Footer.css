@@ -6,7 +6,7 @@
   background-color: rgb(32, 32, 32);
   width: 100%;
   height: 10%;
-  filter: drop-shadow(0 -5px 10px black);
+  /* filter: drop-shadow(0 -5px 10px black); */
 }
 
 .footer-group {
@@ -37,6 +37,7 @@
   padding: 5px;
   font-family: 'MuseoModerno', cursive;
 }
+
 
 .footer-links {
   font-family: 'Poppins', sans-serif;

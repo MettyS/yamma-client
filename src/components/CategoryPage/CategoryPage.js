@@ -17,7 +17,7 @@ export default class CategoryPage extends Component {
     const { name } = this.props.match.params;
     const category = categories.find((cat) => cat.name === name);
     const relatedArticles = category.related_articles.split(', ');
-    console.log(categories)
+    console.log(categories);
 
     return (
       <div className='categorypage-container'>
@@ -28,17 +28,19 @@ export default class CategoryPage extends Component {
         {/* <h3>Related Articles: </h3> */}
         <ul className='related-ul'>
           {relatedArticles.map((para, i) => (
-            <li key={parseInt(relatedArticles.id)} className='related-list-item'>
-              <Link
-                to={`/event/article/${para}`}
-                className='related-title'
-                key={i}>
+            <Link
+              to={`/event/article/${para}`}
+              className='related-title'
+              key={i}>
+              <li
+                key={parseInt(relatedArticles.id)}
+                className='related-list-item'>
                 {para}
                 <br></br>{' '}
-              </Link>
-              <button type='click'>View</button>
-              <button type='click'>Share</button>
-            </li>
+                {/* <button type='click'>View</button>
+              <button type='click'>Share</button> */}
+              </li>
+            </Link>
           ))}
         </ul>
       </div>
