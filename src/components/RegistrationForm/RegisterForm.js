@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
 import { Link } from 'react-router-dom'
 import UserContext from '../../context/UserContext';
-
+import './RegisterForm.css'
+import '../../images/emergency-response-symbols.jpg'
 
 class RegistrationForm extends Component {
   static defaultProps = {
@@ -45,35 +46,34 @@ class RegistrationForm extends Component {
   render() {
     const { error } = this.state
     return(
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div class='emergency-symbols'>
+        <form className='registration-form' onSubmit={this.handleSubmit}>
 
           <div role='alert'>
             {error && <p>{error}</p>}
           </div>
 
           <div>
-            <label htmlFor="reg-email">Email</label>
+            <label htmlFor="reg-email"  className='form-text'>Email</label>
             <input required type="text" placeholder="Enter your email here" name="Email" onChange={this.handleChange}/>
           </div>
 
           <div>
-            <label htmlFor="reg-username">Username</label>
+            <label htmlFor="reg-username" className='form-text'>Username</label>
             <input required type="text" placeholder="Enter username here" name="Username" onChange={this.handleChange}/>
           </div>
 
           <div>
-            <label htmlFor="reg-password">Password</label>
+            <label htmlFor="reg-password"  className='form-text'>Password</label>
             <input required type="password" placeholder="Enter password here" name="Password" onChange={this.handleChange}/>
           </div>
 
-          <div className="signup-button">
-            <button type="submit">Sign Up</button>
-            <button type="submit">Cancel</button>
+          <div >
+            <button type="submit" className="sign-up-button">Sign Up</button>
           </div>
 
-          <Link to='/login'>Already have an account?</Link>
-
+          <Link to='/login' className='already-have-acct'>Already have an account?</Link>
+          
         </form>
       </div>
     )
