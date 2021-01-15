@@ -15,12 +15,11 @@ export default class ArticlePanel extends Component {
           {articles.map((article) => (
             <Link
               to={`/event/article/${article.title}`}
-              className='article-title'>
-              <li key={parseInt(article.id)} className='article-list-item'>
+              className='article-title'
+              key={parseInt(article.id)}>
+              <li className='article-list-item'>
                 {article.title}
-                <br></br> 
-                {/* <button type='click'>View</button>
-                <button type='click'>Share</button> */}
+                <br></br>
               </li>
             </Link>
           ))}

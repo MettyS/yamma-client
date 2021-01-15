@@ -54,6 +54,11 @@ a {
     font-family: 'Poppins', sans-serif;
 }
 
+.user-button:hover {
+    cursor: pointer;
+    color: #999999;
+}
+
 .bars {
     color: red;
 }

@@ -3,11 +3,7 @@ import './Footer.css';
 import { Link } from 'react-router-dom';
 
 class Footer extends Component {
-  mybutton = document.getElementById('myBtn')
-
-  topFunction() {
-    document.documentElement.scrollTop = 0;
-  }
+  mybutton = document.getElementById('myBtn');
 
   renderFooterLinks() {
     return (
@@ -26,9 +22,13 @@ class Footer extends Component {
           </li>
           <li className='footer-bars'>|</li>
           <li>
-            <Link onclick='topFunction()' id='myBtn' title='Go to top' className='li-links'>
+            <p
+              onClick={() => (document.documentElement.scrollTop = 0)}
+              id='myBtn'
+              title='Go to top'
+              className='li-links'>
               ▲ Top ▲
-            </Link>
+            </p>
           </li>
         </ul>
       </nav>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import UserContext from '../../context/UserContext';
 import { Link } from 'react-router-dom';
 import yammawest from '../../images/yammawest.jpg';
 import yammamidwest from '../../images/yammamidwest.jpg';
@@ -24,6 +23,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='subregion-img'
+                alt='west'
               />
               West
             </li>
@@ -35,6 +35,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='subregion-img'
+                alt='midwest'
               />
               Midwest
             </li>
@@ -46,6 +47,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='subregion-img'
+                alt='south'
               />
               South
             </li>
@@ -57,6 +59,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='subregion-img'
+                alt='east'
               />
               East
             </li>
@@ -74,6 +77,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='category-img'
+                alt='politics'
               />
             </li>
           </Link>
@@ -85,6 +89,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='category-img'
+                alt='business'
               />
             </li>
           </Link>
@@ -96,6 +101,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='category-img'
+                alt='health'
               />
             </li>
           </Link>
@@ -107,6 +113,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='category-img'
+                alt='tech'
               />
             </li>
           </Link>
