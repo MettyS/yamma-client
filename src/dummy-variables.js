@@ -1,4 +1,4 @@
-export default {
+const dummyvariables = {
     "articles": [
         {
             "id": "1",
@@ -81,3 +81,5 @@ export default {
         },
     ]
 }
+
+export default dummyvariables;

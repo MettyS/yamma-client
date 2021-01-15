@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import yammalogored from '../../images/yammalogored.PNG';
 import TokenService from '../../services/token-service';

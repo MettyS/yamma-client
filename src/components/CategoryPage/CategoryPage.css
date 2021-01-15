@@ -1,7 +1,55 @@
-.category-page{
-    color: white
+.eventpage-container {
+  width: 300px;
 }
 
-.related-articles{
-    color: yellow;
+.categorypage-container h1 {
+  color: red;
+  text-align: center;
+}
+
+.related-title {
+  color: black;
+  text-decoration: none;
+}
+
+.related-ul {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0px 0px;
+}
+
+.related-list-item {
+  list-style: none;
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 15px;
+  background: white;
+  text-align: center;
+  min-height: 160px;
+  margin: 10px 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .eventpage-container {
+    width: 700px;
+  }
+
+  .related-ul {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0px 40px;
+  }
+
+  .related-list-item {
+    list-style: none;
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 15px;
+    background: white;
+    text-align: center;
+    min-height: 160px;
+    margin: 10px 10px;
+  }
 }
