@@ -38,7 +38,6 @@
   font-family: 'MuseoModerno', cursive;
 }
 
-
 .footer-links {
   font-family: 'Poppins', sans-serif;
   text-align: justify;
@@ -56,13 +55,22 @@
 }
 
 ul.footer-links li a:hover {
-  background-color: #333333;
+  color: #999999;
 }
 
 .li-links {
   color: white;
 }
 
+#myBtn {
+  padding: 0;
+  margin: 0;
+}
+
+#myBtn:hover {
+  cursor: pointer;
+  color: #999999;
+}
 
 @media only screen and (min-width: 768px) {
   .footer {
