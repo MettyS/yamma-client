@@ -24,7 +24,7 @@ const EventContext = React.createContext({
   setError: () => {},
   clearError: () => {},
   processEvents: () => {},
-  addIdToCategory: () => {}
+  //addIdToCategory: () => {}
 })
 
 export default EventContext;
@@ -129,6 +129,7 @@ export class EventProvider extends Component {
     })
   }
 
+  /*
   addEventAndId = (ev) => {
     this.setState({ ids: {...this.state.ids
       , [ev.id]: ev }})
@@ -164,6 +165,7 @@ export class EventProvider extends Component {
       default: console.log('not a valid category');
     }
   }
+  */
 
 
   render = () => {
@@ -185,7 +187,7 @@ export class EventProvider extends Component {
       setError: this.setError,
       clearError: this.clearError,
       processEvents: this.processEvents,
-      addIdToCategory: this.addIdToCategory
+      //addIdToCategory: this.addIdToCategory
     };
     return (
       <EventContext.Provider value={value}>
