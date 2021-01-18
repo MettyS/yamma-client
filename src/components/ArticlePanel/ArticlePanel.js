@@ -8,7 +8,7 @@ export default class ArticlePanel extends Component {
   constructor(props){
     super(props);
     const state = {
-      NUM_ARTICLE_CARDS: 4
+      NUM_ARTICLE_CARDS: 6
     }
     this.state = state;
   }

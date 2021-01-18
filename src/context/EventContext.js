@@ -49,6 +49,8 @@ export class EventProvider extends Component {
       error: null
     }
 
+    let shouldUpdate = false;
+
     this.state = state;
 
   }
@@ -98,9 +100,10 @@ export class EventProvider extends Component {
 
     eventArr.forEach(ev => {
       if(this.state.ids[ev.id] || newEventAndIdPairs[ev.id]) {
-        console.log('not going to add event with duplicate ID = ', ev.id)
+        //console.log('not going to add event with duplicate ID = ', ev.id)
         return;
       }
+      this.shouldUpdate = true;
       
       ev.categories.split(' ').forEach( rawCategory => {
         const category = this.getCorrespondingCategory(rawCategory);
@@ -108,10 +111,13 @@ export class EventProvider extends Component {
         //this.addIdToCategory(ev.id, category);
       });
 
-      newEventAndIdPairs[ev.id] = ev
+      newEventAndIdPairs[ev.id] = ev;
     })
 
-    this.addAllNewContent(newEventAndIdPairs, newIdAndCategoryPairs)
+    if(this.shouldUpdate)
+      this.addAllNewContent(newEventAndIdPairs, newIdAndCategoryPairs);
+    else
+      console.log('nothing to update!');
   }
 
   addAllNewContent = (ids, categoryArrays) => {
@@ -122,6 +128,8 @@ export class EventProvider extends Component {
     Object.keys(categoryArrays).forEach(category => {
       compositeCategoryContent[category] = [...this.state[category], ...categoryArrays[category]]
     });
+
+    this.shouldUpdate = false;
 
     this.setState({
       ids: {...this.state.ids, ...ids},
