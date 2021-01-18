@@ -1,23 +1,37 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import ArticlePanel from '../components/ArticlePanel/ArticlePanel'
-import UserContext from '../context/UserContext'
+//import { UserProvider } from '../context/UserContext'
+//import EventContext from '../context/EventContext'
 import CategoryList from  '../components/CategoryList/CategoryList'
 
 
+
+
 class DashBoard extends Component {
-  static contextType = UserContext
+  
+
 
   renderArticlePanel() {
+    console.log('dashboard re-render!')
     return (
-      <div>
-        {['/', '/event/article/:title'].map(path => (
-          <Route
-            key={path}
-            path={path}
-            component={ArticlePanel} />
-        ))}
-      </div>
+      
+        <div>
+          {['/', '/event/article/:title'].map(path => (
+
+              <Route key={path} path={path} render={() => (
+                <ArticlePanel />
+                // <EventContext.Consumer>
+                //   { val => <ArticlePanel /> }
+                // </EventContext.Consumer>
+              )}/> 
+            ) )
+          }
+                  
+            
+          
+
+        </div>
     )
   }
 

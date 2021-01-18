@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import DashboardRoute from '../../routes/DashboardRoute';
 import EventPageRoute from '../../routes/EventPageRoute';
-//import FilterRoute from '../../routes/FilterRoute';
 import LoginRoute from '../../routes/LoginRoute';
 import RegisterRoute from '../../routes/RegisterRoute';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import UserContext from '../../context/UserContext';
 import DummyData from '../../dummy-variables';
+
+import UserContext from '../../context/UserContext';
+import EventContext from '../../context/EventContext';
 
 
 class App extends Component {
@@ -35,6 +36,12 @@ class App extends Component {
           {hasError && <p>There was an error! Oh no!</p>}
           <Header />
 
+          
+          {/* <Route exact path={'/'} >
+            <EventContext.Consumer>
+              { val => <DashboardRoute /> }
+            </EventContext.Consumer>
+            </Route> */}
 
           <Route exact path={'/'} component={DashboardRoute} />
           <Route path={'/event/:event'} component={EventPageRoute} />

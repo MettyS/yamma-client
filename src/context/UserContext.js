@@ -13,8 +13,6 @@ const UserContext = React.createContext({
   setUser: () => {},
   processLogin: () => {},
   processLogout: () => {},
-  articles: [],
-  categories: [],
 });
 
 export default UserContext;
