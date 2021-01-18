@@ -41,7 +41,7 @@ export default class ArticlePage extends Component {
 
           {/* <h4>Region: </h4> */}
 
-          <div className='related-section'>
+          {/* <div className='related-section'>
             <ul className='related-region'>
               {relatedRegion.map((para, i) => (
                 <Link key={i} to={`/event/category/${para}`}>
@@ -51,11 +51,11 @@ export default class ArticlePage extends Component {
                   </li>
                 </Link>
               ))}
-            </ul>
+            </ul> */}
 
             {/* <h4>Type: </h4> */}
 
-            <ul className='related-category'>
+            {/* <ul className='related-category'>
               {relatedType.map((para, i) => (
                 <Link key={i} to={`/event/category/${para}`}>
                   <li className='category-link'>
@@ -65,7 +65,7 @@ export default class ArticlePage extends Component {
                 </Link>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     );
