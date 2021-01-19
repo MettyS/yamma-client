@@ -143,11 +143,11 @@ export default class ArticlePage extends Component {
                   </li>
                 </Link>
               ))}
-            </ul>
+            </ul> }
 
             <h4>Type: </h4>
 
-            <ul className='related-category'>
+            { <ul className='related-category'>
               {relatedType.map((para, i) => (
                 <Link key={i} to={`/event/category/${para}`}>
                   <li className='category-link'>
