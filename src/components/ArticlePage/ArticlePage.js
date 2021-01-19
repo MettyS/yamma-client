@@ -85,7 +85,7 @@ export default class ArticlePage extends Component {
   render() {
     //console.log('CONTEXT IS: ', this.context);
 
-    const { eventId, title } = this.props.match.params;
+    const { eventId } = this.props.match.params;
     const event = this.context.ids[eventId];
 
     /*const article = articles.find((art) => art.title === title);
@@ -94,7 +94,7 @@ export default class ArticlePage extends Component {
 
     //console.log('EVENT IS: ', event);
 
-    const article = event
+    //const article = event
     //const relatedCategories = article.categories.split(' ');
 
 

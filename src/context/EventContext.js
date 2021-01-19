@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
 
-class CategoryError extends Error {
-  constructor(message) {
-    super(message);
-  }
-}
-
 const EventContext = React.createContext({
   // event values are ordered with oldest in the front newest at the end
   ids: {},           // obj of key=event.id value=event
@@ -32,6 +26,8 @@ export default EventContext;
 
 
 export class EventProvider extends Component {
+  shouldUpdate = false;
+
   constructor(props) {
     super(props);
     const state = {
@@ -49,8 +45,6 @@ export class EventProvider extends Component {
 
       error: null
     }
-
-    let shouldUpdate = false;
 
     this.state = state;
 
@@ -76,7 +70,7 @@ export class EventProvider extends Component {
       case 'Technology': return 'technology';
       case 'Science': return 'science';
       case 'Health': return 'health';
-      default: throw new CategoryError('not a valid category: ', rawCategory);
+      default: throw new Error('not a valid category:'+ rawCategory);
     }
   }
 
