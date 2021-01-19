@@ -13,7 +13,7 @@ class Input extends Component {
   onSubmit(e) {
     e.preventDefault();
     this.setState({text: ""});
-    this.props.onSendMessage(this.state.text);
+    this.props.handleSendMessage(this.state.text);
   }
 
   render() {
@@ -25,7 +25,7 @@ class Input extends Component {
             value={this.state.text}
             type="text"
             placeholder="Enter your message and press ENTER"
-            autoFocus={true}
+            // autoFocus={true}
           />
           <button>Send</button>
         </form>

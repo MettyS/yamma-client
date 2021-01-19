@@ -4,20 +4,17 @@ import './ArticlePage.css';
 import YammaApiService from '../../services/yamma-api-service';
 
 import { Link } from 'react-router-dom';
-import ChatPage from '../ChatApp/ChatApp';
+import ChatApp from '../ChatApp/ChatApp';
 
 export default class ArticlePage extends Component {
-  // constructor(props) {
-  //   // const state = {
-  //   //   haveEvent: false
-  //   // }
-  //   // this.state = state;
-  // }
+  state = {
+    loading: true
+  }
   static contextType = EventContext;
 
   componentDidMount() {
     const { eventId }= this.props.match.params;
-    if(this.context.ids[eventId])
+    if(this.context.ids[eventId] || this.state.loading === false )
       return;
 
     YammaApiService.fetchEvent(eventId)
@@ -30,7 +27,7 @@ export default class ArticlePage extends Component {
         YammaApiService.fetchEventsCategory(category[0])
         .then( categoryRes => {
           //console.log('this is the category recieved: ', categoryRes);
-
+          this.setState({loading: false})
           this.context.processEvents([ eventRes, ...(categoryRes.events) ]);
         })
         .catch( er => {
@@ -60,11 +57,11 @@ export default class ArticlePage extends Component {
     const relatedCategories = event.categories.split(' ');
 
     const category = this.context.getCorrespondingCategory(relatedCategories[0]);
-    console.log('CATEGORY: ', category);
+    //console.log('CATEGORY: ', category);
 
     const relatedArray = this.context[category];
     const relatedItems = relatedArray.slice(-3);
-    console.log('RELATED ITEMS: ', relatedItems);
+    //console.log('RELATED ITEMS: ', relatedItems);
 
 
     return(
@@ -86,7 +83,7 @@ export default class ArticlePage extends Component {
   }
 
   render() {
-    console.log('CONTEXT IS: ', this.context);
+    //console.log('CONTEXT IS: ', this.context);
 
     const { eventId, title } = this.props.match.params;
     const event = this.context.ids[eventId];
@@ -95,7 +92,7 @@ export default class ArticlePage extends Component {
     const relatedRegion = article.region.split(', ');
     const relatedType = article.type.split(', ');*/
 
-    console.log('EVENT IS: ', event);
+    //console.log('EVENT IS: ', event);
 
     const article = event
     //const relatedCategories = article.categories.split(' ');
@@ -110,7 +107,7 @@ export default class ArticlePage extends Component {
             {this.createArticleContent(event)}
 
             <div className='chat-section'>
-              <ChatPage />
+              <ChatApp eventId={eventId} />
             </div>
           </div>
 
@@ -126,7 +123,7 @@ export default class ArticlePage extends Component {
 
             <h4>Category</h4>
             <div className='related-category'>
-              
+
             </div>
           </div>
         </div>

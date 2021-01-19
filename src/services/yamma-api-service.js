@@ -36,8 +36,15 @@ const YammaApiService = {
     );
   },
 
-  fetchComments() {
-    /* IMPLEMENT ME */
+  fetchComments(eventId) {
+    return fetch(`${config.API_ENDPOINT}/comments/events/${eventId}`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+      },
+    }).then((res) =>
+      res.ok ? res.json() : res.json().then((e) => Promise.reject(e))
+    );
   },
 
   postComment(user, comment) {

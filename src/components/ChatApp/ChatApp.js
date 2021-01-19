@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+
+import UserContext from '../../context/UserContext';
+import YammaApiService from '../../services/yamma-api-service';
+
 import Messages from "./Messages";
 import Input from "./Input";
 
@@ -35,48 +39,83 @@ function randomColor() {
 }
 
 class ChatApp extends Component {
-  _isMounted = false;
+  static contextType = UserContext;
 
   state = {
     messages: [],
-    member: {
-      username: randomName(),
-      color: randomColor(),
-    }
+    user: null,
+    messageLoadError: null,
+    messageSendError: null,
+    loading: true
+  }
+  //_isMounted = false;
+
+  // state = {
+  //   messages: [],
+  //   member: {
+  //     username: randomName(),
+  //     color: randomColor(),
+  //   }
+  // }
+
+  // constructor() {
+  //   super();
+  //   const yamma_chat_testId = "IcG7CRvgSzktTp02"
+  //   this.drone = new window.Scaledrone(yamma_chat_testId, {
+  //     data: this.state.member
+  //   });
+  //   this.drone.on('open', error => {
+  //     if (error) {
+  //       return console.error(error);
+  //     }
+  //     const member = {...this.state.member};
+  //     member.id = this.drone.clientId;
+  //     this.setState({member});
+  //   });
+  //   const room = this.drone.subscribe("observable-room");
+  //   room.on('data', (data, member) => {
+  //     const messages = this.state.messages;
+  //     messages.push({member, text: data});
+  //     this.setState({messages});
+  //   });
+  // }
+
+  // onSendMessage = (message) => {
+  //   this._isMounted = true;
+  //   this.drone.publish({
+  //     room: "observable-room",
+  //     message
+  //   });
+  // }
+
+  // componentWillUnmount() {
+  //   this._isMounted = false;
+  // }
+
+  handleSendMessage = (message) => {
+
   }
 
-  constructor() {
-    super();
-    const yamma_chat_testId = "IcG7CRvgSzktTp02"
-    this.drone = new window.Scaledrone(yamma_chat_testId, {
-      data: this.state.member
-    });
-    this.drone.on('open', error => {
-      if (error) {
-        return console.error(error);
-      }
-      const member = {...this.state.member};
-      member.id = this.drone.clientId;
-      this.setState({member});
-    });
-    const room = this.drone.subscribe("observable-room");
-    room.on('data', (data, member) => {
-      const messages = this.state.messages;
-      messages.push({member, text: data});
-      this.setState({messages});
-    });
-  }
+  componentDidMount() {
+    if(!this.state.loading)
+      return;
 
-  onSendMessage = (message) => {
-    this._isMounted = true;
-    this.drone.publish({
-      room: "observable-room",
-      message
-    });
-  }
+    const eventId = this.props.eventId;
+    console.log(eventId)
 
-  componentWillUnmount() {
-    this._isMounted = false;
+    YammaApiService.fetchComments(eventId)
+      .then( res => {
+        console.log('the comment response we got back: ', res);
+
+        this.setState({
+          loading: false,
+          messages: res.comments
+        });
+
+      })
+      .catch(er => {
+        console.log(er);
+      })
   }
 
   render() {
@@ -87,10 +126,11 @@ class ChatApp extends Component {
         </div>
         <Messages
           messages={this.state.messages}
-          currentMember={this.state.member}
+          user={this.state.user}
+          loading={this.state.loading}
         />
         <Input
-          onSendMessage={this.onSendMessage}
+          onSendMessage={this.handleSendMessage}
         />
       </div>
     );
