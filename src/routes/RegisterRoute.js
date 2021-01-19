@@ -15,14 +15,10 @@ class RegistrationRoute extends Component {
 
   render() {
     return (
-      <section className='RegistrationRoute'>
-        <div className='text'>
-          <h2>Sign up</h2>
-        </div>
+
         <RegistrationForm
           onRegistrationSuccess={this.handleRegistrationSuccess}
         />
-      </section>
     );
   }
 }

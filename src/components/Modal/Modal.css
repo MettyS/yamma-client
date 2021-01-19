@@ -1,0 +1,23 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url('../../images/emergency-response-symbols.jpg');
+  z-index: 1000;
+  width: 50%;
+  height: auto;
+  padding: 40px;
+  box-shadow: 6px -1px 19px 1px rgba(0, 0, 0, 0.75);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}

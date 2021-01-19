@@ -6,17 +6,17 @@
   flex-direction: column;
   align-items: center;
   border: 2px solid red;
-  background-image: url('../../images/emergency-response-symbols.jpg'); 
+  background-image: url('../../images/emergency-response-symbols.jpg');
   height: 400px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('../../images/emergency-response-symbols.jpg');
-  flex:1;
+  /* flex:1;
 } */
 
-.sign-up-button {
+.login-button {
   display: block;
   font-family: 'Poppins', sans-serif;
   border: none;
@@ -29,7 +29,7 @@
   border: 3px solid transparent;
 }
 
-.sign-up-button:hover {
+.login-button:hover {
   opacity: 0.8;
 }
 
@@ -41,7 +41,7 @@
   font-size: 12pt;
   color: red;
 }
-.already-have-acct {
+.need-an-acct {
   text-align: center;
   display: block;
   /* margin: 0 auto; */
