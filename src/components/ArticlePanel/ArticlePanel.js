@@ -61,7 +61,7 @@ export default class ArticlePanel extends Component {
         const article = ids[id];
         linkItems.push(
           <Link
-            to={`/event/article/${article.title}`}
+            to={`/event/article/${id}/${article.title}`}
             className='article-title'
             key={parseInt(id)}>
             <li className='article-list-item'>

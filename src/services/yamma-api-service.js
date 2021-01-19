@@ -13,6 +13,29 @@ const YammaApiService = {
     );
   },
 
+  fetchEvent(eventId) {
+    /* IMPLEMENT ME */
+    return fetch(`${config.API_ENDPOINT}/events/${eventId}`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then( res => 
+      res.ok ? res.json() : res.json().then( e => Promise.reject(e))
+      );
+  },
+
+  fetchEventsCategory(category) {
+    return fetch(`${config.API_ENDPOINT}/events?category=${category}`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+      },
+    }).then((res) =>
+      res.ok ? res.json() : res.json().then((e) => Promise.reject(e))
+    );
+  },
+
   fetchComments() {
     /* IMPLEMENT ME */
   },

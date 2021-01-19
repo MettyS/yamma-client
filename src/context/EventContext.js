@@ -24,6 +24,7 @@ const EventContext = React.createContext({
   setError: () => {},
   clearError: () => {},
   processEvents: () => {},
+  getCorrespondingCategory: () => {}
   //addIdToCategory: () => {}
 })
 
@@ -195,6 +196,7 @@ export class EventProvider extends Component {
       setError: this.setError,
       clearError: this.clearError,
       processEvents: this.processEvents,
+      getCorrespondingCategory: this.getCorrespondingCategory,
       //addIdToCategory: this.addIdToCategory
     };
     return (

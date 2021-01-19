@@ -7,12 +7,12 @@ import CategoryPage from '../components/CategoryPage/CategoryPage'
 //import RelatedArticleList from '../components/RelatedArticleList';
 
 class EventPage extends Component {
-  static contextType = UserContext
+  //static contextType = UserContext
 
   renderArticlePage() {
     return (
       <div>
-        <Route exact path='/event/article/:title' component={ArticlePage} />
+          <Route exact path='/event/article/:eventId/:title' component={ArticlePage} />
       </div>
     )
   }
