@@ -12,5 +12,6 @@ describe('Category Page', () => {
       </BrowserRouter>,
       div
     );
+    ReactDOM.unmountComponentAtNode(div);
   });
 });
