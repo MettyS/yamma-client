@@ -81,9 +81,10 @@
   margin: 5px 10px;
 }
 
+
 @media only screen and (min-width: 768px) {
   .article-page {
-    width: 1080px;
+    width: 700px;
   }
 
   .article-chat {
@@ -91,12 +92,12 @@
     border-radius: 20px;
     padding: 20px;
     margin: 0;
-    margin-top: 10px;
+    margin-top: 30px;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     background-color: white;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
   }
   
   .article-content {
@@ -166,5 +167,4 @@
     padding: 10px 0;
     margin: 5px 10px;
   }
-
 }

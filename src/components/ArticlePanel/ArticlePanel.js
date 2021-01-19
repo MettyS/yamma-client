@@ -5,26 +5,24 @@ import EventContext from '../../context/EventContext';
 import YammaApiService from '../../services/yamma-api-service';
 
 export default class ArticlePanel extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     const state = {
-      NUM_ARTICLE_CARDS: 6
-    }
+      NUM_ARTICLE_CARDS: 6,
+    };
     this.state = state;
   }
 
-  static contextType = EventContext
-
-  
+  static contextType = EventContext;
 
   componentDidMount() {
     YammaApiService.fetchEvents()
-    .then(res => {
-      this.context.processEvents(res.events);
-    })
-    .catch(er => {
-      console.log('ERROR: ', er);
-    })
+      .then((res) => {
+        this.context.processEvents(res.events);
+      })
+      .catch((er) => {
+        console.log('ERROR: ', er);
+      });
   }
 
   createArticleCards = () => {
@@ -55,46 +53,46 @@ export default class ArticlePanel extends Component {
       const idKeys = Object.keys(ids);
       console.log('IDKEYS ARE ===>', idKeys);
       idKeys.forEach((id, index) => {
-        if(index >= this.state.NUM_ARTICLE_CARDS)
-          throw new Error('friendly exit')
+        if (index >= this.state.NUM_ARTICLE_CARDS)
+          throw new Error('friendly exit');
 
         const article = ids[id];
         linkItems.push(
-          <Link
-            to={`/event/article/${article.title}`}
-            className='article-title'
-            key={parseInt(id)}>
+          <Link to={`/event/article/${article.title}`} key={parseInt(id)}>
             <li className='article-list-item'>
-              {article.title}
+              <img src={article.event_img} alt='' className='article-img' />
+              <p className='article-title'>{article.title}</p>
+              <p className='article-source'>
+                <img
+                  src={article.source_img}
+                  alt=''
+                  className='article-source-img'
+                />
+                {article.source_name}
+              </p>
               <br></br>
             </li>
           </Link>
-        )
-      })
-    }
-    catch (er) {
-      console.log(er.message)
-      if(er.message === 'friendly exit') {
-        console.log('continue')
-      }
-      else {
+        );
+      });
+    } catch (er) {
+      console.log(er.message);
+      if (er.message === 'friendly exit') {
+        console.log('continue');
+      } else {
         throw er;
       }
     }
 
-
     return linkItems;
-  }
+  };
 
   render() {
-
     return (
       <div className='articlepanel-container'>
         <ul className='article-ul'>
           {/*needs to change when we have a correct path for the article-->*/}
-          {
-           this.createArticleCards()
-          }
+          {this.createArticleCards()}
         </ul>
       </div>
     );

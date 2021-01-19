@@ -9,7 +9,7 @@ import Header from '../Header/Header';
 import DummyData from '../../dummy-variables';
 
 import UserContext from '../../context/UserContext';
-import EventContext from '../../context/EventContext';
+// import EventContext from '../../context/EventContext';
 
 
 class App extends Component {
