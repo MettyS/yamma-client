@@ -99,7 +99,6 @@ export default class ArticlePage extends Component {
 
 
     return ( //<div>YAY!</div>
-      <div>
         <div className='article-page'>
           
           <div className='article-body'>
@@ -116,18 +115,20 @@ export default class ArticlePage extends Component {
           <h3 className='related-h3'>Related</h3>
 
           <div className='related-section'>
-            <h4>Articles</h4>
-            <div className='related-articles'>
+
+            <div className='related-articles-wrapper related-wrapper' >
+              <h4 className='related-h4'>Articles</h4>
               {event ? this.createRelatedContent(event) : 'Loading'}
             </div>
 
-            <h4>Category</h4>
-            <div className='related-category'>
-
+            <div className='related-category-wrapper related-wrapper'>
+              <h4 className='related-h4'>Category</h4>
+              <div className='related-category'>
+              </div>
             </div>
+
           </div>
         </div>
-      </div>
     );
   }
 }

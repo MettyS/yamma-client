@@ -38,6 +38,11 @@ function randomColor() {
   return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
 }
 
+
+
+
+
+
 class ChatApp extends Component {
   static contextType = UserContext;
 
@@ -101,11 +106,10 @@ class ChatApp extends Component {
       return;
 
     const eventId = this.props.eventId;
-    console.log(eventId)
 
     YammaApiService.fetchComments(eventId)
       .then( res => {
-        console.log('the comment response we got back: ', res);
+        console.log('the comment response we got back: ', res.comments);
 
         this.setState({
           loading: false,
@@ -119,6 +123,8 @@ class ChatApp extends Component {
   }
 
   render() {
+
+
     return (
       <div>
         <div>

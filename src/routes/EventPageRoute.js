@@ -11,17 +11,13 @@ class EventPage extends Component {
 
   renderArticlePage() {
     return (
-      <div>
           <Route exact path='/event/article/:eventId/:title' component={ArticlePage} />
-      </div>
     )
   }
 
   renderCategoryPage() {
     return (
-      <div>
         <Route exact path='/event/category/:name' component={CategoryPage} />
-      </div>
     )
   }
 
