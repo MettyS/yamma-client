@@ -15,16 +15,40 @@ hr {
 
 .article-title {
   color: black;
+  margin: 10px;
+}
+
+.article-img {
+  height: 100px;
+  width: 100px;
+  margin: 5px;
+  justify-content: center;
+}
+
+.article-source {
+  text-decoration: none;
+  color: black;
+  font-size: 10px;
+  margin: 0;
+}
+
+.article-source-img {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  margin: 5px;
 }
 
 .article-ul {
   margin: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   padding: 0px 0px;
 }
 
 .article-list-item {
+  font-size: 14px;
+  font-weight: bolder;
   list-style: none;
   box-sizing: border-box;
   border: 1px solid white;
@@ -43,6 +67,7 @@ hr {
   color: black;
   justify-content: right;
   text-align: right;
+  font-weight: bolder;
 }
 
 .subregion-ul {
@@ -85,6 +110,7 @@ hr {
 
 .category-title {
   color: black;
+  font-weight: bolder;
 }
 
 .category-ul {
@@ -144,6 +170,28 @@ hr {
   
   .article-title {
     color: black;
+    margin: 10px;
+  }
+
+  .article-img {
+    height: 140px;
+    width: 140px;
+    margin: 5px;
+    justify-content: center;
+  }
+  
+  .article-source {
+    text-decoration: none;
+    color: black;
+    font-size: 10px;
+    margin: 0;
+  }
+  
+  .article-source-img {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    margin: 5px;
   }
   
   .article-ul {
