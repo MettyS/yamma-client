@@ -48,9 +48,9 @@ class Header extends Component {
           <button className='user-button'>Login</button>
         </Link>{' '}
         <br></br>
-          
-          <button onClick={this.renderSignUp()} className='user-button'>Sign up</button>
-        
+        <Link to='/register'>
+          <button className='user-button'>Sign-Up</button>
+        </Link>{' '}
       </nav>
     );
   }

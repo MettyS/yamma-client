@@ -47,8 +47,14 @@ class App extends Component {
 
           <Route exact path={'/'} component={DashboardRoute} />
           <Route path={'/event/:event'} component={EventPageRoute} />
-          <Route path={'/register'} component={RegisterRoute} />
-          <Route path={'/login'} component={LoginRoute} />
+          <Route path={'/register'}>
+            <DashboardRoute />
+            <RegisterRoute /> 
+          </Route> 
+          <Route path={'/login'}>
+            <DashboardRoute />
+            <LoginRoute />
+          </Route>
 
 
           <Footer />
