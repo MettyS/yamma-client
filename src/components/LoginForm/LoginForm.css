@@ -21,30 +21,31 @@
   font-family: 'Poppins', sans-serif;
   border: none;
   border-radius: 0.3em;
-  background-color: navy;
-  color: red;
+  background-color: #111111;
+  color: white;
   padding: 0.3em 0.6em;
   margin: 0.3em auto; 
+  margin-top: 20px;
   font-size: 1.5em;
   border: 3px solid transparent;
 }
 
 .login-button:hover {
-  opacity: 0.8;
+  opacity: 0.7;
+  background-color: #333333;
 }
 
 .form-text {
-  font-family: 'MuseoModerno', cursive;
+  font-family: 'Poppins', sans-serif;
   /* font-weight: bold; */
   padding: 1em;
   font-weight: bolder;
   font-size: 12pt;
-  color: red;
+  color: white;
 }
 .need-an-acct {
   text-align: center;
   display: block;
-  /* margin: 0 auto; */
   color: red;
   padding: 0 0.5em;
 }
@@ -58,7 +59,7 @@ label {
 /* Full-width input fields */
 input[type='text'],
 input[type='password'] {
-  width: 90%;
+  width: 96%;
   padding: 12px;
   margin: 0px 8px 0 8px;
   display: inline-block;

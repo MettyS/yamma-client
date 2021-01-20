@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
 import { Link } from 'react-router-dom'
 import UserContext from '../../context/UserContext';
-// import './RegisterForm.css'
+import '../LoginForm/LoginForm.css'
 import '../../images/emergency-response-symbols.jpg';
 import Modal from '../Modal/Modal';
 
@@ -23,12 +23,18 @@ class RegistrationForm extends Component {
 
   //handleCloseModal = this.handleCloseModal.bind(this);
 
-  handleCloseModal = () => {
-    console.log('Close pop-up')
-    this.setState({open: false})
-    window.location = "/"
-  }
+  // handleCloseModal = () => {
+  //   console.log('Close pop-up')
+  //   this.setState({open: false})
+  //   window.location = "/"
+  // }
 
+  closeMenu = () => {
+    this.setState({ open: false}, () => {
+      document.removeEventListener('click', this.closeMenu)
+      window.location = '/'
+    })
+  }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -57,7 +63,7 @@ class RegistrationForm extends Component {
   render() {
     const { error } = this.state
     return(
-      <Modal open={this.state.open} onClose={this.handleCloseModal}>
+      <Modal open={this.state.open} onClose={this.closeMenu}>
       <div>
         <form className='registration-form' onSubmit={this.handleSubmit}>
 
@@ -80,11 +86,11 @@ class RegistrationForm extends Component {
             <input required type="password" placeholder="Enter password here" name="Password" onChange={this.handleChange}/>
           </div>
 
-          <div className="sign-up-button">
-            <button type="submit" className="sign-up-button">Sign Up</button>
+          <div>
+            <button type="submit" className="login-button">Sign Up</button>
           </div>
 
-          <Link to='/login' className='already-have-acct'>Already have an account?</Link>
+          <Link to='/login' className='need-an-acct'>Already have an account?</Link>
         </form>
       </div>
       </Modal>

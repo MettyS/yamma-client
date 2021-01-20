@@ -21,10 +21,16 @@ class LoginForm extends Component {
 
   static contextType = UserContext
 
-  handleCloseModal = () => {
-    console.log('Close pop-up')
-    this.setState({open: false})
-    window.location = "/"
+  // handleCloseModal = () => {
+  //   console.log('Close pop-up')
+  //   this.setState({open: false})
+  //   window.location = "/"
+  // }
+
+  closeMenu = () => {
+    this.setState({ open: false}, () => {
+      document.removeEventListener('click', this.closeMenu)
+    })
   }
 
   handleChange = (event) => {
@@ -55,7 +61,7 @@ class LoginForm extends Component {
   render() {
     const { error } = this.state
     return(
-      <Modal open={this.state.open} onClose={this.handleCloseModal}>
+      <Modal open={this.state.open} onClose={this.closeMenu}>
       <div>
         <form className='log-in-form' onSubmit={this.handleSubmit}>
 
