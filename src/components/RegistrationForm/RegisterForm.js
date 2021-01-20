@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
-import { Link } from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import UserContext from '../../context/UserContext';
 import '../LoginForm/LoginForm.css'
 import '../../images/emergency-response-symbols.jpg';
@@ -29,11 +29,15 @@ class RegistrationForm extends Component {
   //   window.location = "/"
   // }
 
-  closeMenu = () => {
+  closeMenu = (e) => {
+    e.preventDefault();
+    if (e.target.className !== "overlay") {
+      return;
+    }
     this.setState({ open: false}, () => {
       document.removeEventListener('click', this.closeMenu)
-      window.location = '/'
     })
+    this.props.history.push('/')
   }
 
   handleChange = (event) => {
@@ -100,4 +104,4 @@ class RegistrationForm extends Component {
   
 }
 
-export default RegistrationForm;
+export default withRouter(RegistrationForm);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 //import TokenService from '../../services/token-service'
 import UserContext from '../../context/UserContext';
 import Modal from '../Modal/Modal';
@@ -27,10 +27,15 @@ class LoginForm extends Component {
   //   window.location = "/"
   // }
 
-  closeMenu = () => {
+  closeMenu = (e) => {
+    e.preventDefault();
+    if (e.target.className !== "overlay") {
+      return;
+    }
     this.setState({ open: false}, () => {
       document.removeEventListener('click', this.closeMenu)
     })
+    this.props.history.push('/')
   }
 
   handleChange = (event) => {
@@ -90,4 +95,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);
