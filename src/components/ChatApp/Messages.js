@@ -2,32 +2,32 @@ import React, { Component } from 'react'
 
 class Messages extends Component {
     renderMessage(message) {
-        const { member, text } = message;
-        const { currentMember } = this.props;
-        const messageFromMe = member.id === currentMember.id;
-        const className = messageFromMe ?
-            "Messages-message currentMember" : "Messages-message";
+        const { id, user_id, content, username } = message;
+
+        const { user } = this.props;
+        const className = (user && user.id === user_id) ? 'message self-message' : 'message';
+
         return (
-            <li className={className}>
+            <li className={className} key={id}>
                 <span
                     className="avatar"
-                    style={{ backgroundColor: member.clientData.color }}
+                    // style={{ backgroundColor: member.clientData.color }}
                 />
-                <div className="Message-content">
+                <div className="message-body">
                     <div className="username">
-                        {member.clientData.username}
+                        {username}
                     </div>
-                    <div className="text">{text}</div>
+                    <div className="content">{content}</div>
                 </div>
             </li>
         );
     }
 
     render() {
-        const { messages } = this.props;
+        const { messages, loading } = this.props;
         return (
-            <ul className="Messages-list">
-                {messages.map(m => this.renderMessage(m))}
+            <ul className="message-list">
+                {loading ? 'Loading...' : messages.map(m => this.renderMessage(m))}
             </ul>
         );
     }

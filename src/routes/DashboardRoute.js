@@ -10,6 +10,28 @@ class DashBoard extends Component {
   renderArticlePanel() {
     console.log('dashboard re-render!');
     return (
+      
+        <div>
+          {['/', '/event/article/:eventId/:title'].map(path => (
+
+              <Route key={path} path={path} render={() => (
+                <ArticlePanel />
+                // <EventContext.Consumer>
+                //   { val => <ArticlePanel /> }
+                // </EventContext.Consumer>
+              )}/> 
+            ) )
+          }
+                  
+            
+          
+
+        </div>
+    )
+  }
+
+  renderCategoryList() {
+    return(
       <div>
         {['/', '/event/article/:title'].map((path) => (
           <Route

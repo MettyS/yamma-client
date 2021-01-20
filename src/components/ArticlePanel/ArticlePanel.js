@@ -58,7 +58,10 @@ export default class ArticlePanel extends Component {
 
         const article = ids[id];
         linkItems.push(
-          <Link to={`/event/article/${article.title}`} key={parseInt(id)}>
+          <Link
+            to={`/event/article/${id}/${article.title}`}
+            className='article-title'
+            key={parseInt(id)}>
             <li className='article-list-item'>
               <img src={article.event_img} alt='' className='article-img' />
               <p className='article-title'>{article.title}</p>

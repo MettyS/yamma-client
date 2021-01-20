@@ -11,6 +11,8 @@ import DummyData from '../../dummy-variables';
 import UserContext from '../../context/UserContext';
 // import EventContext from '../../context/EventContext';
 
+//import './App.css'
+
 
 class App extends Component {
   state = {

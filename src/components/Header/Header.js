@@ -5,6 +5,11 @@ import yammalogored from '../../images/yammalogored.PNG';
 import TokenService from '../../services/token-service';
 
 class Header extends Component {
+  state = {
+    open: false
+  }
+
+
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
   };
@@ -30,7 +35,7 @@ class Header extends Component {
         </Link>{' '}
         <br></br>
         <Link to='/register'>
-          <button className='user-button'>Sign up</button>
+          <button  className='user-button'>Sign up</button>
         </Link>
       </nav>
     );
