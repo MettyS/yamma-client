@@ -12,5 +12,6 @@ describe('Article Page', () => {
       </BrowserRouter>,
       div
     );
+    ReactDOM.unmountComponentAtNode(div);
   });
 });

@@ -12,5 +12,6 @@ describe('Article Panel', () => {
       </BrowserRouter>,
       div
     );
+    ReactDOM.unmountComponentAtNode(div);
   });
 });

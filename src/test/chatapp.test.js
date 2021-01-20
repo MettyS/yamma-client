@@ -12,5 +12,6 @@ describe('Chat App', () => {
       </BrowserRouter>,
       div
     );
+    ReactDOM.unmountComponentAtNode(div);
   });
 });
