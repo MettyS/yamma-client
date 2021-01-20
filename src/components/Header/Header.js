@@ -3,12 +3,26 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import yammalogored from '../../images/yammalogored.PNG';
 import TokenService from '../../services/token-service';
+import RegistrationForm from '../RegistrationForm/RegisterForm'
 
 class Header extends Component {
   state = {
     open: false
   }
 
+
+  closeMenu = () => {
+    this.setState({ open: false}, () => {
+      document.removeEventListener('click', this.closeMenu)
+      window.location = '/'
+    })
+  }
+
+  renderSignUp() {
+    return(
+      <RegistrationForm />
+    )
+  }
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
@@ -34,9 +48,9 @@ class Header extends Component {
           <button className='user-button'>Login</button>
         </Link>{' '}
         <br></br>
-        <Link to='/register'>
-          <button  className='user-button'>Sign up</button>
-        </Link>
+          
+          <button onClick={this.renderSignUp()} className='user-button'>Sign up</button>
+        
       </nav>
     );
   }
