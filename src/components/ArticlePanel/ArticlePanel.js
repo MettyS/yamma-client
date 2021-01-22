@@ -29,7 +29,6 @@ export default class ArticlePanel extends Component {
   createArticleCards = () => {
     const { ids } = this.context;
     const firstSixIds = Object.keys(ids).slice(0, 6)
-    console.log(firstSixIds);
 
     const linkItems = firstSixIds.map(id => {
       const article = ids[id]
