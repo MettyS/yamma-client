@@ -13,7 +13,7 @@ export default class ArticleCard extends Component {
     return (
       <Link
         to={`/event/article/${article.id}/${article.title}`}
-        className={'article-title' + this.props.className}
+        className={'article-card' + this.props.className}
         key={article.id}>
         <li className='article-list-item'>
           <img src={article.event_img} alt='' className='article-img' />

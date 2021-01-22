@@ -32,7 +32,8 @@ export default class ArticlePanel extends Component {
     console.log(firstSixIds);
 
     const linkItems = firstSixIds.map(id => {
-      return <ArticleCard className='article-panel-card' article={ids[id]} />
+      const article = ids[id]
+      return <ArticleCard className='article-panel-card' article={article} />
     });
 
     return linkItems;
