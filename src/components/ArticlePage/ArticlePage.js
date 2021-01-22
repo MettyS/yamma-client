@@ -8,79 +8,84 @@ import ChatApp from '../ChatApp/ChatApp';
 
 export default class ArticlePage extends Component {
   state = {
-    loading: true
-  }
+    loading: true,
+  };
   static contextType = EventContext;
 
   componentDidMount() {
-    const { eventId }= this.props.match.params;
-    if(this.context.ids[eventId] || this.state.loading === false )
-      return;
+    const { eventId } = this.props.match.params;
+    if (this.context.ids[eventId] || this.state.loading === false) return;
 
     YammaApiService.fetchEvent(eventId)
-      .then( eventRes => {
+      .then((eventRes) => {
         //console.log('This is the event recieved: ', eventRes);
-        
 
         const category = eventRes.categories.split(' ');
 
         YammaApiService.fetchEventsCategory(category[0])
-        .then( categoryRes => {
-          //console.log('this is the category recieved: ', categoryRes);
-          this.setState({loading: false})
-          this.context.processEvents([ eventRes, ...(categoryRes.events) ]);
-        })
-        .catch( er => {
-          throw er
-        });
-
+          .then((categoryRes) => {
+            //console.log('this is the category recieved: ', categoryRes);
+            this.setState({ loading: false });
+            this.context.processEvents([eventRes, ...categoryRes.events]);
+          })
+          .catch((er) => {
+            throw er;
+          });
       })
-      .catch( er => {
+      .catch((er) => {
         console.log('error in fetching event with id: ', eventId);
         console.log('ERROR: ', er);
-      })
+      });
   }
 
   createArticleContent = (event) => {
     return (
       <div className='article-content'>
-        <h1>{event ? event.title : 'Loading' }</h1>
+        <h1>{event ? event.title : 'Loading'}</h1>
         {/* <p>Region: {article.region}</p> */}
-        <p>Category: {event ? event.categories : 'Loading' }</p>
-        <p>{event ? event.description : 'Loading' }</p>
+        <p>Category: {event ? event.categories : 'Loading'}</p>
+        <p>{event ? event.description : 'Loading'}</p>
       </div>
-    )
-  }
+    );
+  };
 
   createRelatedContent = (event) => {
-
     const relatedCategories = event.categories.split(' ');
 
-    const category = this.context.getCorrespondingCategory(relatedCategories[0]);
+    const category = this.context.getCorrespondingCategory(
+      relatedCategories[0]
+    );
     //console.log('CATEGORY: ', category);
 
     const relatedArray = this.context[category];
-    const relatedItems = relatedArray.slice(-3);
+    const relatedItems = relatedArray.slice(-4);
     //console.log('RELATED ITEMS: ', relatedItems);
 
-
-    return(
-            <ul className='related-articles-list'>
-              {relatedItems.map((id, i) => {
-                const currentItem = this.context.ids[id]
-                return (
-                <Link key={i} to={`/event/article/${id}/${currentItem.title}`}>
-                  <li className='article-link'>
-                    {currentItem.title}
-                    <br></br>{' '}
-                  </li>
-                </Link>
-              )
-              })}
-            </ul>
-    )
-
-  }
+    return (
+      <ul className='related-articles-list'>
+        {relatedItems.map((id, i) => {
+          const currentItem = this.context.ids[id];
+          return (
+            <Link key={i} to={`/event/article/${id}/${currentItem.title}`}>
+              <li className='related-article-list-item'>
+                <img src={currentItem.event_img} alt='' className='article-img' />
+                <p className='article-title'>{currentItem.title}</p>
+                <p className='article-source'>
+                  <img
+                    src={currentItem.source_img}
+                    alt=''
+                    className='article-source-img'
+                  />
+                  {currentItem.source_name}
+                </p>
+                <br></br>
+              </li>
+            </Link>
+          );
+        })}
+      </ul>
+    );
+  };
 
   render() {
     //console.log('CONTEXT IS: ', this.context);
@@ -97,65 +102,27 @@ export default class ArticlePage extends Component {
     //const article = event
     //const relatedCategories = article.categories.split(' ');
 
+    return (
+      //<div>YAY!</div>
+      <div className='article-page'>
+        <div className='article-body'>
+          {this.createArticleContent(event)}
 
-    return ( //<div>YAY!</div>
-        <div className='article-page'>
-          
-          <div className='article-body'>
-            
-            {this.createArticleContent(event)}
-
-            <div className='chat-section'>
-              <ChatApp eventId={eventId} />
-            </div>
-          </div>
-
-          <br></br>
-
-          <h3 className='related-h3'>Related</h3>
-
-          <div className='related-section'>
-
-            <div className='related-articles-wrapper related-wrapper' >
-              <h4 className='related-h4'>Articles</h4>
-              {event ? this.createRelatedContent(event) : 'Loading'}
-            </div>
-
-            <div className='related-category-wrapper related-wrapper'>
-              <h4 className='related-h4'>Category</h4>
-              <div className='related-category'>
-              </div>
-            </div>
-
+          <div className='chat-section'>
+            <ChatApp eventId={eventId} />
           </div>
         </div>
+
+        <br></br>
+
+        <h3 className='related-h3'>Related</h3>
+
+        <div className='related-section'>
+          <div className='related-articles-wrapper related-wrapper'>
+            {event ? this.createRelatedContent(event) : 'Loading'}
+          </div>
+        </div>
+      </div>
     );
   }
 }
-
-/*
- <div className='related-section'>
-            <ul className='related-region'>
-              {relatedCategories.map((category, i) => (
-                <Link key={i} to={`/event/category/${category}`}>
-                  <li className='region-link'>
-                    {category}
-                    <br></br>{' '}
-                  </li>
-                </Link>
-              ))}
-            </ul> }
-
-            <h4>Type: </h4>
-
-            { <ul className='related-category'>
-              {relatedType.map((para, i) => (
-                <Link key={i} to={`/event/category/${para}`}>
-                  <li className='category-link'>
-                    {para}
-                    <br></br>{' '}
-                  </li>
-                </Link>
-              ))}
-            </ul>
-          </div> */
