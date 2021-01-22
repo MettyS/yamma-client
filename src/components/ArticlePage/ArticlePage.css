@@ -14,22 +14,10 @@
   background-color: white;
 }
 
-
 .related-h3, .related-h4 {
   color: white;
   text-align: center;
 }
-
-/* .related-section {
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 0px 0px;
-} */
-
-
-
-
 
 .related-articles-list {
   margin: 0;
@@ -53,39 +41,33 @@
   min-height: 128px;
   padding: 10px 0;
   margin: 10px 10px;
-  
 }
 
-/* .related-category {
+.related-articles-list {
   margin: 0;
-  padding: 0 40px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2%;
-} */
+  grid-template-columns: 1fr;
+  padding: 0px 0px;
+}
 
-/* .category-link {
+.related-article-list-item {
+  font-size: 14px;
+  font-weight: bolder;
   list-style: none;
   box-sizing: border-box;
   border: 1px solid white;
   border-radius: 15px;
   background: white;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
-  margin: 5px 10px;
-} */
-
+  min-height: 160px;
+  margin: 10px 10px;
+}
 
 @media only screen and (min-width: 560px) {
 
 }
 
 @media only screen and (min-width: 768px) {
-
   .article-chat {
     border: 1px solid white;
     border-radius: 20px;
@@ -98,69 +80,29 @@
     justify-content: center;
     /* align-items: center; */
   }
-  
-  /* .article-content {
-  
-  }
-  
-  .chat-page {
-    
-  } */
 
-  
-  /* .related-section {
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0px 0px;
-  } */
-  
-  .related-region {
-    margin: 0;
-    padding: 0 0px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2%;
+  .article-body {
+    margin-top: 30px;
   }
-  
-  .region-link {
+
+  .related-article-list-item {
+    font-size: 14px;
+    font-weight: bolder;
     list-style: none;
     box-sizing: border-box;
     border: 1px solid white;
     border-radius: 15px;
     background: white;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 128px;
-    padding: 10px 0;
+    min-height: 160px;
     margin: 10px 10px;
-    
   }
-  
-  .related-category {
+
+  .related-articles-list {
     margin: 0;
-    padding: 0 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2%;
-  }
-  
-  .category-link {
-    list-style: none;
-    box-sizing: border-box;
-    border: 1px solid white;
-    border-radius: 15px;
-    background: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    margin: 5px 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0px 0px;
   }
 }
 
