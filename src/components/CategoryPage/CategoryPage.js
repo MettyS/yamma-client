@@ -22,10 +22,7 @@ export default class CategoryPage extends Component {
     return (
       <div className='categorypage-container'>
         <h1>{category.name}</h1>
-        {/* <p>{category.content}</p> */}
         <br></br>
-
-        {/* <h3>Related Articles: </h3> */}
         <ul className='related-ul'>
           {relatedArticles.map((para, i) => (
             <Link
@@ -37,8 +34,6 @@ export default class CategoryPage extends Component {
                 className='related-list-item'>
                 {para}
                 <br></br>{' '}
-                {/* <button type='click'>View</button>
-              <button type='click'>Share</button> */}
               </li>
             </Link>
           ))}
