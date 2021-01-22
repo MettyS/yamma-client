@@ -14,12 +14,12 @@ class Footer extends Component {
               About
             </Link>
           </li>
-          <li className='footer-bars'>|</li>
-          <li>
+          {/* <li className='footer-bars'>|</li> */}
+          {/* <li>
             <Link to='/contact' className='li-links'>
               Contact
             </Link>
-          </li>
+          </li> */}
           <li className='footer-bars'>|</li>
           <li>
             <p
