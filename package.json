@@ -10,7 +10,6 @@
     "cx": "^20.12.3",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^2.2.0",
-    "modal": "^1.2.0",
     "prettier": "2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

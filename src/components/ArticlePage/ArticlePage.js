@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import EventContext from '../../context/EventContext';
+import AllContext from '../../context/AllContext';
 import './ArticlePage.css';
 import YammaApiService from '../../services/yamma-api-service';
 
 import { Link } from 'react-router-dom';
 import ChatApp from '../ChatApp/ChatApp';
+import ArticleCard from '../ArticleCard/ArticleCard';
 
 export default class ArticlePage extends Component {
   state = {
     loading: true,
   };
-  static contextType = EventContext;
+  static contextType = AllContext;
 
   componentDidMount() {
     const { eventId } = this.props.match.params;
-    if (this.context.ids[eventId] || this.state.loading === false) return;
+    if (this.context.eventContext.ids[eventId] || this.state.loading === false) return;
 
     YammaApiService.fetchEvent(eventId)
       .then((eventRes) => {
@@ -26,7 +27,7 @@ export default class ArticlePage extends Component {
           .then((categoryRes) => {
             //console.log('this is the category recieved: ', categoryRes);
             this.setState({ loading: false });
-            this.context.processEvents([eventRes, ...categoryRes.events]);
+            this.context.eventContext.processEvents([eventRes, ...categoryRes.events]);
           })
           .catch((er) => {
             throw er;
@@ -39,6 +40,7 @@ export default class ArticlePage extends Component {
   }
 
   createArticleContent = (event) => {
+
     return (
       <div className='article-content'>
         <h1>{event ? event.title : 'Loading'}</h1>
@@ -51,65 +53,45 @@ export default class ArticlePage extends Component {
 
   createRelatedContent = (event) => {
     const relatedCategories = event.categories.split(' ');
+    const { ids } = this.context.eventContext;
 
-    const category = this.context.getCorrespondingCategory(
+    const category = this.context.eventContext.getCorrespondingCategory(
       relatedCategories[0]
     );
-    //console.log('CATEGORY: ', category);
 
-    const relatedArray = this.context[category];
+    const relatedArray = this.context.eventContext[category];
     const relatedItems = relatedArray.slice(-4);
-    //console.log('RELATED ITEMS: ', relatedItems);
 
-    return (
-      <ul className='related-articles-list'>
-        {relatedItems.map((id, i) => {
-          const currentItem = this.context.ids[id];
-          return (
-            <Link key={i} to={`/event/article/${id}/${currentItem.title}`}>
-              <li className='related-article-list-item'>
-                <img src={currentItem.event_img} alt='' className='article-img' />
-                <p className='article-title'>{currentItem.title}</p>
-                <p className='article-source'>
-                  <img
-                    src={currentItem.source_img}
-                    alt=''
-                    className='article-source-img'
-                  />
-                  {currentItem.source_name}
-                </p>
-                <br></br>
-              </li>
-            </Link>
-          );
-        })}
-      </ul>
-    );
+    const articleCards = relatedItems.map( id => {
+      const article = ids[id]
+
+      return <ArticleCard className='article-related-card' article={article} />
+    });
+
+    return articleCards;
+
   };
+
 
   render() {
     //console.log('CONTEXT IS: ', this.context);
+    console.log(this.context);
+    const { user } = this.context.userContext
 
     const { eventId } = this.props.match.params;
-    const event = this.context.ids[eventId];
+    const event = this.context.eventContext.ids[eventId];
 
-    /*const article = articles.find((art) => art.title === title);
-    const relatedRegion = article.region.split(', ');
-    const relatedType = article.type.split(', ');*/
-
-    //console.log('EVENT IS: ', event);
-
-    //const article = event
-    //const relatedCategories = article.categories.split(' ');
+    const articleContent = this.createArticleContent(event);
+    const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';
 
     return (
       //<div>YAY!</div>
       <div className='article-page'>
         <div className='article-body'>
-          {this.createArticleContent(event)}
+          {articleContent}
 
           <div className='chat-section'>
-            <ChatApp eventId={eventId} />
+            <ChatApp eventId={eventId} user={user}/>
           </div>
         </div>
 
@@ -118,9 +100,9 @@ export default class ArticlePage extends Component {
         <h3 className='related-h3'>Related</h3>
 
         <div className='related-section'>
-          <div className='related-articles-wrapper related-wrapper'>
-            {event ? this.createRelatedContent(event) : 'Loading'}
-          </div>
+          <ul className='related-articles-list'>
+            {relatedArticles}
+          </ul>
         </div>
       </div>
     );

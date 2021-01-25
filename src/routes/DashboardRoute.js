@@ -11,7 +11,7 @@ class DashBoard extends Component {
     console.log('dashboard re-render!');
     return (
       
-        <div>
+          <>
           {['/', '/event/article/:eventId/:title'].map(path => (
 
               <Route key={path} path={path} render={() => (
@@ -26,13 +26,13 @@ class DashBoard extends Component {
             
           
 
-        </div>
+        </>
     )
   }
 
   renderCategoryList() {
     return(
-      <div>
+      <>
         {['/', '/event/article/:title'].map((path) => (
           <Route
             key={path}
@@ -45,23 +45,24 @@ class DashBoard extends Component {
             )}
           />
         ))}
-      </div>
+      </>
     );
   }
 
   renderCategoryList() {
     return (
-      <div>
+      <>
         {['/', '/event/category/:name'].map((path) => (
           <Route key={path} path={path} component={CategoryList} />
         ))}
-      </div>
+      </>
     );
+    
   }
 
   render() {
     return (
-      <div className='dashboard-container'>
+      <div className='dashboard-container app-body'>
         <h1 className='hero-title'>US News</h1>
         {this.renderArticlePanel()}
         {this.renderCategoryList()}

@@ -20,7 +20,7 @@ class EventPage extends Component {
 
   render() {
     return (
-      <div className='eventpage-container'>
+      <div className='eventpage-container app-body'>
         {this.renderArticlePage()}
         {this.renderCategoryPage()}
       </div>

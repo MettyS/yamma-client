@@ -16,7 +16,7 @@
   /* flex:1;
 } */
 
-.login-button {
+.submit-button {
   display: block;
   font-family: 'Poppins', sans-serif;
   border: none;
@@ -28,6 +28,7 @@
   margin-top: 20px;
   font-size: 1.5em;
   border: 3px solid transparent;
+  z-index: 2000;
 }
 
 .login-button:hover {
