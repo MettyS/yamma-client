@@ -3,15 +3,21 @@ import React from "react";
 
 class Input extends Component {
   state = {
-    text: ""
+    text: "",
+    error: ""
   }
 
   onChange(e) {
-    this.setState({text: e.target.value});
+      this.setState({text: e.target.value});
   }
 
   onSubmit(e) {
     e.preventDefault();
+    const user = this.props.user;
+    if(!user.id){
+      this.setState({error: 'must be logged in to post message'});
+    }
+
     this.setState({text: ""});
     this.props.handleSendMessage(this.state.text);
   }
@@ -20,6 +26,7 @@ class Input extends Component {
     return (
       <div className="Input">
         <form onSubmit={e => this.onSubmit(e)}>
+          <p className='form-error'>{this.state.error}</p>
           <input
             onChange={e => this.onChange(e)}
             value={this.state.text}

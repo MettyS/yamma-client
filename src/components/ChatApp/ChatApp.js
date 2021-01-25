@@ -110,8 +110,9 @@ class ChatApp extends Component {
     YammaApiService.fetchComments(eventId)
       .then( res => {
         console.log('the comment response we got back: ', res.comments);
-
+        
         this.setState({
+          user: this.props.user,
           loading: false,
           messages: res.comments
         });
@@ -137,6 +138,7 @@ class ChatApp extends Component {
         />
         <Input
           onSendMessage={this.handleSendMessage}
+          user={this.state.user}
         />
       </div>
     );

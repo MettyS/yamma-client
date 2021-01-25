@@ -7,6 +7,9 @@ class Messages extends Component {
         const { user } = this.props;
         const className = (user && user.id === user_id) ? 'message self-message' : 'message';
 
+        if(className === 'message self-message')
+            console.log('detected that the logged in user wrote this message');
+
         return (
             <li className={className} key={id}>
                 <span

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ArticleCard from '../ArticleCard/ArticleCard'
 import './ArticlePanel.css';
-import EventContext from '../../context/EventContext';
+//import EventContext from '../../context/EventContext';
 import YammaApiService from '../../services/yamma-api-service';
+import AllContext from '../../context/AllContext';
 
 export default class ArticlePanel extends Component {
   constructor(props) {
@@ -13,12 +15,12 @@ export default class ArticlePanel extends Component {
     this.state = state;
   }
 
-  static contextType = EventContext;
+  static contextType = AllContext;
 
   componentDidMount() {
     YammaApiService.fetchEvents()
       .then((res) => {
-        this.context.processEvents(res.events);
+        this.context.eventContext.processEvents(res.events);
       })
       .catch((er) => {
         console.log('ERROR: ', er);
@@ -26,76 +28,24 @@ export default class ArticlePanel extends Component {
   }
 
   createArticleCards = () => {
-    const { ids } = this.context;
-    let linkItems = [];
+    const { ids } = this.context.eventContext;
+    const firstSixIds = Object.keys(ids).slice(0, 6)
 
-    /*const idKeys = Object.keys(ids);
-    console.log('IDKEYS IS ---> ', idKeys);
-    for(let i = 0; i<this.state.NUM_ARTICLE_CARDS; i++){
-      const id = idKeys[i];
-      console.log('the ID is: ', id);
-      const article = ids[id];
-      console.log('ARTICLE IS: ', article)
-      linkItems.push( 
-        <Link
-          to={`/event/article/${article.title}`}
-          className='article-title'
-          key={parseInt(id)}>
-          <li className='article-list-item'>
-            {article.title}
-            <br></br>
-          </li>
-        </Link>
-      )
-    }*/
-
-    try {
-      const idKeys = Object.keys(ids);
-      console.log('IDKEYS ARE ===>', idKeys);
-      idKeys.forEach((id, index) => {
-        if (index >= this.state.NUM_ARTICLE_CARDS)
-          throw new Error('friendly exit');
-
-        const article = ids[id];
-        linkItems.push(
-          <Link
-            to={`/event/article/${id}/${article.title}`}
-            className='article-title'
-            key={parseInt(id)}>
-            <li className='article-list-item'>
-              <img src={article.event_img} alt='' className='article-img' />
-              <p className='article-title'>{article.title}</p>
-              <p className='article-source'>
-                <img
-                  src={article.source_img}
-                  alt=''
-                  className='article-source-img'
-                />
-                {article.source_name}
-              </p>
-              <br></br>
-            </li>
-          </Link>
-        );
-      });
-    } catch (er) {
-      console.log(er.message);
-      if (er.message === 'friendly exit') {
-        console.log('continue');
-      } else {
-        throw er;
-      }
-    }
+    const linkItems = firstSixIds.map(id => {
+      const article = ids[id]
+      return <ArticleCard className='article-panel-card' article={article} />
+    });
 
     return linkItems;
   };
 
   render() {
+    const articleCards = this.createArticleCards();
+
     return (
       <div className='articlepanel-container'>
         <ul className='article-ul'>
-          {/*needs to change when we have a correct path for the article-->*/}
-          {this.createArticleCards()}
+          {articleCards}
         </ul>
       </div>
     );

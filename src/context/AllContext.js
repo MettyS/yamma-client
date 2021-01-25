@@ -17,8 +17,6 @@ export const AllContextProvider = props => {
       {eventContext => (
         <UserContext.Consumer>
           {userContext => {
-            console.log('EVENTCONTEXT IN ALL IS: ', eventContext);
-            console.log('USERCONTEXT IN ALL IS: ', userContext);
 
             return (
             <AllContext.Provider value={{ eventContext, userContext }}>
