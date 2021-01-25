@@ -1,47 +1,74 @@
 import React, { Component } from 'react';
-import UserContext from '../../context/UserContext';
+import EventContext from '../../context/EventContext';
+import YammaApiService from '../../services/yamma-api-service'
 import './CategoryPage.css';
 import { Link } from 'react-router-dom';
+import ArticleCard from '../ArticleCard/ArticleCard';
 
 export default class CategoryPage extends Component {
+  state = {
+    loading: true
+  }
   static defaultProps = {
     match: {
       params: {},
     },
   };
 
-  static contextType = UserContext;
+  static contextType = EventContext;
+
+  componentDidMount() {
+    const { category } = this.props.match.params;
+    const contextCategory = this.context.getCorrespondingCategory(category)
+
+    console.log(this.context);
+    if (this.context[contextCategory].length) {
+      if(this.state.loading === false)
+        return
+      else {
+        this.setState({loading: false});
+        return;
+      }
+    }
+
+
+    YammaApiService.fetchEventsCategory(category)
+          .then((categoryRes) => {
+            console.log(categoryRes);
+            this.context.processEvents(categoryRes.events);
+            this.setState({ loading: false });
+          })
+          .catch((er) => {
+            console.log('error fetching this category: ', category)
+            console.log(er);
+          });
+  }
+
+  createRelatedArticles = (events) => {
+    return events.map(eventId => {
+      const article = this.context.ids[eventId]
+      return <ArticleCard className='article-panel-card' article={article} />
+    })
+  }
 
   render() {
-    const { categories = [] } = this.context;
-    const { name } = this.props.match.params;
-    const category = categories.find((cat) => cat.name === name);
-    const relatedArticles = category.related_articles.split(', ');
-    console.log(categories);
+    const { category } = this.props.match.params;
+    const contextCategory = this.context.getCorrespondingCategory(category)
+    const events = this.context[contextCategory];
+    console.log(events);
+    const relatedArticles = this.state.loading ? 'Loading...' : this.createRelatedArticles(events);
+    
+    console.log(category);
 
     return (
       <div className='categorypage-container'>
-        <h1>{category.name}</h1>
+        <h1>{category}</h1>
         {/* <p>{category.content}</p> */}
         <br></br>
 
         {/* <h3>Related Articles: </h3> */}
         <ul className='related-ul'>
-          {relatedArticles.map((para, i) => (
-            <Link
-              to={`/event/article/${para}`}
-              className='related-title'
-              key={i}>
-              <li
-                key={parseInt(relatedArticles.id)}
-                className='related-list-item'>
-                {para}
-                <br></br>{' '}
-                {/* <button type='click'>View</button>
-              <button type='click'>Share</button> */}
-              </li>
-            </Link>
-          ))}
+          {relatedArticles}
         </ul>
       </div>
     );

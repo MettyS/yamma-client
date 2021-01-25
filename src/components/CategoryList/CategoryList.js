@@ -16,7 +16,7 @@ export class CategoryList extends Component {
         <hr></hr>
 
         <ul className='subregion-ul'>
-          <Link to='/event/category/West' className='subregion-title'>
+          <Link to='/event/category/US_West' className='subregion-title'>
             <li className='subregion-item'>
               <img
                 src={yammawest}
@@ -28,7 +28,7 @@ export class CategoryList extends Component {
               West
             </li>
           </Link>
-          <Link to='/event/category/Midwest' className='subregion-title'>
+          <Link to='/event/category/US_Midwest' className='subregion-title'>
             <li className='subregion-item'>
               <img
                 src={yammamidwest}
@@ -40,7 +40,7 @@ export class CategoryList extends Component {
               Midwest
             </li>
           </Link>
-          <Link to='/event/category/South' className='subregion-title'>
+          <Link to='/event/category/US_South' className='subregion-title'>
             <li className='subregion-item'>
               <img
                 src={yammasouth}
@@ -52,7 +52,7 @@ export class CategoryList extends Component {
               South
             </li>
           </Link>
-          <Link to='/event/category/East' className='subregion-title'>
+          <Link to='/event/category/US_Northeast' className='subregion-title'>
             <li className='subregion-item'>
               <img
                 src={yammaeast}
@@ -105,7 +105,7 @@ export class CategoryList extends Component {
               />
             </li>
           </Link>
-          <Link to='/event/category/Tech' className='category-title'>
+          <Link to='/event/category/Technology' className='category-title'>
             <li className='category-item'>
               Tech
               <img
