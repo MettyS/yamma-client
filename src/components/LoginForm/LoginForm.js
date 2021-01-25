@@ -13,8 +13,8 @@ class LoginForm extends Component {
   }
 
   state = {
-    username: ' ',
-    password: ' ',
+    username: '',
+    password: '',
     error: null,
     open: true
   }
@@ -54,6 +54,8 @@ class LoginForm extends Component {
     }).then(res => {
       username.value = ''
       password.value = ''
+      console.log('processing login now : )');
+      console.log('context: ', this.context)
       this.context.processLogin(res.authToken)
       /*TokenService.saveAuthToken(res.authToken)
       TokenService.saveUserId(res.userId)
