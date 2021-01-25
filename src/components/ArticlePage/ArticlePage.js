@@ -75,6 +75,7 @@ export default class ArticlePage extends Component {
 
   render() {
     //console.log('CONTEXT IS: ', this.context);
+    console.log(this.context);
 
     const { eventId } = this.props.match.params;
     const event = this.context.ids[eventId];

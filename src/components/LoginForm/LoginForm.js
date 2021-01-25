@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
 import { Link, withRouter } from 'react-router-dom';
 //import TokenService from '../../services/token-service'
-import UserContext from '../../context/UserContext';
+//import UserContext from '../../context/UserContext';
 import Modal from '../Modal/Modal';
 import './LoginForm.css';
-
+import AllContext from '../../context/AllContext'
 
 class LoginForm extends Component {
   static defaultProps = {
@@ -19,7 +19,7 @@ class LoginForm extends Component {
     open: true
   }
 
-  static contextType = UserContext
+  static contextType = AllContext;
 
   // handleCloseModal = () => {
   //   console.log('Close pop-up')
@@ -56,7 +56,7 @@ class LoginForm extends Component {
       password.value = ''
       console.log('processing login now : )');
       console.log('context: ', this.context)
-      this.context.processLogin(res.authToken)
+      this.context.userContext.processLogin(res.authToken)
       /*TokenService.saveAuthToken(res.authToken)
       TokenService.saveUserId(res.userId)
       window.location =*/

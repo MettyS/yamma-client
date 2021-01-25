@@ -33,7 +33,6 @@ class App extends Component {
       categories: this.state.categories,
     }
     return (
-      <UserContext.Provider value={value}>
         <div className='App'>
           {hasError && <p>There was an error! Oh no!</p>}
           <Header />
@@ -59,7 +58,6 @@ class App extends Component {
 
           <Footer />
         </div>
-      </UserContext.Provider>
     );
   }
 }
