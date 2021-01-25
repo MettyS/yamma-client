@@ -15,6 +15,9 @@
 }
 
 .overlay {
+  min-height: 100vh;
+  padding: 24px 36px;
+  
   position: fixed;
   top: 0;
   left: 0;
@@ -22,5 +25,5 @@
   bottom: 0;
   /* background-color: #555555; */
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1000;
+  z-index: 100;
 }

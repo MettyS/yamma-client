@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import AuthApiService from '../../services/auth-api-service';
 import { Link, withRouter } from 'react-router-dom';
-import UserContext from '../../context/UserContext';
 import validate, {
   ValidationError,
 } from '../../services/validate-form-service';
@@ -23,7 +22,10 @@ class RegistrationForm extends Component {
     open: true,
   };
 
-  static contextType = UserContext;
+  constructor(props) {
+    super(props);
+    this.submitRef = createRef();
+  }
 
   //handleCloseModal = this.handleCloseModal.bind(this);
 
@@ -33,11 +35,10 @@ class RegistrationForm extends Component {
   //   window.location = "/"
   // }
 
+
   closeMenu = (e) => {
     e.preventDefault();
-    if (e.target.className !== 'overlay') {
-      return;
-    }
+
     this.setState({ open: false }, () => {
       document.removeEventListener('click', this.closeMenu);
     });
@@ -45,7 +46,7 @@ class RegistrationForm extends Component {
   };
 
   handleChange = (event) => {
-    console.log('handle change');
+    
     const { name, value } = event.target;
     let newErrors = Object.assign({}, this.state.errors);
 
@@ -86,12 +87,9 @@ class RegistrationForm extends Component {
   };
 
   handleSubmit = (event) => {
-    console.log('handle submit');
     event.preventDefault();
-    const { email, username, password } = event.target;
-
-    console.log(email, username, password);
-    return;
+    
+    const { email, username, password, passwordRepeat } = event.target;
 
     AuthApiService.postUser({
       email: email.value,
@@ -99,13 +97,20 @@ class RegistrationForm extends Component {
       password: password.value,
     })
       .then((res) => {
-        email.value = ' ';
-        username.value = ' ';
-        password.value = ' ';
-        this.context.onRegistrationSuccess();
+        email.value = '';
+        username.value = '';
+        password.value = '';
+        passwordRepeat.value = '';
+
+
+        console.log(res);
+        this.props.onRegistrationSuccess();
       })
       .catch((res) => {
-        this.setState({ error: res.error });
+        console.log('it is sad!!')
+        const erMessage = res.error ? res.error : res.message
+
+        this.setState({ errors: {...this.state.errors, warning: erMessage } });
       });
   };
 
@@ -117,20 +122,17 @@ class RegistrationForm extends Component {
         : errorEntries.slice(0);
 
     return firstTwoErrors.map((message, i) => {
-      return <p className='form-error' key={i}>{message}</p>;
+      return <p className='form-error' key={i}>{message[1]}</p>;
     });
   };
 
-  sayHello = () => {
-    console.log('hello!');
-  }
 
   render() {
     const errors = this.createErrors();
 
     return (
       <Modal open={this.state.open} onClose={this.closeMenu}>
-        <form className='registration-form' onSubmit={this.sayHello}>
+        <form className='registration-form' onSubmit={this.handleSubmit}>
           <div className='form-errors' role='alert'>
             {errors}
           </div>
@@ -191,7 +193,7 @@ class RegistrationForm extends Component {
             />
           </div>
 
-          <button type='submit' className='login-button'>
+          <button type='submit' className='submit-button'>
             Sign Up
           </button>
 

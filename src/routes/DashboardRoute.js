@@ -62,7 +62,7 @@ class DashBoard extends Component {
 
   render() {
     return (
-      <div className='dashboard-container'>
+      <div className='dashboard-container app-body'>
         <h1 className='hero-title'>US News</h1>
         {this.renderArticlePanel()}
         {this.renderCategoryList()}

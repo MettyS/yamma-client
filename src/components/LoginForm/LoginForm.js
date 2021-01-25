@@ -52,8 +52,8 @@ class LoginForm extends Component {
       username: username.value,
       password: password.value
     }).then(res => {
-      username.value = ' '
-      password.value = ' '
+      username.value = ''
+      password.value = ''
       this.context.processLogin(res.authToken)
       /*TokenService.saveAuthToken(res.authToken)
       TokenService.saveUserId(res.userId)
@@ -76,16 +76,16 @@ class LoginForm extends Component {
 
           <div className="username">
             <label htmlFor="login-username" className='form-text'>Username</label>
-            <input required type="text" placeholder="Username is required" name="Username" onChange={this.handleChange} />
+            <input required id='login-username' type="text" placeholder="Username is required" name="username" onChange={this.handleChange} />
           </div>
 
           <div className="password">
           <label htmlFor="reg-password"  className='form-text'>Password</label>
-          <input required type="password" placeholder="Password is required" name="Password" onChange={this.handleChange}/>
+          <input required id='reg-password' type="password" placeholder="Password is required" name="password" onChange={this.handleChange}/>
           </div>
 
           <div >
-            <button className="login-button" type="submit">Login</button>
+            <button className="submit-button" type="submit">Login</button>
           </div>
           <Link to='/register' className='need-an-acct'>Don't have an account yet?</Link>
         </form>
