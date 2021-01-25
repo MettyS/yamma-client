@@ -9,17 +9,17 @@ import Header from '../Header/Header';
 import DummyData from '../../dummy-variables';
 
 import UserContext from '../../context/UserContext';
+import YammaAbout from '../YammaAbout/YammaAbout';
 // import EventContext from '../../context/EventContext';
 
 //import './App.css'
-
 
 class App extends Component {
   state = {
     articles: DummyData.articles,
     categories: DummyData.categories,
-    hasError: false
-  }
+    hasError: false,
+  };
 
   //static contextType = UserContext;
 
@@ -33,14 +33,12 @@ class App extends Component {
     const value = {
       articles: this.state.articles,
       categories: this.state.categories,
-    }
-
+    };
     return (
         <div className='App'>
           {hasError && <p>There was an error! Oh no!</p>}
           <Header />
 
-          
           {/* <Route exact path={'/'} >
             <EventContext.Consumer>
               { val => <DashboardRoute /> }
@@ -51,13 +49,13 @@ class App extends Component {
           <Route path={'/event/:event'} component={EventPageRoute} />
           <Route path={'/register'}>
             <DashboardRoute />
-            <RegisterRoute /> 
-          </Route> 
+            <RegisterRoute />
+          </Route>
           <Route path={'/login'}>
             <DashboardRoute />
             <LoginRoute />
           </Route>
-
+          <Route path={'/about'} component={YammaAbout} />
 
           <Footer />
         </div>
@@ -66,4 +64,3 @@ class App extends Component {
 }
 
 export default App;
-
