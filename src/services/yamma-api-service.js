@@ -1,4 +1,5 @@
 import config from '../config.js';
+import TokenService from './token-service';
 
 const YammaApiService = {
   fetchEvents() {
@@ -47,8 +48,17 @@ const YammaApiService = {
     );
   },
 
-  postComment(user, comment) {
-    /* IMPLEMENT ME */
+  postComment(comment, eventId) {
+    return fetch(`${config.API_ENDPOINT}/comments/events/${eventId}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({ comment }),
+    }).then((res) =>
+      !res.ok ? res.json().then((err) => Promise.reject(err)) : res.json()
+    );
   }
 }
 

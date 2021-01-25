@@ -16,10 +16,20 @@ class Input extends Component {
     const user = this.props.user;
     if(!user.id){
       this.setState({error: 'must be logged in to post message'});
+      return;
+    }
+    if(this.state.text === ''){
+      this.setState({error: 'cannot post an empty message'});
+      return;
     }
 
-    this.setState({text: ""});
+    
     this.props.handleSendMessage(this.state.text);
+    this.setState(
+      {
+        text: "",
+        error: ''
+      });
   }
 
   render() {

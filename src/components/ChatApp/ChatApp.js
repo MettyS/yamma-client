@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import UserContext from '../../context/UserContext';
 import YammaApiService from '../../services/yamma-api-service';
+import TokenService from '../../services/token-service';
 
 import Messages from "./Messages";
 import Input from "./Input";
@@ -51,7 +52,8 @@ class ChatApp extends Component {
     user: null,
     messageLoadError: null,
     messageSendError: null,
-    loading: true
+    loading: true,
+    eventId: null
   }
   //_isMounted = false;
 
@@ -98,7 +100,22 @@ class ChatApp extends Component {
   // }
 
   handleSendMessage = (message) => {
+    const { eventId } = this.state;
+    const comment = {
+      content: message
+    }
 
+    YammaApiService.postComment(comment, eventId)
+    .then(res => {
+      console.log(res);
+      this.setState({
+        messageSendError: null
+      })
+    })
+    .catch(er => {
+      console.log(er);
+      this.setState({messageSendError: er })
+    })
   }
 
   componentDidMount() {
@@ -112,19 +129,22 @@ class ChatApp extends Component {
         console.log('the comment response we got back: ', res.comments);
         
         this.setState({
+          eventId: eventId,
           user: this.props.user,
           loading: false,
-          messages: res.comments
+          messages: res.comments,
+          messageLoadError: null
         });
 
       })
       .catch(er => {
         console.log(er);
+        this.setState({messageLoadError: er})
       })
   }
 
   render() {
-
+    
 
     return (
       <div>
@@ -137,7 +157,7 @@ class ChatApp extends Component {
           loading={this.state.loading}
         />
         <Input
-          onSendMessage={this.handleSendMessage}
+          handleSendMessage={this.handleSendMessage}
           user={this.state.user}
         />
       </div>
