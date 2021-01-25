@@ -9,7 +9,8 @@ import UserContext from '../../context/UserContext';
 class Header extends Component {
   static contextType = UserContext;
   state = {
-    open: false
+    open: false,
+    user: null
   }
 
 
@@ -27,13 +28,14 @@ class Header extends Component {
   }
 
   handleLogoutClick = () => {
-    TokenService.clearAuthToken();
+    this.context.processLogout();
+    //TokenService.clearAuthToken();
   };
 
   renderLogoutLink() {
     return (
       <div>
-        <span className='user_name'>Hi, {this.context.user.name}</span>
+        <span className='user_name'>Hi, {this.context.user.username}</span>
         <nav>
           <Link onClick={this.handleLogoutClick} to='/login'>
             Logout

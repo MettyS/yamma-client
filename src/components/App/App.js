@@ -21,6 +21,8 @@ class App extends Component {
     hasError: false
   }
 
+  //static contextType = UserContext;
+
   static getDerivedStateFromError(error) {
     console.error(error);
     return { hasError: true };
@@ -32,6 +34,7 @@ class App extends Component {
       articles: this.state.articles,
       categories: this.state.categories,
     }
+
     return (
         <div className='App'>
           {hasError && <p>There was an error! Oh no!</p>}

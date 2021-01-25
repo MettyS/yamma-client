@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventContext from '../../context/EventContext';
+import AllContext from '../../context/AllContext';
 import './ArticlePage.css';
 import YammaApiService from '../../services/yamma-api-service';
 
@@ -11,11 +11,11 @@ export default class ArticlePage extends Component {
   state = {
     loading: true,
   };
-  static contextType = EventContext;
+  static contextType = AllContext;
 
   componentDidMount() {
     const { eventId } = this.props.match.params;
-    if (this.context.ids[eventId] || this.state.loading === false) return;
+    if (this.context.eventContext.ids[eventId] || this.state.loading === false) return;
 
     YammaApiService.fetchEvent(eventId)
       .then((eventRes) => {
@@ -27,7 +27,7 @@ export default class ArticlePage extends Component {
           .then((categoryRes) => {
             //console.log('this is the category recieved: ', categoryRes);
             this.setState({ loading: false });
-            this.context.processEvents([eventRes, ...categoryRes.events]);
+            this.context.eventContext.processEvents([eventRes, ...categoryRes.events]);
           })
           .catch((er) => {
             throw er;
@@ -53,13 +53,13 @@ export default class ArticlePage extends Component {
 
   createRelatedContent = (event) => {
     const relatedCategories = event.categories.split(' ');
-    const { ids } = this.context;
+    const { ids } = this.context.eventContext;
 
-    const category = this.context.getCorrespondingCategory(
+    const category = this.context.eventContext.getCorrespondingCategory(
       relatedCategories[0]
     );
 
-    const relatedArray = this.context[category];
+    const relatedArray = this.context.eventContext[category];
     const relatedItems = relatedArray.slice(-4);
 
     const articleCards = relatedItems.map( id => {
@@ -76,9 +76,10 @@ export default class ArticlePage extends Component {
   render() {
     //console.log('CONTEXT IS: ', this.context);
     console.log(this.context);
+    const { user } = this.context.userContext
 
     const { eventId } = this.props.match.params;
-    const event = this.context.ids[eventId];
+    const event = this.context.eventContext.ids[eventId];
 
     const articleContent = this.createArticleContent(event);
     const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';
@@ -90,7 +91,7 @@ export default class ArticlePage extends Component {
           {articleContent}
 
           <div className='chat-section'>
-            <ChatApp eventId={eventId} />
+            <ChatApp eventId={eventId} user={user}/>
           </div>
         </div>
 
