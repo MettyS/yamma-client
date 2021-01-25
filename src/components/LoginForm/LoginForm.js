@@ -58,8 +58,9 @@ class LoginForm extends Component {
       console.log('context: ', this.context)
       this.context.userContext.processLogin(res.authToken)
       /*TokenService.saveAuthToken(res.authToken)
-      TokenService.saveUserId(res.userId)
-      window.location =*/
+      TokenService.saveUserId(res.userId)*/
+    }).then(res => {
+      window.location = '/'
     }).catch(res => {
       this.setState({ error: res.error })
     }) 
@@ -72,7 +73,7 @@ class LoginForm extends Component {
       <div>
         <form className='log-in-form' onSubmit={this.handleSubmit}>
 
-          <div role='alert'>
+          <div className='alert-info' role='alert'>
             {error && <p>{error}</p>}
           </div>
 
