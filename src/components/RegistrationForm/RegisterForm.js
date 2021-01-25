@@ -79,7 +79,7 @@ class RegistrationForm extends Component {
           validate.passwordMatch(this.state.password, value);
           break;
         default:
-          console.log('sshouldnt reach this line');
+          console.log('shouldnt reach this line');
       }
     } catch (er) {
       if (er instanceof ValidationError) return er.message;
