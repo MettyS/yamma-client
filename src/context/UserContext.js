@@ -13,8 +13,6 @@ const UserContext = React.createContext({
   setUser: () => {},
   processLogin: () => {},
   processLogout: () => {},
-  articles: [],
-  categories: [],
 });
 
 export default UserContext;
@@ -65,6 +63,8 @@ export class UserProvider extends Component {
   };
 
   processLogin = (authToken) => {
+    console.log('process login running!')
+
     TokenService.saveAuthToken(authToken);
 
     const jwtPayload = TokenService.parseAuthToken();

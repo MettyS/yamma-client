@@ -1,8 +1,9 @@
-.article-page {
-  width: 300px;
-}
+/* .article-page {
+  list-style: none;
+  margin: 0px;
+} */
 
-.article-chat {
+.article-body {
   border: 1px solid white;
   border-radius: 20px;
   padding: 20px;
@@ -13,27 +14,12 @@
   background-color: white;
 }
 
-.article-content {
-
-}
-
-.chat-page {
-  
-}
-
-.related-h3 {
+.related-h3, .related-h4 {
   color: white;
   text-align: center;
 }
 
-.related-section {
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 0px 0px;
-}
-
-.related-region {
+.related-articles-list {
   margin: 0;
   padding: 0 0px;
   display: grid;
@@ -41,7 +27,7 @@
   grid-gap: 2%;
 }
 
-.region-link {
+.article-link {
   list-style: none;
   box-sizing: border-box;
   border: 1px solid white;
@@ -55,37 +41,76 @@
   min-height: 128px;
   padding: 10px 0;
   margin: 10px 10px;
-  
 }
 
-.related-category {
+.related-articles-list {
   margin: 0;
-  padding: 0 40px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2%;
+  grid-template-columns: 1fr;
+  padding: 0px 0px;
 }
 
-.category-link {
+.related-article-list-item {
+  font-size: 14px;
+  font-weight: bolder;
   list-style: none;
   box-sizing: border-box;
   border: 1px solid white;
   border-radius: 15px;
   background: white;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
-  margin: 5px 10px;
+  min-height: 160px;
+  margin: 10px 10px;
+}
+
+@media only screen and (min-width: 560px) {
+
 }
 
 @media only screen and (min-width: 768px) {
-  .article-page {
-    width: 1080px;
+  .article-chat {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 0;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+    justify-content: center;
+    /* align-items: center; */
   }
 
+  .article-body {
+    margin-top: 30px;
+  }
+
+  .related-article-list-item {
+    font-size: 14px;
+    font-weight: bolder;
+    list-style: none;
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 15px;
+    background: white;
+    text-align: center;
+    min-height: 160px;
+    margin: 10px 10px;
+  }
+
+  .related-articles-list {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0px 0px;
+  }
+}
+
+@media only screen and (min-width: 860px) {
+
+}
+
+@media only screen and (min-width: 1000px) {
 
 
 }

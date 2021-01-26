@@ -12,5 +12,6 @@ describe('Footer', () => {
       </BrowserRouter>,
       div
     );
+    ReactDOM.unmountComponentAtNode(div);
   });
 });

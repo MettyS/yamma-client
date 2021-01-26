@@ -25,7 +25,7 @@ body {
   align-items: center;
 }
 
-.App > div {
+.App > div.app-body {
   min-height: 100vh;
   padding: 8px 12px;
 }
@@ -39,7 +39,7 @@ section {
     margin-top: 32px;
   }
 
-  .App > div {
+  .App > div.app-body {
     min-height: 100vh;
     padding: 24px 36px;
   }

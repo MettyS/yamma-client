@@ -1,28 +1,51 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ArticleCard from '../ArticleCard/ArticleCard'
 import './ArticlePanel.css';
-import UserContext from '../../context/UserContext';
+//import EventContext from '../../context/EventContext';
+import YammaApiService from '../../services/yamma-api-service';
+import AllContext from '../../context/AllContext';
 
 export default class ArticlePanel extends Component {
-  static contextType = UserContext;
+  constructor(props) {
+    super(props);
+    const state = {
+      NUM_ARTICLE_CARDS: 6,
+    };
+    this.state = state;
+  }
+
+  static contextType = AllContext;
+
+  componentDidMount() {
+    YammaApiService.fetchEvents()
+      .then((res) => {
+        this.context.eventContext.processEvents(res.events);
+      })
+      .catch((er) => {
+        console.log('ERROR: ', er);
+      });
+  }
+
+  createArticleCards = () => {
+    const { ids } = this.context.eventContext;
+    const firstSixIds = Object.keys(ids).slice(0, 6)
+
+    const linkItems = firstSixIds.map(id => {
+      const article = ids[id]
+      return <ArticleCard className='article-panel-card' article={article} />
+    });
+
+    return linkItems;
+  };
 
   render() {
-    const { articles = [] } = this.context;
+    const articleCards = this.createArticleCards();
+
     return (
       <div className='articlepanel-container'>
         <ul className='article-ul'>
-          {/*needs to change when we have a correct path for the article-->*/}
-          {articles.map((article) => (
-            <Link
-              to={`/event/article/${article.title}`}
-              className='article-title'
-              key={parseInt(article.id)}>
-              <li className='article-list-item'>
-                {article.title}
-                <br></br>
-              </li>
-            </Link>
-          ))}
+          {articleCards}
         </ul>
       </div>
     );

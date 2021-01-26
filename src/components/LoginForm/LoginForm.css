@@ -1,46 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
-.registration-form {
+/* .registration-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 2px solid red;
-  /* background-image: url('../../images/emergency-response-symbols.jpg'); */
+  background-image: url('../../images/emergency-response-symbols.jpg');
   height: 400px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('../../images/emergency-response-symbols.jpg');
-  /* flex:1; */
+  /* flex:1;
+} */
+.alert-info {
+  margin: 4px;
+  padding: 4px;
+  text-align: center;
+  border-radius: 6px;
+  color: black;
+  background-color: lightgray;
 }
-
-.sign-up-button {
+.submit-button {
+  display: block;
   font-family: 'Poppins', sans-serif;
   border: none;
   border-radius: 0.3em;
-  background-color: navy;
-  color: red;
+  background-color: #111111;
+  color: white;
   padding: 0.3em 0.6em;
-  margin: 0.3em;
+  margin: 0.3em auto; 
+  margin-top: 20px;
   font-size: 1.5em;
   border: 3px solid transparent;
+  z-index: 2000;
 }
 
-.sign-up-button:hover {
-  opacity: 0.8;
+.login-button:hover {
+  opacity: 0.7;
+  background-color: #333333;
 }
 
 .form-text {
-  font-family: 'MuseoModerno', cursive;
+  font-family: 'Poppins', sans-serif;
   /* font-weight: bold; */
   padding: 1em;
   font-weight: bolder;
   font-size: 12pt;
-  color: red;
+  color: white;
 }
-.already-have-acct {
+.need-an-acct {
+  text-align: center;
+  display: block;
   color: red;
   padding: 0 0.5em;
 }
@@ -54,7 +67,7 @@ label {
 /* Full-width input fields */
 input[type='text'],
 input[type='password'] {
-  width: 90%;
+  width: 96%;
   padding: 12px;
   margin: 0px 8px 0 8px;
   display: inline-block;
@@ -62,16 +75,3 @@ input[type='password'] {
   box-sizing: border-box;
   font-size: 16px;
 }
-
-/* The Modal (background) */
-.modal {
-  display:none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-  }

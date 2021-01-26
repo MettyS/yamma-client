@@ -1,71 +1,108 @@
 import React, { Component } from 'react';
-import UserContext from '../../context/UserContext';
+import AllContext from '../../context/AllContext';
 import './ArticlePage.css';
+import YammaApiService from '../../services/yamma-api-service';
+
 import { Link } from 'react-router-dom';
-import ChatPage from '../ChatApp/ChatApp';
+import ChatApp from '../ChatApp/ChatApp';
+import ArticleCard from '../ArticleCard/ArticleCard';
 
 export default class ArticlePage extends Component {
-  static defaultProps = {
-    match: {
-      params: {},
-    },
+  state = {
+    loading: true,
   };
+  static contextType = AllContext;
 
-  static contextType = UserContext;
+  componentDidMount() {
+    const { eventId } = this.props.match.params;
+    if (this.context.eventContext.ids[eventId] || this.state.loading === false) return;
 
-  render() {
-    const { articles = [] } = this.context;
-    const { title } = this.props.match.params;
-    const article = articles.find((art) => art.title === title);
-    const relatedRegion = article.region.split(', ');
-    const relatedType = article.type.split(', ');
+    YammaApiService.fetchEvent(eventId)
+      .then((eventRes) => {
+        //console.log('This is the event recieved: ', eventRes);
+
+        const category = eventRes.categories.split(' ');
+
+        YammaApiService.fetchEventsCategory(category[0])
+          .then((categoryRes) => {
+            //console.log('this is the category recieved: ', categoryRes);
+            this.setState({ loading: false });
+            this.context.eventContext.processEvents([eventRes, ...categoryRes.events]);
+          })
+          .catch((er) => {
+            throw er;
+          });
+      })
+      .catch((er) => {
+        console.log('error in fetching event with id: ', eventId);
+        console.log('ERROR: ', er);
+      });
+  }
+
+  createArticleContent = (event) => {
 
     return (
-      <div>
-        <div className='article-page'>
-          <div className='article-chat'>
-            <div className='article-content'>
-              <h1>{article.title}</h1>
-              <p>Region: {article.region}</p>
-              <p>Category: {article.type}</p>
-              <p>{article.content}</p>
-            </div>
-            <div className='chat-page'>
-              <ChatPage />
-            </div>
+      <div className='article-content'>
+        <h1>{event ? event.title : 'Loading'}</h1>
+        {/* <p>Region: {article.region}</p> */}
+        <p>Category: {event ? event.categories : 'Loading'}</p>
+        <p>{event ? event.description : 'Loading'}</p>
+      </div>
+    );
+  };
+
+  createRelatedContent = (event) => {
+    const relatedCategories = event.categories.split(' ');
+    const { ids } = this.context.eventContext;
+
+    const category = this.context.eventContext.getCorrespondingCategory(
+      relatedCategories[0]
+    );
+
+    const relatedArray = this.context.eventContext[category];
+    const relatedItems = relatedArray.slice(-4);
+
+    const articleCards = relatedItems.map( id => {
+      const article = ids[id]
+
+      return <ArticleCard className='article-related-card' article={article} />
+    });
+
+    return articleCards;
+
+  };
+
+
+  render() {
+    //console.log('CONTEXT IS: ', this.context);
+    console.log(this.context);
+    const { user } = this.context.userContext
+
+    const { eventId } = this.props.match.params;
+    const event = this.context.eventContext.ids[eventId];
+
+    const articleContent = this.createArticleContent(event);
+    const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';
+
+    return (
+      //<div>YAY!</div>
+      <div className='article-page'>
+        <div className='article-body'>
+          {articleContent}
+
+          <div className='chat-section'>
+            <ChatApp eventId={eventId} user={user}/>
           </div>
+        </div>
 
-          <br></br>
+        <br></br>
 
-          <h3 className='related-h3'>Related</h3>
+        <h3 className='related-h3'>Related</h3>
 
-          {/* <h4>Region: </h4> */}
-
-          <div className='related-section'>
-            <ul className='related-region'>
-              {relatedRegion.map((para, i) => (
-                <Link key={i} to={`/event/category/${para}`}>
-                  <li className='region-link'>
-                    {para}
-                    <br></br>{' '}
-                  </li>
-                </Link>
-              ))}
-            </ul>
-
-            {/* <h4>Type: </h4> */}
-
-            <ul className='related-category'>
-              {relatedType.map((para, i) => (
-                <Link key={i} to={`/event/category/${para}`}>
-                  <li className='category-link'>
-                    {para}
-                    <br></br>{' '}
-                  </li>
-                </Link>
-              ))}
-            </ul>
-          </div>
+        <div className='related-section'>
+          <ul className='related-articles-list'>
+            {relatedArticles}
+          </ul>
         </div>
       </div>
     );
