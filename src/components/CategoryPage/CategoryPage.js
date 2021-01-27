@@ -62,31 +62,11 @@ export default class CategoryPage extends Component {
 
     return (
       <div className='categorypage-container'>
-<<<<<<< HEAD
-        <h1>{category.name}</h1>
-=======
         <h1>{category}</h1>
         {/* <p>{category.content}</p> */}
->>>>>>> c472d03d86d3b9dd639fe9c831ebb4013a43e1b0
         <br></br>
         <ul className='related-ul'>
-<<<<<<< HEAD
-          {relatedArticles.map((para, i) => (
-            <Link
-              to={`/event/article/${para}`}
-              className='related-title'
-              key={i}>
-              <li
-                key={parseInt(relatedArticles.id)}
-                className='related-list-item'>
-                {para}
-                <br></br>{' '}
-              </li>
-            </Link>
-          ))}
-=======
           {relatedArticles}
->>>>>>> c472d03d86d3b9dd639fe9c831ebb4013a43e1b0
         </ul>
       </div>
     );
