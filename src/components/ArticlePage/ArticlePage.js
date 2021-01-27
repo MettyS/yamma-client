@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AllContext from '../../context/AllContext';
+import spinner from '../../images/spinner.png';
 import './ArticlePage.css';
 import YammaApiService from '../../services/yamma-api-service';
 
@@ -51,7 +52,7 @@ export default class ArticlePage extends Component {
     );
   };
 
-  createRelatedContent = (event) => {
+  createRelatedContent = (event, numberOfRelatedArticles = 4) => {
     const relatedCategories = event.categories.split(' ');
     const { ids } = this.context.eventContext;
 
@@ -59,13 +60,17 @@ export default class ArticlePage extends Component {
       relatedCategories[0]
     );
 
+    //naive approach to different relevant articles when article changes
     const relatedArray = this.context.eventContext[category];
-    const relatedItems = relatedArray.slice(-4);
+    let relatedItems = new Array(numberOfRelatedArticles);
+    for (let i = 0; i < numberOfRelatedArticles; i++) {
+      relatedItems[i] = relatedArray[Math.floor(Math.random() * relatedArray.length)];
+    }
 
-    const articleCards = relatedItems.map( id => {
+    const articleCards = relatedItems.map( (id, i) => {
       const article = ids[id]
 
-      return <ArticleCard className='article-related-card' article={article} />
+      return <ArticleCard key={i} className='article-related-card' article={article} />
     });
 
     return articleCards;
@@ -74,15 +79,13 @@ export default class ArticlePage extends Component {
 
 
   render() {
-    //console.log('CONTEXT IS: ', this.context);
-    console.log(this.context);
     const { user } = this.context.userContext
 
     const { eventId } = this.props.match.params;
     const event = this.context.eventContext.ids[eventId];
 
     const articleContent = this.createArticleContent(event);
-    const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';
+    const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';//<h2><img src={spinner} alt='loading-spinner'/>Loading</h2>;
 
     return (
       //<div>YAY!</div>

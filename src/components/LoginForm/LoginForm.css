@@ -15,7 +15,14 @@
     url('../../images/emergency-response-symbols.jpg');
   /* flex:1;
 } */
-
+.alert-info {
+  margin: 4px;
+  padding: 4px;
+  text-align: center;
+  border-radius: 6px;
+  color: black;
+  background-color: lightgray;
+}
 .submit-button {
   display: block;
   font-family: 'Poppins', sans-serif;

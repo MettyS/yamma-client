@@ -108,14 +108,14 @@ a {
     }
     
     .user-button {
-        /* font-family: 'Poppins', sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-size: 14px;
         padding: 10px;
         margin: 0;
         width: 160px;
         color: white;
         background-color: rgb(32,32,32);
-        border-color: #333333; */
+        border-color: #333333;
     }
 
     .title {

@@ -6,6 +6,7 @@ class RegistrationRoute extends Component {
     history: {
       push: () => {},
     },
+    open: false,
   };
 
   handleRegistrationSuccess = () => {
@@ -17,6 +18,8 @@ class RegistrationRoute extends Component {
     return (
 
         <RegistrationForm
+          open={this.props.open}
+          onClose={this.props.onClose}
           onRegistrationSuccess={this.handleRegistrationSuccess}
         />
     );
