@@ -8,24 +8,22 @@ import UserContext from '../../context/UserContext';
 
 class Header extends Component {
   static contextType = UserContext;
+
   state = {
     open: false,
-    user: null
-  }
+    user: null,
+  };
 
-
-  closeMenu = () => {
-    this.setState({ open: false}, () => {
-      document.removeEventListener('click', this.closeMenu)
-      window.location = '/'
-    })
-  }
-
-  renderSignUp() {
-    return(
-      <RegistrationForm />
-    )
-  }
+  // COMBAK:
+  // closeMenu = () => {
+  //   this.setState({ open: false }, () => {
+  //     document.removeEventListener('click', this.closeMenu);
+  //     window.location = '/';
+  //   });
+  // };
+  // renderSignUp() {
+  //   return <RegistrationForm />;
+  // }
 
   handleLogoutClick = () => {
     this.context.processLogout();
@@ -37,7 +35,10 @@ class Header extends Component {
       <div>
         <span className='user_name'>Hi, {this.context.user.username}</span>
         <nav>
-          <Link onClick={this.handleLogoutClick} className='user-button' to='/login'>
+          <Link
+            onClick={this.handleLogoutClick}
+            className='user-button'
+            to='/login'>
             Logout
           </Link>
         </nav>
@@ -46,15 +47,14 @@ class Header extends Component {
   }
 
   renderLoginLink() {
+    console.log(this.props);
     return (
       <nav className='login-links'>
-        <Link to='/login'>
-          <button className='user-button'>Login</button>
-        </Link>{' '}
-        <br></br>
-        <Link to='/register'>
-          <button className='user-button'>Sign-Up</button>
-        </Link>{' '}
+          <button className='user-button' onClick={this.props.logIn}>Login</button>
+        {' '}
+        <br/>
+          <button className='user-button' onClick={this.props.signUp}>Sign-Up</button>
+        {' '}
       </nav>
     );
   }

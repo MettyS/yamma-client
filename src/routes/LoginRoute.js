@@ -17,8 +17,8 @@ class LoginRoute extends Component {
 
   render() {
     return (
-      
-        <LoginForm onLoginSuccess={this.handleLoginSuccess} />
+
+        <LoginForm onLoginSuccess={this.handleLoginSuccess} open={this.props.open} onClose={this.props.onClose} />
 
     );
   }

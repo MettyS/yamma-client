@@ -11,6 +11,7 @@ import Modal from '../Modal/Modal';
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {},
+    open: false,
   };
 
   state = {
@@ -19,7 +20,6 @@ class RegistrationForm extends Component {
     password: '',
     passwordRepeat: '',
     errors: {},
-    open: true,
   };
 
   constructor(props) {
@@ -27,26 +27,14 @@ class RegistrationForm extends Component {
     this.submitRef = createRef();
   }
 
-  //handleCloseModal = this.handleCloseModal.bind(this);
-
-  // handleCloseModal = () => {
-  //   console.log('Close pop-up')
-  //   this.setState({open: false})
-  //   window.location = "/"
-  // }
-
-
   closeMenu = (e) => {
     e.preventDefault();
-
-    this.setState({ open: false }, () => {
-      document.removeEventListener('click', this.closeMenu);
-    });
-    this.props.history.push('/');
+    if (!Object.values(e.target.classList).includes('overlay')) return;
+    this.props.onClose();
   };
 
   handleChange = (event) => {
-    
+
     const { name, value } = event.target;
     let newErrors = Object.assign({}, this.state.errors);
 
@@ -88,7 +76,7 @@ class RegistrationForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    
+
     const { email, username, password, passwordRepeat } = event.target;
 
     AuthApiService.postUser({
@@ -129,9 +117,8 @@ class RegistrationForm extends Component {
 
   render() {
     const errors = this.createErrors();
-
     return (
-      <Modal open={this.state.open} onClose={this.closeMenu}>
+      <Modal open={this.props.open} onClose={this.closeMenu}>
         <form className='registration-form' onSubmit={this.handleSubmit}>
           <div className='form-errors' role='alert'>
             {errors}
