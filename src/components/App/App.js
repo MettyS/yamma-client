@@ -19,9 +19,16 @@ class App extends Component {
     articles: DummyData.articles,
     categories: DummyData.categories,
     hasError: false,
+    logIn: false,
+    isSigningUp: false,
   };
 
-  //static contextType = UserContext;
+  toggleLogIn = () => {
+    this.setState({ logIn: !this.state.logIn });
+  };
+  toggleSignUp = () => {
+    this.setState({ isSigningUp: !this.state.isSigningUp });
+  };
 
   static getDerivedStateFromError(error) {
     console.error(error);
@@ -30,14 +37,14 @@ class App extends Component {
 
   render() {
     const { hasError } = this.state;
-    const value = {
-      articles: this.state.articles,
-      categories: this.state.categories,
-    };
+
     return (
         <div className='App'>
           {hasError && <p>There was an error! Oh no!</p>}
-          <Header />
+          <Header logIn={this.toggleLogIn} signUp={this.toggleSignUp}/>
+
+          <LoginRoute open={this.state.logIn} onClose={this.toggleLogIn}/>
+          <RegisterRoute open={this.state.isSigningUp} onClose={this.toggleSignUp}/>
 
           {/* <Route exact path={'/'} >
             <EventContext.Consumer>
@@ -47,14 +54,6 @@ class App extends Component {
 
           <Route exact path={'/'} component={DashboardRoute} />
           <Route path={'/event/:event'} component={EventPageRoute} />
-          <Route path={'/register'}>
-            <DashboardRoute />
-            <RegisterRoute />
-          </Route>
-          <Route path={'/login'}>
-            <DashboardRoute />
-            <LoginRoute />
-          </Route>
           <Route path={'/about'} component={YammaAbout} />
 
           <Footer />
