@@ -4,7 +4,7 @@ const EventContext = React.createContext({
   // event values are ordered with oldest in the front newest at the end
   ids: {},           // obj of key=event.id value=event
   us: [],           // event.id's with category 'US'
-  usWest: [],       // event.id's with category 'US_West', 
+  usWest: [],       // event.id's with category 'US_West',
   usNortheast: [],  // event.id's with category 'US_Northeast'
   usSouth: [],      // event.id's with category 'US_South'
   usMidwest: [],    // event.id's with category 'US_Midwest'
@@ -13,7 +13,7 @@ const EventContext = React.createContext({
   technology: [],   // event.id's with category 'Technology'
   science: [],      // event.id's with category 'Science'
   health: [],       // event.id's with category 'Health'
-  
+
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -33,7 +33,7 @@ export class EventProvider extends Component {
     const state = {
       ids: {},          // obj of key=event.id value=event
       us: [],           // event.id's with category 'US'
-      usWest: [],       // event.id's with category 'US_West', 
+      usWest: [],       // event.id's with category 'US_West',
       usNortheast: [],  // event.id's with category 'US_Northeast'
       usSouth: [],      // event.id's with category 'US_South'
       usMidwest: [],    // event.id's with category 'US_Midwest'
@@ -81,25 +81,25 @@ export class EventProvider extends Component {
     // console.log('MY STATE IS: ', this.state);
     let newEventAndIdPairs = {};
     let newIdAndCategoryPairs = {
-      us: [],           
-      usWest: [],       
-      usNortheast: [],  
-      usSouth: [],      
-      usMidwest: [],    
-      business: [],     
-      politics: [],     
-      technology: [],   
-      science: [],      
-      health: [],       
+      us: [],
+      usWest: [],
+      usNortheast: [],
+      usSouth: [],
+      usMidwest: [],
+      business: [],
+      politics: [],
+      technology: [],
+      science: [],
+      health: [],
     };
 
     eventArr.forEach(ev => {
-      if(this.state.ids[ev.id] || newEventAndIdPairs[ev.id]) {
+      if(this.state.ids[ev.id]) {
         //console.log('not going to add event with duplicate ID = ', ev.id)
         return;
       }
       this.shouldUpdate = true;
-      
+
       ev.categories.split(' ').forEach( rawCategory => {
         const category = this.getCorrespondingCategory(rawCategory);
         newIdAndCategoryPairs[category].push(ev.id);
@@ -107,7 +107,7 @@ export class EventProvider extends Component {
       });
 
       newEventAndIdPairs[ev.id] = ev;
-    })
+    });
 
     if(this.shouldUpdate)
       this.addAllNewContent(newEventAndIdPairs, newIdAndCategoryPairs);
@@ -119,7 +119,7 @@ export class EventProvider extends Component {
     console.log('ADDING IDS CONTENT: ', ids);
     console.log('ADDING CATEGORIES CONTENT: ', categoryArrays);
 
-    let compositeCategoryContent = {}; 
+    let compositeCategoryContent = {};
     Object.keys(categoryArrays).forEach(category => {
       compositeCategoryContent[category] = [...this.state[category], ...categoryArrays[category]]
     });
@@ -173,17 +173,17 @@ export class EventProvider extends Component {
 
   render = () => {
     const value = {
-      // ids: this.state.ids,          
-      // us: this.state.us,           
-      // usWest: this.state.usWest,       
-      // usNortheast: this.state.usNortheast,  
-      // usSouth: this.state.usSouth,      
-      // usMidwest: this.state.usMidwest,    
-      // business: this.state.business,     
-      // politics: this.state.politics,     
-      // technology: this.state.technology,   
-      // science: this.state.science,      
-      // health: this.state.health,       
+      // ids: this.state.ids,
+      // us: this.state.us,
+      // usWest: this.state.usWest,
+      // usNortheast: this.state.usNortheast,
+      // usSouth: this.state.usSouth,
+      // usMidwest: this.state.usMidwest,
+      // business: this.state.business,
+      // politics: this.state.politics,
+      // technology: this.state.technology,
+      // science: this.state.science,
+      // health: this.state.health,
 
       // error: this.state.error,
       ...this.state,
@@ -201,4 +201,3 @@ export class EventProvider extends Component {
   }
 
 }
-
