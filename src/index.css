@@ -18,28 +18,35 @@ body {
 }
 
 .App {
-  margin-top: 72px;
+  /* margin-top: 72px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.App > div.app-body {
+/* .App > div.app-body { */
+  main {
   min-height: 100vh;
-  padding: 8px 12px;
+  /* padding: 8px 12px; */
+  margin-top: 72px;
 }
 
 section {
   min-height: 100vh;
 }
 
-@media only screen and (min-width: 768px) {
-  .App {
-    margin-top: 32px;
-  }
+.hidden {
+  display: none
+}
 
-  .App > div.app-body {
+@media only screen and (min-width: 768px) {
+  /* .App {
+    margin-top: 32px;
+  } */
+
+  /* .App > div.app-body { */
+  main {
     min-height: 100vh;
     padding: 24px 36px;
   }

@@ -60,7 +60,7 @@ class LoginForm extends Component {
       <Modal open={open} onClose={this.closeMenu}>
         <div>
           <form className='log-in-form' onSubmit={this.handleSubmit}>
-            <div className='alert-info' role='alert'>
+            <div className={`alert-info ${error ? '' : 'hidden'}`} role='alert'>
               {error && <p>{error}</p>}
             </div>
 

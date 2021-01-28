@@ -41,6 +41,7 @@ export default class ArticlePage extends Component {
   }
 
   createArticleContent = (event) => {
+    console.log(event);
 
     return (
       <div className='article-content'>
