@@ -111,31 +111,27 @@ ArticlePage
 
 ### 6. Front-end Structure - React Components Map
 * __Index.js__ 
-* __App.js__ (stateful)
-* __FilterRoute__ (context-provider)
-* __DashboardRoute.js__ (stateful)
-* __Map.js__ (stateless)
-* __EventList.js__ (stateful) (no context)- connect to events table
-* __EventCard.js__ (stateless)
-* __Sidebar.js__ (stateful)
-* __SearchTab.js__ (stateful)
-* __IconList.js__ (stateless)
-* __Icon.js__ (stateless)
-* __CategoryList.js__ (stateless) - scrollable
-* __EventPageRoute.js__ (stateful) 
-* __ArticlePanel.js__(stateful)
-* __ChatPanel.js__ (stateful) - connect to comments table [event_id]
-* __ChatFeed.js__ (stateful)
-* __ChatForm.js__ (stateful) - connect to comments table
-* __RelatedArticleList.js__(stateful)
-* __RelatedArticleCard.js__(stateful)
-* __LoginRoute.js__ (stateful)
-* __LoginForm.js__ (stateful) - connect to users table [username, password]
-* __RegisterRoute.js__(stateful) 
-* __RegisterForm.js__ (stateful) - connect to users table [username, email, password]
-* __Header.js__ (stateless)
-* __Navbar.js__(stateful)
-* __Footer.js__ (stateless)
+  * __App.js__ (stateful)
+    * __FilterRoute__ (context-provider)
+      * __DashboardRoute.js__ (stateful)
+        * __Map.js__ (stateless)
+        * __EventList.js__ (stateful) (no context)- connect to events table
+          * __EventCard.js__ (stateless)
+        * __Sidebar.js__ (stateful)
+      * __EventPageRoute.js__ (stateful) 
+        * __ArticlePanel.js__(stateful)
+        * __ChatPanel.js__ (stateful) - connect to comments table [event_id]
+          * __ChatFeed.js__ (stateful)
+          * __ChatForm.js__ (stateful) - connect to comments table
+        * __RelatedArticleList.js__(stateful)
+          * __RelatedArticleCard.js__(stateful)
+      * __LoginRoute.js__ (stateful)
+        * __LoginForm.js__ (stateful) - connect to users table [username, password]
+      * __RegisterRoute.js__(stateful) 
+        * __RegisterForm.js__ (stateful) - connect to users table [username, email, password]
+    * __Header.js__ (stateless)
+      * __Navbar.js__(stateful)
+    * __Footer.js__ (stateless)
 
 
 ### 7. Back-end Structure - Business Objects
