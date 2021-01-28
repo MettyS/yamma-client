@@ -66,7 +66,7 @@ export class UserProvider extends Component {
     const jwtPayload = TokenService.parseAuthToken();
     this.setUser({
       id: jwtPayload.id,
-      name: jwtPayload.sub,
+      username: jwtPayload.sub,
     });
 
     IdleService.regiserIdleTimerResets();
