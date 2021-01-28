@@ -139,7 +139,7 @@ ArticlePage
 
 
 ### 7. Back-end Structure - Business Objects
-![Back-end Structure](./github-images/screenshots/yamma-backend-structure.png)
+![Back-end Structure](https://github.com/MettyS/yamma-server)
 ### 8. API Documentation
 ## [OpenAPI Docs](https://app.swaggerhub.com/apis/s-poveda/Yamma-API/1.0.0)
 ### 9. Screenshots
