@@ -26,8 +26,7 @@ export class UserProvider extends Component {
 
     if (jwtPayload)
       state.user = {
-        id: jwtPayload.user_id,
-        name: jwtPayload.name,
+        id: jwtPayload.id,
         username: jwtPayload.sub,
       };
 
@@ -63,15 +62,10 @@ export class UserProvider extends Component {
   };
 
   processLogin = (authToken) => {
-    console.log('process login running!')
-
     TokenService.saveAuthToken(authToken);
-
     const jwtPayload = TokenService.parseAuthToken();
-    console.log('setting user!');
     this.setUser({
-      id: jwtPayload.user_id,
-      name: jwtPayload.name,
+      id: jwtPayload.id,
       username: jwtPayload.sub,
     });
 
@@ -85,7 +79,7 @@ export class UserProvider extends Component {
     TokenService.clearAuthToken();
     TokenService.clearCallbackBeforeExpiry();
     IdleService.unRegisterIdleResets();
-    this.setUser({});
+    this.setUser(null);
   };
 
   logoutBecauseIdle = () => {

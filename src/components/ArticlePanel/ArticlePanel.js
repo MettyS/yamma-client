@@ -31,9 +31,9 @@ export default class ArticlePanel extends Component {
     const { ids } = this.context.eventContext;
     const firstSixIds = Object.keys(ids).slice(0, 6)
 
-    const linkItems = firstSixIds.map(id => {
+    const linkItems = firstSixIds.map((id, i) => {
       const article = ids[id]
-      return <ArticleCard className='article-panel-card' article={article} />
+      return <ArticleCard key={i} className='article-panel-card' article={article} />
     });
 
     return linkItems;

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import yammalogored from '../../images/yammalogored.PNG';
 import TokenService from '../../services/token-service';
-import RegistrationForm from '../RegistrationForm/RegisterForm';
 import UserContext from '../../context/UserContext';
 
 class Header extends Component {
@@ -14,20 +13,8 @@ class Header extends Component {
     user: null,
   };
 
-  // COMBAK:
-  // closeMenu = () => {
-  //   this.setState({ open: false }, () => {
-  //     document.removeEventListener('click', this.closeMenu);
-  //     window.location = '/';
-  //   });
-  // };
-  // renderSignUp() {
-  //   return <RegistrationForm />;
-  // }
-
   handleLogoutClick = () => {
     this.context.processLogout();
-    //TokenService.clearAuthToken();
   };
 
   renderLogoutLink() {
@@ -35,19 +22,18 @@ class Header extends Component {
       <div>
         <span className='user_name'>Hi, {this.context.user.username}</span>
         <nav>
-          <Link
+          <button
             onClick={this.handleLogoutClick}
             className='user-button'
             to='/login'>
             Logout
-          </Link>
+          </button>
         </nav>
       </div>
     );
   }
 
   renderLoginLink() {
-    console.log(this.props);
     return (
       <nav className='login-links'>
           <button className='user-button' onClick={this.props.logIn}>Login</button>

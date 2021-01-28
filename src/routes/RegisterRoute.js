@@ -9,18 +9,12 @@ class RegistrationRoute extends Component {
     open: false,
   };
 
-  handleRegistrationSuccess = () => {
-    const { history } = this.props;
-    history.push('/login');
-  };
-
   render() {
     return (
 
         <RegistrationForm
           open={this.props.open}
           onClose={this.props.onClose}
-          onRegistrationSuccess={this.handleRegistrationSuccess}
         />
     );
   }
