@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import yammalogored from '../../images/yammalogored.PNG';
 import TokenService from '../../services/token-service';
-import RegistrationForm from '../RegistrationForm/RegisterForm';
 import UserContext from '../../context/UserContext';
 
 class Header extends Component {
