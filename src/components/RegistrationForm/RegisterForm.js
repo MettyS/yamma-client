@@ -1,18 +1,22 @@
 import React, { Component, createRef } from 'react';
 import AuthApiService from '../../services/auth-api-service';
 import { Link, withRouter } from 'react-router-dom';
+import Modal from '../Modal/Modal';
 import validate, {
   ValidationError,
 } from '../../services/validate-form-service';
+import UserContext from '../../context/UserContext';
 import '../LoginForm/LoginForm.css';
 import '../../images/emergency-response-symbols.jpg';
-import Modal from '../Modal/Modal';
+import './RegisterForm.css';
 
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {},
     open: false,
   };
+
+  static contextType = UserContext;
 
   state = {
     email: '',
@@ -84,21 +88,20 @@ class RegistrationForm extends Component {
       username: username.value,
       password: password.value,
     })
-      .then((res) => {
+      .then(({authToken}) => {
         email.value = '';
         username.value = '';
         password.value = '';
         passwordRepeat.value = '';
+        this.context.processLogin(authToken);
+        this.props.onClose();
 
-
-        console.log(res);
-        this.props.onRegistrationSuccess();
       })
       .catch((res) => {
         console.log('it is sad!!')
         const erMessage = res.error ? res.error : res.message
 
-        this.setState({ errors: {...this.state.errors, warning: erMessage } });
+        this.setState({ errors: { warning: erMessage, ...this.state.errors, } });
       });
   };
 
