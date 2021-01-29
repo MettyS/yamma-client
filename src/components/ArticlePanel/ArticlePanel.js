@@ -29,11 +29,13 @@ export default class ArticlePanel extends Component {
 
   createArticleCards = () => {
     const { ids } = this.context;
-    const firstSixIds = Object.keys(ids).slice(0, 6)
+    const firstSixIds = Object.keys(ids).slice(0, 6);
 
     const linkItems = firstSixIds.map((id, i) => {
-      const article = ids[id]
-      return <ArticleCard key={i} className='article-panel-card' article={article} />
+      const article = ids[id];
+      return (
+        <ArticleCard key={i} className='article-panel-card' article={article} />
+      );
     });
 
     return linkItems;
@@ -44,9 +46,7 @@ export default class ArticlePanel extends Component {
 
     return (
       <div className='articlepanel-container'>
-        <ul className='article-ul'>
-          {articleCards}
-        </ul>
+        <ul className='article-ul'>{articleCards}</ul>
       </div>
     );
   }

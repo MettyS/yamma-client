@@ -23,7 +23,6 @@ class LoginForm extends Component {
     e.preventDefault();
     if (!Object.values(e.target.classList).includes('overlay')) return;
     this.props.onClose();
-
   };
 
   handleChange = (event) => {
@@ -43,8 +42,6 @@ class LoginForm extends Component {
       .then((res) => {
         username.value = '';
         password.value = '';
-        console.log('processing login now : )');
-        console.log('context: ', this.context);
         this.context.processLogin(res.authToken);
         this.props.onClose();
       })

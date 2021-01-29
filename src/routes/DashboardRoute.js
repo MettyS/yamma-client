@@ -12,7 +12,6 @@ class DashBoard extends Component {
     return (
           <>
           {['/', '/event/article/:eventId/:title'].map(path => (
-
               <Route key={path} path={path} render={() => (
                 <ArticlePanel />
                 // <EventContext.Consumer>
@@ -33,7 +32,6 @@ class DashBoard extends Component {
         ))}
       </>
     );
-    
   }
 
   render() {

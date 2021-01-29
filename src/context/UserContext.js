@@ -27,27 +27,13 @@ export class UserProvider extends Component {
     const jwtPayload = TokenService.parseAuthToken();
     if (jwtPayload)
       state.user = {
-        id: jwtPayload.id,
+        id: jwtPayload.user_id,
         username: jwtPayload.sub,
       };
 
     this.state = state;
     IdleService.setIdleCallback(this.logoutBecauseIdle);
   }
-
-  // componentDidMount() {
-  //   if (TokenService.hasAuthToken()) {
-  //     IdleService.regiserIdleTimerResets();
-  //     TokenService.queueCallbackBeforeExpiry(() => {
-  //       this.fetchRefreshToken();
-  //     });
-  //   }
-  // }
-
-  // componentWillUnmount() {
-  //   IdleService.unRegisterIdleResets();
-  //   TokenService.clearCallbackBeforeExpiry();
-  // }
 
   setError = (error) => {
     console.error(error);
@@ -59,14 +45,12 @@ export class UserProvider extends Component {
   };
 
   setUser = (user) => {
-    console.log('SET USER RUNNING')
     this.setState({ user });
   };
 
   processLogin = (authToken) => {
     TokenService.saveAuthToken(authToken);
     const jwtPayload = TokenService.parseAuthToken();
-    console.log('PAYLOAD: ', jwtPayload)
     this.setUser({
       id: jwtPayload.user_id,
       username: jwtPayload.sub,

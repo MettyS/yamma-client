@@ -11,11 +11,7 @@ class RegistrationRoute extends Component {
 
   render() {
     return (
-
-        <RegistrationForm
-          open={this.props.open}
-          onClose={this.props.onClose}
-        />
+      <RegistrationForm open={this.props.open} onClose={this.props.onClose} />
     );
   }
 }

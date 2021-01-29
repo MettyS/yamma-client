@@ -38,7 +38,6 @@ class RegistrationForm extends Component {
   };
 
   handleChange = (event) => {
-
     const { name, value } = event.target;
     let newErrors = Object.assign({}, this.state.errors);
 
@@ -88,20 +87,18 @@ class RegistrationForm extends Component {
       username: username.value,
       password: password.value,
     })
-      .then(({authToken}) => {
+      .then(({ authToken }) => {
         email.value = '';
         username.value = '';
         password.value = '';
         passwordRepeat.value = '';
         this.context.processLogin(authToken);
         this.props.onClose();
-
       })
       .catch((res) => {
-        console.log('it is sad!!')
-        const erMessage = res.error ? res.error : res.message
+        const erMessage = res.error ? res.error : res.message;
 
-        this.setState({ errors: { warning: erMessage, ...this.state.errors, } });
+        this.setState({ errors: { warning: erMessage, ...this.state.errors } });
       });
   };
 
@@ -113,20 +110,28 @@ class RegistrationForm extends Component {
         : errorEntries.slice(0);
 
     return firstTwoErrors.map((message, i) => {
-      return <p className='form-error' key={i}>{message[1]}</p>;
+      return (
+        <p className='form-error' key={i}>
+          {message[1]}
+        </p>
+      );
     });
   };
-
 
   render() {
     const errors = this.createErrors();
     return (
       <Modal open={this.props.open} onClose={this.closeMenu}>
-        <form className='registration-form' id='registration-form' onSubmit={this.handleSubmit}>
-	        <div className={`alert-info ${errors.length ? '' : 'hidden'}`} role='alert'>
-							{/*// QUESTION: why are we checking for length twice?*/}
-              {errors.length && errors}
-	        </div>
+        <form
+          className='registration-form'
+          id='registration-form'
+          onSubmit={this.handleSubmit}>
+          <div
+            className={`alert-info ${errors.length ? '' : 'hidden'}`}
+            role='alert'>
+            {/*// QUESTION: why are we checking for length twice?*/}
+            {errors.length && errors}
+          </div>
 
           <div className='email'>
             <label htmlFor='reg-email' className='form-text'>
