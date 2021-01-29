@@ -6,7 +6,7 @@ import YammaApiService from '../../services/yamma-api-service';
 import ChatApp from '../ChatApp/ChatApp';
 import ArticleCard from '../ArticleCard/ArticleCard';
 import './ArticlePage.css';
-import spinner from '../../images/spinner.png';
+// import spinner from '../../images/spinner.png';
 
 export default class ArticlePage extends Component {
   state = {

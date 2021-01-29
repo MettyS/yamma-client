@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import EventContext from '../../context/EventContext';
 import YammaApiService from '../../services/yamma-api-service';
 import './CategoryPage.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import ArticleCard from '../ArticleCard/ArticleCard';
 
 export default class CategoryPage extends Component {

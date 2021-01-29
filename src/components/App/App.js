@@ -8,7 +8,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import DummyData from '../../dummy-variables';
 
-import UserContext from '../../context/UserContext';
+// import UserContext from '../../context/UserContext';
 import YammaAbout from '../YammaAbout/YammaAbout';
 // import EventContext from '../../context/EventContext';
 
