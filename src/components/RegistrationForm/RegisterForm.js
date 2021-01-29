@@ -123,9 +123,9 @@ class RegistrationForm extends Component {
     return (
       <Modal open={this.props.open} onClose={this.closeMenu}>
         <form className='registration-form' onSubmit={this.handleSubmit}>
-          <div className='form-errors' role='alert'>
-            {errors}
-          </div>
+        <div className={`alert-info ${errors.length ? '' : 'hidden'}`} role='alert'>
+              {errors.length && errors}
+            </div>
 
           <div className='email'>
             <label htmlFor='reg-email' className='form-text'>

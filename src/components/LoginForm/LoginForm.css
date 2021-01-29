@@ -23,6 +23,13 @@
   color: black;
   background-color: lightgray;
 }
+.alert-info p {
+  font-weight: 600;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  font-size: 20px;
+}
+
 .submit-button {
   display: block;
   font-family: 'Poppins', sans-serif;
@@ -52,6 +59,7 @@
   color: white;
 }
 .need-an-acct {
+  font-weight: 600;
   text-align: center;
   display: block;
   color: red;

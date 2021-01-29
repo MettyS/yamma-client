@@ -42,7 +42,7 @@ class App extends Component {
         <div className='App'>
           {hasError && <p>There was an error! Oh no!</p>}
           <Header logIn={this.toggleLogIn} signUp={this.toggleSignUp}/>
-
+          <main>
           <LoginRoute open={this.state.logIn} onClose={this.toggleLogIn}/>
           <RegisterRoute open={this.state.isSigningUp} onClose={this.toggleSignUp}/>
 
@@ -55,7 +55,7 @@ class App extends Component {
           <Route exact path={'/'} component={DashboardRoute} />
           <Route path={'/event/:event'} component={EventPageRoute} />
           <Route path={'/about'} component={YammaAbout} />
-
+          </main>
           <Footer />
         </div>
     );
