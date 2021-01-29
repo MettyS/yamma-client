@@ -169,7 +169,8 @@
     justify-content: space-between;
   }
 
-  div.foot-panel {
+  .article-content .foot-panel { 
+    border: none;
     vertical-align: bottom;
   }
 
