@@ -35,19 +35,19 @@ export class UserProvider extends Component {
     IdleService.setIdleCallback(this.logoutBecauseIdle);
   }
 
-  componentDidMount() {
-    if (TokenService.hasAuthToken()) {
-      IdleService.regiserIdleTimerResets();
-      TokenService.queueCallbackBeforeExpiry(() => {
-        this.fetchRefreshToken();
-      });
-    }
-  }
+  // componentDidMount() {
+  //   if (TokenService.hasAuthToken()) {
+  //     IdleService.regiserIdleTimerResets();
+  //     TokenService.queueCallbackBeforeExpiry(() => {
+  //       this.fetchRefreshToken();
+  //     });
+  //   }
+  // }
 
-  componentWillUnmount() {
-    IdleService.unRegisterIdleResets();
-    TokenService.clearCallbackBeforeExpiry();
-  }
+  // componentWillUnmount() {
+  //   IdleService.unRegisterIdleResets();
+  //   TokenService.clearCallbackBeforeExpiry();
+  // }
 
   setError = (error) => {
     console.error(error);
@@ -59,18 +59,20 @@ export class UserProvider extends Component {
   };
 
   setUser = (user) => {
+    console.log('SET USER RUNNING')
     this.setState({ user });
   };
 
   processLogin = (authToken) => {
     TokenService.saveAuthToken(authToken);
     const jwtPayload = TokenService.parseAuthToken();
+    console.log('PAYLOAD: ', jwtPayload)
     this.setUser({
-      id: jwtPayload.id,
+      id: jwtPayload.user_id,
       username: jwtPayload.sub,
     });
 
-    IdleService.regiserIdleTimerResets();
+    //IdleService.registerIdleTimerResets();
     TokenService.queueCallbackBeforeExpiry(() => {
       this.fetchRefreshToken();
     });

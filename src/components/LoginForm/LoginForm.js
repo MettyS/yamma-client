@@ -3,7 +3,7 @@ import AuthApiService from '../../services/auth-api-service';
 import { Link, withRouter } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import './LoginForm.css';
-import AllContext from '../../context/AllContext';
+import UserContext from '../../context/UserContext';
 
 class LoginForm extends Component {
   static defaultProps = {
@@ -17,7 +17,7 @@ class LoginForm extends Component {
     open: false,
   };
 
-  static contextType = AllContext;
+  static contextType = UserContext;
 
   closeMenu = (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ class LoginForm extends Component {
         password.value = '';
         console.log('processing login now : )');
         console.log('context: ', this.context);
-        this.context.userContext.processLogin(res.authToken);
+        this.context.processLogin(res.authToken);
         this.props.onClose();
       })
       .catch((res) => {

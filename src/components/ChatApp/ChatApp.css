@@ -34,14 +34,24 @@ ul.message-list {
   padding: 0px;
   text-align: left;
   border-left: 1px rgb(172, 172, 172) solid;
+
+  height: 300px;
+  overflow-y: scroll;
 }
 
 ul.message-list li {
   padding: 0px;
 }
 
+
+
 ul.message-list .username {
   padding-left: 10px;
+  font-weight: 600;
+}
+
+ul.message-list li.self-message .username {
+  text-decoration: underline;
 }
 
 ul.message-list .content {

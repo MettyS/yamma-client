@@ -126,7 +126,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .article-chat {
+  /* .article-chat {
     border: 1px solid white;
     border-radius: 20px;
     padding: 20px;
@@ -136,12 +136,43 @@
     grid-template-columns: 1fr 1fr;
     background-color: white;
     justify-content: center;
-    /* align-items: center; */
-  }
+    align-items: center;
+  } */
 
   .article-body {
     margin-top: 30px;
+    /* flex-flow: row; */
+    display: grid;
+    grid-template-columns: 65% 35%;
+    column-gap: 20px;
   }
+
+  .article-content {
+    display: flex;
+    flex-flow: column;
+    height: 500px;
+  }
+
+  .chat-section {
+    /* flex:1; */
+    height: 500px;
+  }
+
+  div.body-panel {
+    /* height:100%; */
+    /* content: ""; */
+    /* clear: both; */
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    
+    justify-content: space-between;
+  }
+
+  div.foot-panel {
+    vertical-align: bottom;
+  }
+
 
   .related-article-list-item {
     font-size: 14px;
@@ -165,7 +196,7 @@
 }
 
 @media only screen and (min-width: 860px) {
-
+  
 }
 
 @media only screen and (min-width: 1000px) {

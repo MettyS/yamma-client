@@ -49,6 +49,12 @@ section {
   /* .App > div.app-body { */
   main {
     min-height: 100vh;
-    padding: 24px 36px;
+    padding: 24px 5%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  main {
+    padding: 24px 10%;
   }
 }

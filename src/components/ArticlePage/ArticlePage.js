@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AllContext from '../../context/AllContext';
+import EventContext from '../../context/EventContext';
 import spinner from '../../images/spinner.png';
 import './ArticlePage.css';
 import YammaApiService from '../../services/yamma-api-service';
@@ -12,11 +12,11 @@ export default class ArticlePage extends Component {
   state = {
     loading: true,
   };
-  static contextType = AllContext;
+  static contextType = EventContext;
 
   componentDidMount() {
     const { eventId } = this.props.match.params;
-    if (this.context.eventContext.ids[eventId] || this.state.loading === false) return;
+    if (this.context.ids[eventId] || this.state.loading === false) return;
 
     YammaApiService.fetchEvent(eventId)
       .then((eventRes) => {
@@ -28,7 +28,7 @@ export default class ArticlePage extends Component {
           .then((categoryRes) => {
             //console.log('this is the category recieved: ', categoryRes);
             this.setState({ loading: false });
-            this.context.eventContext.processEvents([eventRes, ...categoryRes.events]);
+            this.context.processEvents([eventRes, ...categoryRes.events]);
           })
           .catch((er) => {
             throw er;
@@ -74,14 +74,14 @@ export default class ArticlePage extends Component {
 
   createRelatedContent = (event, numberOfRelatedArticles = 4) => {
     const relatedCategories = event.categories.split(' ');
-    const { ids } = this.context.eventContext;
+    const { ids } = this.context;
 
-    const category = this.context.eventContext.getCorrespondingCategory(
+    const category = this.context.getCorrespondingCategory(
       relatedCategories[0]
     );
 
     //naive approach to different relevant articles when article changes
-    const relatedArray = this.context.eventContext[category];
+    const relatedArray = this.context[category];
     let relatedItems = new Array(numberOfRelatedArticles);
     for (let i = 0; i < numberOfRelatedArticles; i++) {
       relatedItems[i] = relatedArray[Math.floor(Math.random() * relatedArray.length)];
@@ -99,10 +99,10 @@ export default class ArticlePage extends Component {
 
 
   render() {
-    const { user } = this.context.userContext
+    // const { user } = this.context.userContext
 
     const { eventId } = this.props.match.params;
-    const event = this.context.eventContext.ids[eventId];
+    const event = this.context.ids[eventId];
 
     const articleContent = this.createArticleContent(event);
     const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';//<h2><img src={spinner} alt='loading-spinner'/>Loading</h2>;
@@ -113,7 +113,7 @@ export default class ArticlePage extends Component {
         <div className='article-body'>
           {articleContent}
 
-            <ChatApp eventId={eventId} user={user}/>
+            <ChatApp eventId={eventId} />
         </div>
 
         <br></br>

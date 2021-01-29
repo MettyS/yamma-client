@@ -107,11 +107,14 @@ class ChatApp extends Component {
       content: message
     }
 
+    console.log('COMMON SENDING IS: ', comment);
+
     YammaApiService.postComment(comment, eventId)
     .then(res => {
-      console.log(res);
+      console.log('COMMENT RES IS: ', res);
       this.setState({
-        messageSendError: null
+        messageSendError: null,
+        messages: [...this.state.messages, res]
       })
     })
     .catch(er => {
