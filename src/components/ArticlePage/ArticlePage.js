@@ -46,7 +46,6 @@ export default class ArticlePage extends Component {
       return (<div className='article-content'>'Loading...'</div>)
 
     const date = new Date(event.date_published)
-    console.log(date);
     return (
         <div className='article-content'>
           <div className='article-banner'>
@@ -60,7 +59,7 @@ export default class ArticlePage extends Component {
           <div className='body-panel'>
             <p>{event.description}</p>
             <div className='btn'>
-              <a href={`${event.source_url}`} className='btn'>See Original</a>
+              <a href={`${event.source_url}`} target='_blank' rel='noopener noreferrer' id='see-original-article' className='btn'>See Original Article</a>
             </div>
           </div>
           <div className='foot-panel'>

@@ -58,6 +58,10 @@
   border-color: lightgray;
 }
 
+#see-original-article:hover {
+	cursor: pointer;
+}
+
 .article-content img {
   display: none;
 }
@@ -165,11 +169,11 @@
     flex: 1;
     display: flex;
     flex-flow: column;
-    
+
     justify-content: space-between;
   }
 
-  .article-content .foot-panel { 
+  .article-content .foot-panel {
     border: none;
     vertical-align: bottom;
   }
@@ -197,7 +201,7 @@
 }
 
 @media only screen and (min-width: 860px) {
-  
+
 }
 
 @media only screen and (min-width: 1000px) {
