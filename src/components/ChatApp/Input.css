@@ -1,0 +1,4 @@
+/* something went wrong styling this button. I do this to fix the hover behaviour of the mouse */
+#live-chat #submit-message:hover {
+	cursor: pointer;
+}

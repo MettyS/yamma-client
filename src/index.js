@@ -12,9 +12,9 @@ ReactDOM.render(
   <BrowserRouter>
     <EventProvider>
       <UserProvider>
-        <AllContextProvider>
+        {/* <AllContextProvider> */}
         <App />
-        </AllContextProvider>
+        {/* </AllContextProvider> */}
       </UserProvider>
     </EventProvider>
   </BrowserRouter>,

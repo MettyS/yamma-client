@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 
 class Messages extends Component {
     renderMessage(message) {
-        const { id, user_id, content, username } = message;
+        const { id, user_id, content, username, date_created } = message;
 
+        const date = new Date(date_created);
         const { user } = this.props;
         const className = (user && user.id === user_id) ? 'message self-message' : 'message';
 
@@ -21,6 +22,7 @@ class Messages extends Component {
                         {username}
                     </div>
                     <div className="content">{content}</div>
+                    <p>{`${date.toDateString()}   ${date.getHours()}:${date.getMinutes()}`}</p>
                 </div>
             </li>
         );

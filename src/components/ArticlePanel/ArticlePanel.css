@@ -1,5 +1,10 @@
-.dashboard-container {
+/* .dashboard-container {
   width: 300px;
+} */
+
+.articlepanel-container {
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 hr {
@@ -57,6 +62,12 @@ hr {
   text-align: center;
   min-height: 160px;
   margin: 10px 10px;
+}
+
+.article-list-item > a {
+	display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .article-buttons {
@@ -152,22 +163,22 @@ hr {
   }
 
   .dashboard-container {
-    width: 700px;
+    /* width: 700px; */
     justify-content: center;
     align-items: center;
   }
-  
+
   hr {
     width: 100%;
     border: 1px solid red;
     margin: 30px 0px 30px 0px;
   }
-  
+
   .hero-title {
     color: red;
     text-align: center;
   }
-  
+
   .article-title {
     color: black;
     margin: 10px;
@@ -179,28 +190,28 @@ hr {
     margin: 5px;
     justify-content: center;
   }
-  
+
   .article-source {
     text-decoration: none;
     color: black;
     font-size: 10px;
     margin: 0;
   }
-  
+
   .article-source-img {
     height: 20px;
     width: 20px;
     vertical-align: middle;
     margin: 5px;
   }
-  
+
   .article-ul {
     margin: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0px 40px;
   }
-  
+
   .article-list-item {
     list-style: none;
     box-sizing: border-box;
@@ -211,24 +222,24 @@ hr {
     min-height: 160px;
     margin: 10px 10px;
   }
-  
+
   .article-buttons {
     width: 50px;
   }
-  
+
   .subregion-title {
     color: black;
     justify-content: right;
     text-align: right;
   }
-  
+
   .subregion-ul {
     margin: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0px 40px;
   }
-  
+
   .subregion-item {
     list-style: none;
     box-sizing: border-box;
@@ -240,7 +251,7 @@ hr {
     padding: 5px;
     margin: 20px 20px;
   }
-  
+
   .subregion-img {
     justify-content: center;
     text-align: center;
@@ -250,7 +261,7 @@ hr {
     height: 125px;
     vertical-align: middle;
   }
-  
+
   .categorylist-container {
     padding: 0;
     margin: 0;
@@ -258,11 +269,11 @@ hr {
     justify-content: center;
     justify-items: center;
   }
-  
+
   .category-title {
     color: black;
   }
-  
+
   .category-ul {
     margin: 0;
     padding: 0;
@@ -270,7 +281,7 @@ hr {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 2%;
   }
-  
+
   .category-item {
     list-style: none;
     box-sizing: border-box;

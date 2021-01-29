@@ -7,7 +7,6 @@ class Footer extends Component {
 
   renderFooterLinks() {
     return (
-      <nav>
         <ul className='footer-links'>
           <li>
             <Link to='/about' className='li-links'>
@@ -31,7 +30,6 @@ class Footer extends Component {
             </p>
           </li>
         </ul>
-      </nav>
     );
   }
 
@@ -39,7 +37,7 @@ class Footer extends Component {
     return (
       <footer className='footer'>
         <div className='footer-group'>
-          <h1 className='footer-title'>Yamma</h1>
+          <div className='footer-title'>Yamma</div>
           <p className='footer-copyright'>All rights reserved Yamma©</p>
         </div>
         <div>{this.renderFooterLinks()}</div>
