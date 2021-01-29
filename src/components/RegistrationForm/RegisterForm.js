@@ -122,7 +122,7 @@ class RegistrationForm extends Component {
     const errors = this.createErrors();
     return (
       <Modal open={this.props.open} onClose={this.closeMenu}>
-        <form className='registration-form' onSubmit={this.handleSubmit}>
+        <form className='registration-form' id='registration-form' onSubmit={this.handleSubmit}>
           <div className='form-errors' role='alert'>
             {errors}
           </div>
