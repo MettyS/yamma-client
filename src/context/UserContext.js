@@ -15,6 +15,8 @@ const UserContext = React.createContext({
   processLogout: () => {},
 });
 
+UserContext.displayName = 'UserContext';
+
 export default UserContext;
 
 export class UserProvider extends Component {
@@ -23,7 +25,6 @@ export class UserProvider extends Component {
     const state = { user: {}, error: null };
 
     const jwtPayload = TokenService.parseAuthToken();
-
     if (jwtPayload)
       state.user = {
         id: jwtPayload.id,

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import AllContext from '../../context/AllContext';
+/*
+Image for loading spinner
 import spinner from '../../images/spinner.png';
+*/
 import './ArticlePage.css';
 import YammaApiService from '../../services/yamma-api-service';
 
-import { Link } from 'react-router-dom';
 import ChatApp from '../ChatApp/ChatApp';
 import ArticleCard from '../ArticleCard/ArticleCard';
 
@@ -85,7 +87,7 @@ export default class ArticlePage extends Component {
     const event = this.context.eventContext.ids[eventId];
 
     const articleContent = this.createArticleContent(event);
-    const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';//<h2><img src={spinner} alt='loading-spinner'/>Loading</h2>;
+    const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';
 
     return (
       //<div>YAY!</div>
