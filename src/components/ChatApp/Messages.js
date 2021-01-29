@@ -31,7 +31,7 @@ class Messages extends Component {
     render() {
         const { messages, loading } = this.props;
         return (
-            <ul className="message-list">
+            <ul className="message-list" tabIndex='0'>
                 {loading ? 'Loading...' : messages.map(m => this.renderMessage(m))}
             </ul>
         );

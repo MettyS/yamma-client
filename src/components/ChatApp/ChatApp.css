@@ -67,4 +67,18 @@ ul.message-list p {
 
 p.form-error {
   margin: 0px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 768px) {
+  p.form-error {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  p.form-error {
+    font-size: 14px;
+  }
 }

@@ -9,7 +9,7 @@ class Input extends Component {
   }
 
   onChange(e) {
-		if(!this.props.user.id){
+		if(!this.props.user || !this.props.user.id){
       this.setState({error: 'must be logged in to post message'});
       return;
     }

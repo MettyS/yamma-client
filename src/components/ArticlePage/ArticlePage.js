@@ -10,38 +10,148 @@ import spinner from '../../images/spinner.png';
 
 export default class ArticlePage extends Component {
   state = {
+    eventId: null,
     loading: true,
+    messages: [],
+    messageLoadError: null
   };
   static contextType = EventContext;
 
-  componentDidMount() {
+  componentDidUpdate(prevProps, state) {
+    const prevEventId = prevProps.match.params.eventId;
     const { eventId } = this.props.match.params;
-    if (this.context.ids[eventId] || this.state.loading === false) return;
 
-    YammaApiService.fetchEvent(eventId)
-      .then((eventRes) => {
-        //console.log('This is the event recieved: ', eventRes);
-
-        const category = eventRes.categories.split(' ');
-
-        YammaApiService.fetchEventsCategory(category[0])
-          .then((categoryRes) => {
-            //console.log('this is the category recieved: ', categoryRes);
-            this.setState({ loading: false });
-            this.context.processEvents([eventRes, ...categoryRes.events]);
-          })
-          .catch((er) => {
-            throw er;
-          });
+    if(eventId !== prevEventId) {
+      this.getEventsAndMessages(eventId)
+      .then (newState => {
+        this.setState({...newState})
       })
-      .catch((er) => {
-        console.log('error in fetching event with id: ', eventId);
-        console.log('ERROR: ', er);
-      });
+    }
+
+    // const { eventId } = this.props.match.params;
+    // console.log('PROPS ID: ', eventId)
+    // console.log('prevProps ID ', prevProps.match.params)
+
+    // if(eventId !== prevProps.match.params) {
+    //   this.getEventsAndMessages(eventId)
+    //   .then (newState => {
+    //     this.setState({...newState})
+    //   })
+    // }
+  }
+
+  async getEventsAndMessages(eventId) {
+    let newState = {
+      eventId: eventId
+    };
+
+    try {
+      const commentRes = await YammaApiService.fetchComments(eventId)
+      console.log('the comment response we got back: ', commentRes.comments);
+        
+      newState.loading = false;
+      newState.messages = commentRes.comments;
+
+      if (!(this.context.ids[eventId])) {
+        const eventRes = await YammaApiService.fetchEvent(eventId)
+        const categories = eventRes.categories.split(' ');
+
+        const relatedEventsRes = await YammaApiService.fetchEventsCategory(categories[0])
+
+        console.log(relatedEventsRes)
+        this.context.processEvents([eventRes, ...(relatedEventsRes.events)]);
+
+      }
+    }
+    catch (er) {
+      console.log('ERROR: ', er);
+      newState.eventLoadError = er;
+    }
+    
+    return newState;
+
+
+    // YammaApiService.fetchComments(eventId)
+    // .then( res => {
+    //   console.log('the comment response we got back: ', res.comments);
+      
+    //   newState.loading = false;
+    //   newState.messages = res.comments;
+
+    //   if (!(this.context.ids[eventId])) {
+    //     YammaApiService.fetchEvent(eventId)
+    //       .then((eventRes) => {
+    //         const category = eventRes.categories.split(' ');
+
+    //         YammaApiService.fetchEventsCategory(category[0])
+    //           .then((categoryRes) => {
+    //             this.context.processEvents([eventRes, ...categoryRes.events]);
+    //           })
+    //           .catch((er) => {
+    //             console.log('error in getting related events', er);
+    //             throw er;
+    //           });
+    //       })
+    //       .catch((er) => {
+    //         console.log('error in fetching event with id', eventId, er);
+    //         this.setState({eventLoadError: er});
+    //       });
+    //   }
+
+    //   console.log('RESETTING ARTICLE PAGE STATE NOW WOOOOOOOOT WOOOOOOOOT', newState)
+    //   this.setState({
+    //     ...newState
+    //   })
+    // })
+    // .catch(er => {
+    //   console.log('error in fetching messages', er);
+    //   this.setState({messageLoadError: er}); 
+    // })
+  }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (currentThing === nextThing) {
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
+
+  handleSendMessage = (message) => {
+    const { eventId } = this.state;
+    const comment = {
+      content: message
+    }
+
+    console.log('COMMON SENDING IS: ', comment);
+
+    YammaApiService.postComment(comment, eventId)
+    .then(res => {
+      console.log('COMMENT RES IS: ', res);
+      this.setState({
+        messageSendError: null,
+        messages: [...this.state.messages, res]
+      })
+    })
+    .catch(er => {
+      console.log(er);
+      this.setState({messageSendError: er })
+    })
+  }
+
+
+
+  componentDidMount() {
+    console.log('_________________________________________ new mount')
+    const { eventId } = this.props.match.params;
+    
+    this.getEventsAndMessages(eventId)
+    .then (newState => {
+      this.setState({...newState})
+    })
   }
 
   createArticleContent = (event) => {
-    console.log(event);
     if(!event)
       return (<div className='article-content'>'Loading...'</div>)
 
@@ -68,7 +178,6 @@ export default class ArticlePage extends Component {
 
         </div>
       )
-
   };
 
   createRelatedContent = (event, numberOfRelatedArticles = 4) => {
@@ -97,9 +206,13 @@ export default class ArticlePage extends Component {
   };
 
 
+
   render() {
     // const { user } = this.context.userContext
 
+    const { loading, messages, messageLoadError } = this.state;
+    console.log('ARTICLE PAGE RENDER... LOADING IS: ', loading, messages);
+    console.log('JUST CHECKING ARTICLEs PROPS', this.props)
     const { eventId } = this.props.match.params;
     const event = this.context.ids[eventId];
 
@@ -112,7 +225,14 @@ export default class ArticlePage extends Component {
         <div className='article-body'>
           {articleContent}
 
-            <ChatApp eventId={eventId} />
+            <ChatApp 
+              eventId={eventId} 
+              loading={loading} 
+              messages={messages}
+              messageLoadError={messageLoadError}
+              handleSendMessage={message => {
+                this.handleSendMessage(message)
+                }}/>
         </div>
 
         <br></br>

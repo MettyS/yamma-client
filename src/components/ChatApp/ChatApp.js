@@ -49,14 +49,19 @@ function randomColor() {
 class ChatApp extends Component {
   static contextType = UserContext;
 
-  state = {
-    messages: [],
-    user: null,
-    messageLoadError: null,
-    messageSendError: null,
-    loading: true,
-    eventId: null
+
+  constructor(props, context) {
+    super(props)
+    this.state = {
+      messages: props.messages,
+      user: context.user,
+      messageLoadError: props.messageLoadError,
+      messageSendError: null,
+      loading: props.loading,
+      eventId: props.eventId
+    }
   }
+  
   //_isMounted = false;
 
   // state = {
@@ -101,59 +106,89 @@ class ChatApp extends Component {
   //   this._isMounted = false;
   // }
 
-  handleSendMessage = (message) => {
-    const { eventId } = this.state;
-    const comment = {
-      content: message
-    }
+  // handleSendMessage = (message) => {
+  //   const { eventId } = this.state;
+  //   const comment = {
+  //     content: message
+  //   }
 
-    console.log('COMMON SENDING IS: ', comment);
+  //   console.log('COMMON SENDING IS: ', comment);
 
-    YammaApiService.postComment(comment, eventId)
-    .then(res => {
-      console.log('COMMENT RES IS: ', res);
-      this.setState({
-        messageSendError: null,
-        messages: [...this.state.messages, res]
-      })
-    })
-    .catch(er => {
-      console.log(er);
-      this.setState({messageSendError: er })
-    })
-  }
+  //   YammaApiService.postComment(comment, eventId)
+  //   .then(res => {
+  //     console.log('COMMENT RES IS: ', res);
+  //     this.setState({
+  //       messageSendError: null,
+  //       messages: [...this.state.messages, res]
+  //     })
+  //   })
+  //   .catch(er => {
+  //     console.log(er);
+  //     this.setState({messageSendError: er })
+  //   })
+  // }
 
   componentDidMount() {
-    if(!this.state.loading)
-      return;
+    // console.log('CHAT APP DDDDDDDID MOUNT, state.loading and props.loading are: ', this.state.loading, this.props.loading)
+    
+    // if(!this.state.loading)
+    //   return;
 
-    const eventId = this.props.eventId;
+    // const eventId = this.props.eventId;
 
-    YammaApiService.fetchComments(eventId)
-      .then( res => {
-        console.log('the comment response we got back: ', res.comments);
+    // YammaApiService.fetchComments(eventId)
+    //   .then( res => {
+    //     console.log('the comment response we got back: ', res.comments);
         
-        this.setState({
-          eventId: eventId,
-          user: this.props.user,
-          loading: false,
-          messages: res.comments,
-          messageLoadError: null
-        });
+    //     this.setState({
+    //       eventId: eventId,
+    //       user: this.props.user,
+    //       loading: false,
+    //       messages: res.comments,
+    //       messageLoadError: null
+    //     });
 
-      })
-      .catch(er => {
-        console.log(er);
-        this.setState({messageLoadError: er})
-      })
+    //   })
+    //   .catch(er => {
+    //     console.log(er);
+    //     this.setState({messageLoadError: er})
+    //   })
   }
 
-  render() {
-    const { messages, loading } = this.state
+  // shouldComponentUpdate() {
+  //   if(!this.props.loading && this.state.loading)
+  //     return true;
 
-    const { user } = this.context;
+  //   return false;
+  // }
+
+  // componentDidUpdate(prevProps){
+  //   if(this.props.loading !== prevProps.loading){
+  //    this.setState({
+  //     loading: this.props.loading,
+  //     messages: this.props.messages,
+  //     messageLoadError: this.props.messageLoadError
+  //    })
+  //   }
+  // }
+
+  // static getDerivedStateFromProps(props, state) {
+  //   if(props.loading !== state.loading) {
+  //     return {
+  //       loading: props.loading,
+  //       messages: props.messages,
+  //       messageLoadError: props.messageLoadError
+  //     }
+  //   }
+  //   return {}
+  // }
+
+  render() {
+    const { messages, loading } = this.props
+    const { user } = this.context
 
     console.log('USER IS: ', user);
+    console.log('PROPS ARE: ', this.props)
 
     return (
       <div className='chat-section'>
@@ -166,7 +201,7 @@ class ChatApp extends Component {
           loading={loading}
         />
         <Input
-          handleSendMessage={this.handleSendMessage}
+          handleSendMessage={(message) => {this.props.handleSendMessage(message)}}
           user={user}
         />
       </div>

@@ -27,7 +27,7 @@ export class UserProvider extends Component {
     const jwtPayload = TokenService.parseAuthToken();
     if (jwtPayload)
       state.user = {
-        id: jwtPayload.id,
+        id: jwtPayload.user_id,
         username: jwtPayload.sub,
       };
 

@@ -19,6 +19,7 @@ class EventPage extends Component {
 
 
   render() {
+    console.log('EVENTPAGEROUTE RE-RENDER')
     return (
       <div className='eventpage-container app-body'>
         {this.renderArticlePage()}
