@@ -17,8 +17,9 @@ class Input extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    const { messageText } = e.target
     const user = this.props.user;
-    if(!user.id){
+    if(!user.username){
       this.setState({error: 'must be logged in to post message'});
       return;
     }
@@ -26,9 +27,10 @@ class Input extends Component {
       this.setState({error: 'cannot post an empty message'});
       return;
     }
+    console.log('TRYING TO SEND MESSAGEE: ', messageText);
 
+    this.props.handleSendMessage(messageText.value);
 
-    this.props.handleSendMessage(this.state.text);
     this.setState(
       {
         text: "",
@@ -38,17 +40,18 @@ class Input extends Component {
 
   render() {
     return (
-      <div className="Input">
+      <div className="input-wrapper">
         <form onSubmit={e => this.onSubmit(e)}>
           <p className='form-error'>{this.state.error}</p>
           <input
             onChange={e => this.onChange(e)}
             value={this.state.text}
+            name='messageText'
             type="text"
             placeholder="Enter your message and press ENTER"
             // autoFocus={true}
           />
-          <button>Send</button>
+          <button className='btn'>Post Message</button>
         </form>
       </div>
     );

@@ -9,12 +9,13 @@ export default class ArticleCard extends Component {
     const { article, className } = this.props;
 
     return (
-      <Link
+      
+        <li className='article-list-item' key={article.id}>
+          <Link
         to={`/event/article/${article.id}/${article.title}`}
         className={'article-card ' + className}
         key={article.id}
         >
-        <li className='article-list-item' key={article.id}>
           <img src={article.event_img} alt='' className='article-img' />
           <p className='article-title'>{article.title}</p>
           <p className='article-source'>
@@ -26,8 +27,9 @@ export default class ArticleCard extends Component {
             {article.source_name}
           </p>
           <br></br>
+          </Link>
         </li>
-      </Link>
+      
     );
   }
 

@@ -4,7 +4,7 @@ import ArticleCard from '../ArticleCard/ArticleCard'
 import './ArticlePanel.css';
 //import EventContext from '../../context/EventContext';
 import YammaApiService from '../../services/yamma-api-service';
-import AllContext from '../../context/AllContext';
+import EventContext from '../../context/EventContext';
 
 export default class ArticlePanel extends Component {
   constructor(props) {
@@ -15,12 +15,12 @@ export default class ArticlePanel extends Component {
     this.state = state;
   }
 
-  static contextType = AllContext;
+  static contextType = EventContext;
 
   componentDidMount() {
     YammaApiService.fetchEvents()
       .then((res) => {
-        this.context.eventContext.processEvents(res.events);
+        this.context.processEvents(res.events);
       })
       .catch((er) => {
         console.log('ERROR: ', er);
@@ -28,7 +28,7 @@ export default class ArticlePanel extends Component {
   }
 
   createArticleCards = () => {
-    const { ids } = this.context.eventContext;
+    const { ids } = this.context;
     const firstSixIds = Object.keys(ids).slice(0, 6)
 
     const linkItems = firstSixIds.map((id, i) => {

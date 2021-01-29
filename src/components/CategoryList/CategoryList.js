@@ -16,107 +16,107 @@ export class CategoryList extends Component {
         <hr></hr>
 
         <ul className='subregion-ul'>
-          <Link to='/event/category/US_West' className='subregion-title'>
-            <li className='subregion-item'>
+          <li className='subregion-item'>
+            <Link to='/event/category/US_West' className='subregion-title'>
               <img
                 src={yammawest}
                 width='80px'
                 height='80px'
                 className='subregion-img'
-                alt='west'
+                alt='west-category-image'
               />
               West
-            </li>
-          </Link>
-          <Link to='/event/category/US_Midwest' className='subregion-title'>
-            <li className='subregion-item'>
+            </Link>
+          </li>
+          <li className='subregion-item'>
+            <Link to='/event/category/US_Midwest' className='subregion-title'>
               <img
                 src={yammamidwest}
                 width='80px'
                 height='80px'
                 className='subregion-img'
-                alt='midwest'
+                alt='midwest-category-image'
               />
               Midwest
-            </li>
-          </Link>
-          <Link to='/event/category/US_South' className='subregion-title'>
-            <li className='subregion-item'>
+            </Link>
+          </li>
+          <li className='subregion-item'>
+            <Link to='/event/category/US_South' className='subregion-title'>
               <img
                 src={yammasouth}
                 width='80px'
                 height='80px'
                 className='subregion-img'
-                alt='south'
+                alt='south-category-image'
               />
               South
-            </li>
-          </Link>
-          <Link to='/event/category/US_Northeast' className='subregion-title'>
-            <li className='subregion-item'>
+            </Link>
+          </li>
+          <li className='subregion-item'>
+            <Link to='/event/category/US_Northeast' className='subregion-title'>
               <img
                 src={yammaeast}
                 width='80px'
                 height='80px'
                 className='subregion-img'
-                alt='east'
+                alt='east-category-image'
               />
               East
-            </li>
-          </Link>
+            </Link>
+          </li>
         </ul>
 
         <hr></hr>
 
         <ul className='category-ul'>
-          <Link to='/event/category/Politics' className='category-title'>
-            <li className='category-item'>
+          <li className='category-item'>
+            <Link to='/event/category/Politics' className='category-title'>
               Politics
               <img
                 src={politicsicon}
                 width='80px'
                 height='80px'
                 className='category-img'
-                alt='politics'
+                alt='politics-category-image'
               />
-            </li>
-          </Link>
-          <Link to='/event/category/Business' className='category-title'>
-            <li className='category-item'>
+            </Link>
+          </li>
+          <li className='category-item'>
+            <Link to='/event/category/Business' className='category-title'>
               Business
               <img
                 src={businessicon}
                 width='80px'
                 height='80px'
                 className='category-img'
-                alt='business'
+                alt='business-category-image'
               />
-            </li>
-          </Link>
-          <Link to='/event/category/Health' className='category-title'>
-            <li className='category-item'>
+            </Link>
+          </li>
+          <li className='category-item'>
+            <Link to='/event/category/Health' className='category-title'>
               Health
               <img
                 src={healthicon}
                 width='80px'
                 height='80px'
                 className='category-img'
-                alt='health'
+                alt='health-category-image'
               />
-            </li>
-          </Link>
-          <Link to='/event/category/Technology' className='category-title'>
-            <li className='category-item'>
+            </Link>
+          </li>
+          <li className='category-item'>
+            <Link to='/event/category/Technology' className='category-title'>
               Tech
               <img
                 src={techicon}
                 width='80px'
                 height='80px'
                 className='category-img'
-                alt='tech'
+                alt='tech-category-image'
               />
-            </li>
-          </Link>
+            </Link>
+          </li>
         </ul>
       </div>
     );
