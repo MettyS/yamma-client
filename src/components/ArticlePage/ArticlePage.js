@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import EventContext from '../../context/EventContext';
-import spinner from '../../images/spinner.png';
-import './ArticlePage.css';
+
 import YammaApiService from '../../services/yamma-api-service';
 
-import { Link } from 'react-router-dom';
 import ChatApp from '../ChatApp/ChatApp';
 import ArticleCard from '../ArticleCard/ArticleCard';
+import './ArticlePage.css';
+import spinner from '../../images/spinner.png';
 
 export default class ArticlePage extends Component {
   state = {
@@ -46,7 +46,6 @@ export default class ArticlePage extends Component {
       return (<div className='article-content'>'Loading...'</div>)
 
     const date = new Date(event.date_published)
-    console.log(date);
     return (
         <div className='article-content'>
           <div className='article-banner'>
@@ -60,16 +59,16 @@ export default class ArticlePage extends Component {
           <div className='body-panel'>
             <p>{event.description}</p>
             <div className='btn'>
-              <a href={`${event.source_url}`} className='btn'>See Original</a>
+              <a href={`${event.source_url}`} target='_blank' rel='noopener noreferrer' id='see-original-article' className='btn'>See Original Article</a>
             </div>
           </div>
           <div className='foot-panel'>
             <p>{`${date.toDateString()}   ${date.getHours()}:${date.getMinutes()}`}</p>
           </div>
-          
+
         </div>
       )
-    
+
   };
 
   createRelatedContent = (event, numberOfRelatedArticles = 4) => {
@@ -105,7 +104,7 @@ export default class ArticlePage extends Component {
     const event = this.context.ids[eventId];
 
     const articleContent = this.createArticleContent(event);
-    const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';//<h2><img src={spinner} alt='loading-spinner'/>Loading</h2>;
+    const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';
 
     return (
       //<div>YAY!</div>

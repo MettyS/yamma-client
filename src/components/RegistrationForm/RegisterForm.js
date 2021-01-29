@@ -122,10 +122,11 @@ class RegistrationForm extends Component {
     const errors = this.createErrors();
     return (
       <Modal open={this.props.open} onClose={this.closeMenu}>
-        <form className='registration-form' onSubmit={this.handleSubmit}>
-        <div className={`alert-info ${errors.length ? '' : 'hidden'}`} role='alert'>
+        <form className='registration-form' id='registration-form' onSubmit={this.handleSubmit}>
+	        <div className={`alert-info ${errors.length ? '' : 'hidden'}`} role='alert'>
+							{/*// QUESTION: why are we checking for length twice?*/}
               {errors.length && errors}
-            </div>
+	        </div>
 
           <div className='email'>
             <label htmlFor='reg-email' className='form-text'>

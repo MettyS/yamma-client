@@ -1,5 +1,6 @@
 import {Component} from "react";
 import React from "react";
+import './Input.css';
 
 class Input extends Component {
   state = {
@@ -8,7 +9,14 @@ class Input extends Component {
   }
 
   onChange(e) {
-      this.setState({text: e.target.value});
+		if(!this.props.user.id){
+      this.setState({error: 'must be logged in to post message'});
+      return;
+    }
+		if(e.target.value.length > 0){
+			return this.setState({text: e.target.value, error: null });
+		}
+    this.setState({text: e.target.value, });
   }
 
   onSubmit(e) {
@@ -23,11 +31,10 @@ class Input extends Component {
       this.setState({error: 'cannot post an empty message'});
       return;
     }
-    console.log('TRYING TO SEND MESSAGEE: ', messageText)
-    
+    console.log('TRYING TO SEND MESSAGEE: ', messageText);
+
     this.props.handleSendMessage(messageText.value);
 
-    e.target.messageText.value = ""
     this.setState(
       {
         text: "",
@@ -37,7 +44,7 @@ class Input extends Component {
 
   render() {
     return (
-      <div className="input-wrapper">
+      <div className="input-wrapper" id='live-chat'>
         <form onSubmit={e => this.onSubmit(e)}>
           <p className='form-error'>{this.state.error}</p>
           <input
@@ -48,7 +55,7 @@ class Input extends Component {
             placeholder="Enter your message and press ENTER"
             // autoFocus={true}
           />
-          <button className='btn'>Post Message</button>
+          <button id='submit-message' className='btn'>Post Message</button>
         </form>
       </div>
     );
