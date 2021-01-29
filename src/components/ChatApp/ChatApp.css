@@ -7,7 +7,6 @@
   text-align: left;
 }
 
-
 .input-wrapper {
   margin-top: 10px;
   text-align: center;
@@ -19,7 +18,7 @@
   font-size: 20px;
   font-weight: 600;
   padding: 7px 5px;
-  background-color:lightgray;
+  background-color: lightgray;
   font-family: 'Poppins', sans-serif;
   border-radius: 15px;
   cursor: default;
@@ -42,8 +41,6 @@ ul.message-list {
 ul.message-list li {
   padding: 0px;
 }
-
-
 
 ul.message-list .username {
   padding-left: 10px;

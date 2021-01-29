@@ -36,11 +36,13 @@ class Header extends Component {
   renderLoginLink() {
     return (
       <nav className='login-links'>
-          <button className='user-button' onClick={this.props.logIn}>Login</button>
-        {' '}
-        <br/>
-          <button className='user-button' onClick={this.props.signUp}>Sign-Up</button>
-        {' '}
+        <button className='user-button' onClick={this.props.logIn}>
+          Login
+        </button>{' '}
+        <br />
+        <button className='user-button' onClick={this.props.signUp}>
+          Sign-Up
+        </button>{' '}
       </nav>
     );
   }

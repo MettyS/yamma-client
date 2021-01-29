@@ -13,7 +13,7 @@ export default class ArticlePage extends Component {
     eventId: null,
     loading: true,
     messages: [],
-    messageLoadError: null
+    messageLoadError: null,
   };
   static contextType = EventContext;
 
@@ -21,163 +21,101 @@ export default class ArticlePage extends Component {
     const prevEventId = prevProps.match.params.eventId;
     const { eventId } = this.props.match.params;
 
-    if(eventId !== prevEventId) {
-      this.getEventsAndMessages(eventId)
-      .then (newState => {
-        this.setState({...newState})
-      })
+    if (eventId !== prevEventId) {
+      this.getEventsAndMessages(eventId).then((newState) => {
+        this.setState({ ...newState });
+      });
     }
-
-    // const { eventId } = this.props.match.params;
-    // console.log('PROPS ID: ', eventId)
-    // console.log('prevProps ID ', prevProps.match.params)
-
-    // if(eventId !== prevProps.match.params) {
-    //   this.getEventsAndMessages(eventId)
-    //   .then (newState => {
-    //     this.setState({...newState})
-    //   })
-    // }
   }
 
   async getEventsAndMessages(eventId) {
     let newState = {
-      eventId: eventId
+      eventId: eventId,
     };
 
     try {
-      const commentRes = await YammaApiService.fetchComments(eventId)
-      console.log('the comment response we got back: ', commentRes.comments);
-        
+      const commentRes = await YammaApiService.fetchComments(eventId);
+
       newState.loading = false;
       newState.messages = commentRes.comments;
 
-      if (!(this.context.ids[eventId])) {
-        const eventRes = await YammaApiService.fetchEvent(eventId)
+      if (!this.context.ids[eventId]) {
+        const eventRes = await YammaApiService.fetchEvent(eventId);
         const categories = eventRes.categories.split(' ');
 
-        const relatedEventsRes = await YammaApiService.fetchEventsCategory(categories[0])
+        const relatedEventsRes = await YammaApiService.fetchEventsCategory(
+          categories[0]
+        );
 
-        console.log(relatedEventsRes)
-        this.context.processEvents([eventRes, ...(relatedEventsRes.events)]);
-
+        this.context.processEvents([eventRes, ...relatedEventsRes.events]);
       }
-    }
-    catch (er) {
+    } catch (er) {
       console.log('ERROR: ', er);
       newState.eventLoadError = er;
     }
-    
+
     return newState;
-
-
-    // YammaApiService.fetchComments(eventId)
-    // .then( res => {
-    //   console.log('the comment response we got back: ', res.comments);
-      
-    //   newState.loading = false;
-    //   newState.messages = res.comments;
-
-    //   if (!(this.context.ids[eventId])) {
-    //     YammaApiService.fetchEvent(eventId)
-    //       .then((eventRes) => {
-    //         const category = eventRes.categories.split(' ');
-
-    //         YammaApiService.fetchEventsCategory(category[0])
-    //           .then((categoryRes) => {
-    //             this.context.processEvents([eventRes, ...categoryRes.events]);
-    //           })
-    //           .catch((er) => {
-    //             console.log('error in getting related events', er);
-    //             throw er;
-    //           });
-    //       })
-    //       .catch((er) => {
-    //         console.log('error in fetching event with id', eventId, er);
-    //         this.setState({eventLoadError: er});
-    //       });
-    //   }
-
-    //   console.log('RESETTING ARTICLE PAGE STATE NOW WOOOOOOOOT WOOOOOOOOT', newState)
-    //   this.setState({
-    //     ...newState
-    //   })
-    // })
-    // .catch(er => {
-    //   console.log('error in fetching messages', er);
-    //   this.setState({messageLoadError: er}); 
-    // })
   }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (currentThing === nextThing) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
 
   handleSendMessage = (message) => {
     const { eventId } = this.state;
     const comment = {
-      content: message
-    }
-
-    console.log('COMMON SENDING IS: ', comment);
+      content: message,
+    };
 
     YammaApiService.postComment(comment, eventId)
-    .then(res => {
-      console.log('COMMENT RES IS: ', res);
-      this.setState({
-        messageSendError: null,
-        messages: [...this.state.messages, res]
+      .then((res) => {
+        this.setState({
+          messageSendError: null,
+          messages: [...this.state.messages, res],
+        });
       })
-    })
-    .catch(er => {
-      console.log(er);
-      this.setState({messageSendError: er })
-    })
-  }
-
-
+      .catch((er) => {
+        console.log(er);
+        this.setState({ messageSendError: er });
+      });
+  };
 
   componentDidMount() {
-    console.log('_________________________________________ new mount')
     const { eventId } = this.props.match.params;
-    
-    this.getEventsAndMessages(eventId)
-    .then (newState => {
-      this.setState({...newState})
-    })
+
+    this.getEventsAndMessages(eventId).then((newState) => {
+      this.setState({ ...newState });
+    });
   }
 
   createArticleContent = (event) => {
-    if(!event)
-      return (<div className='article-content'>'Loading...'</div>)
+    if (!event) return <div className='article-content'>'Loading...'</div>;
 
-    const date = new Date(event.date_published)
+    const date = new Date(event.date_published);
     return (
-        <div className='article-content'>
-          <div className='article-banner'>
-            <p className='source-title'>{event.source_name}</p>
-            <p>{`[ ${event.categories} ]`}</p>
-          </div>
-          <div className='head-panel'>
-            <h1>{event.title}</h1>
-            <img src={event.event_img} alt='' className='article-img' />
-          </div>
-          <div className='body-panel'>
-            <p>{event.description}</p>
-            <div className='btn'>
-              <a href={`${event.source_url}`} target='_blank' rel='noopener noreferrer' id='see-original-article' className='btn'>See Original Article</a>
-            </div>
-          </div>
-          <div className='foot-panel'>
-            <p>{`${date.toDateString()}   ${date.getHours()}:${date.getMinutes()}`}</p>
-          </div>
-
+      <div className='article-content'>
+        <div className='article-banner'>
+          <p className='source-title'>{event.source_name}</p>
+          <p>{`[ ${event.categories} ]`}</p>
         </div>
-      )
+        <div className='head-panel'>
+          <h1>{event.title}</h1>
+          <img src={event.event_img} alt='' className='article-img' />
+        </div>
+        <div className='body-panel'>
+          <p>{event.description}</p>
+          <div className='btn'>
+            <a
+              href={`${event.source_url}`}
+              target='_blank'
+              rel='noopener noreferrer'
+              id='see-original-article'
+              className='btn'>
+              See Original Article
+            </a>
+          </div>
+        </div>
+        <div className='foot-panel'>
+          <p>{`${date.toDateString()}   ${date.getHours()}:${date.getMinutes()}`}</p>
+        </div>
+      </div>
+    );
   };
 
   createRelatedContent = (event, numberOfRelatedArticles = 4) => {
@@ -192,32 +130,36 @@ export default class ArticlePage extends Component {
     const relatedArray = this.context[category];
     let relatedItems = new Array(numberOfRelatedArticles);
     for (let i = 0; i < numberOfRelatedArticles; i++) {
-      relatedItems[i] = relatedArray[Math.floor(Math.random() * relatedArray.length)];
+      relatedItems[i] =
+        relatedArray[Math.floor(Math.random() * relatedArray.length)];
     }
 
-    const articleCards = relatedItems.map( (id, i) => {
-      const article = ids[id]
+    const articleCards = relatedItems.map((id, i) => {
+      const article = ids[id];
 
-      return <ArticleCard key={i} className='article-related-card' article={article} />
+      return (
+        <ArticleCard
+          key={i}
+          className='article-related-card'
+          article={article}
+        />
+      );
     });
 
     return articleCards;
-
   };
-
-
 
   render() {
     // const { user } = this.context.userContext
 
     const { loading, messages, messageLoadError } = this.state;
-    console.log('ARTICLE PAGE RENDER... LOADING IS: ', loading, messages);
-    console.log('JUST CHECKING ARTICLEs PROPS', this.props)
     const { eventId } = this.props.match.params;
     const event = this.context.ids[eventId];
 
     const articleContent = this.createArticleContent(event);
-    const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';
+    const relatedArticles = event
+      ? this.createRelatedContent(event)
+      : 'Loading';
 
     return (
       //<div>YAY!</div>
@@ -225,14 +167,15 @@ export default class ArticlePage extends Component {
         <div className='article-body'>
           {articleContent}
 
-            <ChatApp 
-              eventId={eventId} 
-              loading={loading} 
-              messages={messages}
-              messageLoadError={messageLoadError}
-              handleSendMessage={message => {
-                this.handleSendMessage(message)
-                }}/>
+          <ChatApp
+            eventId={eventId}
+            loading={loading}
+            messages={messages}
+            messageLoadError={messageLoadError}
+            handleSendMessage={(message) => {
+              this.handleSendMessage(message);
+            }}
+          />
         </div>
 
         <br></br>
@@ -240,9 +183,7 @@ export default class ArticlePage extends Component {
         <h3 className='related-h3'>Related</h3>
 
         <div className='related-section'>
-          <ul className='related-articles-list'>
-            {relatedArticles}
-          </ul>
+          <ul className='related-articles-list'>{relatedArticles}</ul>
         </div>
       </div>
     );

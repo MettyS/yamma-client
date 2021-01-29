@@ -7,29 +7,29 @@ class Footer extends Component {
 
   renderFooterLinks() {
     return (
-        <ul className='footer-links'>
-          <li>
-            <Link to='/about' className='li-links'>
-              About
-            </Link>
-          </li>
-          {/* <li className='footer-bars'>|</li> */}
-          {/* <li>
+      <ul className='footer-links'>
+        <li>
+          <Link to='/about' className='li-links'>
+            About
+          </Link>
+        </li>
+        {/* <li className='footer-bars'>|</li> */}
+        {/* <li>
             <Link to='/contact' className='li-links'>
               Contact
             </Link>
           </li> */}
-          <li className='footer-bars'>|</li>
-          <li>
-            <p
-              onClick={() => (document.documentElement.scrollTop = 0)}
-              id='myBtn'
-              title='Go to top'
-              className='li-links'>
-              ▲ Top ▲
-            </p>
-          </li>
-        </ul>
+        <li className='footer-bars'>|</li>
+        <li>
+          <p
+            onClick={() => (document.documentElement.scrollTop = 0)}
+            id='myBtn'
+            title='Go to top'
+            className='li-links'>
+            ▲ Top ▲
+          </p>
+        </li>
+      </ul>
     );
   }
 

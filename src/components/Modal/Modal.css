@@ -17,7 +17,7 @@
 .overlay {
   min-height: 100vh;
   padding: 24px 36px;
-  
+
   position: fixed;
   top: 0;
   left: 0;
@@ -28,11 +28,8 @@
   z-index: 100;
 }
 
-
 @media only screen and (max-width: 615px) {
-
   .modal {
     width: 75%;
   }
-
 }
