@@ -29,6 +29,7 @@ body {
   main {
   min-height: 100vh;
   /* padding: 8px 12px; */
+  margin-bottom: 95px;
   margin-top: 72px;
 }
 

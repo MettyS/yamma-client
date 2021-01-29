@@ -1,0 +1,60 @@
+.chat-section {
+  width: 100%;
+  text-align: center;
+}
+
+.chat-section h2 {
+  text-align: left;
+}
+
+
+.input-wrapper {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.input-wrapper .btn {
+  margin-top: 20px;
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 7px 5px;
+  background-color:lightgray;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 15px;
+  cursor: default;
+  border-width: 2px;
+  border-style: outset;
+  border-color: lightgray;
+}
+
+ul.message-list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+  border-left: 1px rgb(172, 172, 172) solid;
+}
+
+ul.message-list li {
+  padding: 0px;
+}
+
+ul.message-list .username {
+  padding-left: 10px;
+}
+
+ul.message-list .content {
+  padding-left: 50px;
+}
+
+ul.message-list p {
+  margin: 0px;
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+}
+
+p.form-error {
+  margin: 0px;
+}

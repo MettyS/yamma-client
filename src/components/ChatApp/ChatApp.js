@@ -7,6 +7,8 @@ import TokenService from '../../services/token-service';
 import Messages from "./Messages";
 import Input from "./Input";
 
+import './ChatApp.css'
+
 function randomName() {
   const adjectives = [
     "autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark",
@@ -144,21 +146,25 @@ class ChatApp extends Component {
   }
 
   render() {
-    
+    const { messages, loading } = this.state
+
+    const { user } = this.context;
+
+    console.log('USER IS: ', user);
 
     return (
-      <div>
+      <div className='chat-section'>
         <div>
-          <h1>Live Chat</h1>
+          <h2>Live Chat</h2>
         </div>
         <Messages
-          messages={this.state.messages}
-          user={this.state.user}
-          loading={this.state.loading}
+          messages={messages}
+          user={user}
+          loading={loading}
         />
         <Input
           handleSendMessage={this.handleSendMessage}
-          user={this.state.user}
+          user={user}
         />
       </div>
     );

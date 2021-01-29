@@ -42,15 +42,34 @@ export default class ArticlePage extends Component {
 
   createArticleContent = (event) => {
     console.log(event);
+    if(!event)
+      return (<div className='article-content'>'Loading...'</div>)
 
+    const date = new Date(event.date_published)
+    console.log(date);
     return (
-      <div className='article-content'>
-        <h1>{event ? event.title : 'Loading'}</h1>
-        {/* <p>Region: {article.region}</p> */}
-        <p>Category: {event ? event.categories : 'Loading'}</p>
-        <p>{event ? event.description : 'Loading'}</p>
-      </div>
-    );
+        <div className='article-content'>
+          <div className='article-banner'>
+            <p className='source-title'>{event.source_name}</p>
+            <p>{`[ ${event.categories} ]`}</p>
+          </div>
+          <div className='head-panel'>
+            <h1>{event.title}</h1>
+            <img src={event.event_img} alt='' className='article-img' />
+          </div>
+          <div className='body-panel'>
+            <p>{event.description}</p>
+            <div className='btn'>
+              <a href={`${event.source_url}`} className='btn'>See Original</a>
+            </div>
+          </div>
+          <div className='foot-panel'>
+            <p>{`${date.toDateString()}   ${date.getHours()}:${date.getMinutes()}`}</p>
+          </div>
+          
+        </div>
+      )
+    
   };
 
   createRelatedContent = (event, numberOfRelatedArticles = 4) => {
@@ -94,9 +113,7 @@ export default class ArticlePage extends Component {
         <div className='article-body'>
           {articleContent}
 
-          <div className='chat-section'>
             <ChatApp eventId={eventId} user={user}/>
-          </div>
         </div>
 
         <br></br>
