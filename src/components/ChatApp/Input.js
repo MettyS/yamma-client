@@ -8,6 +8,10 @@ class Input extends Component {
   }
 
   onChange(e) {
+		if(!this.props.user.id){
+      this.setState({error: 'must be logged in to post message'});
+      return;
+    }
       this.setState({text: e.target.value});
   }
 
@@ -23,7 +27,7 @@ class Input extends Component {
       return;
     }
 
-    
+
     this.props.handleSendMessage(this.state.text);
     this.setState(
       {
