@@ -7,7 +7,6 @@
   text-align: left;
 }
 
-
 .input-wrapper {
   margin-top: 10px;
   text-align: center;
@@ -19,7 +18,7 @@
   font-size: 20px;
   font-weight: 600;
   padding: 7px 5px;
-  background-color:lightgray;
+  background-color: lightgray;
   font-family: 'Poppins', sans-serif;
   border-radius: 15px;
   cursor: default;
@@ -43,8 +42,6 @@ ul.message-list li {
   padding: 0px;
 }
 
-
-
 ul.message-list .username {
   padding-left: 10px;
   font-weight: 600;
@@ -67,4 +64,18 @@ ul.message-list p {
 
 p.form-error {
   margin: 0px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 768px) {
+  p.form-error {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  p.form-error {
+    font-size: 14px;
+  }
 }

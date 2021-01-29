@@ -49,7 +49,7 @@
   font-size: 20px;
   font-weight: 600;
   padding: 7px 5px;
-  background-color:lightgray;
+  background-color: lightgray;
   font-family: 'Poppins', sans-serif;
   border-radius: 15px;
   cursor: default;
@@ -59,7 +59,7 @@
 }
 
 #see-original-article:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .article-content img {
@@ -75,8 +75,8 @@
   border-top: 1px rgb(172, 172, 172) solid;
 }
 
-
-.related-h3, .related-h4 {
+.related-h3,
+.related-h4 {
   color: white;
   text-align: center;
 }
@@ -126,7 +126,6 @@
 }
 
 @media only screen and (min-width: 560px) {
-
 }
 
 @media only screen and (min-width: 768px) {
@@ -178,7 +177,6 @@
     vertical-align: bottom;
   }
 
-
   .related-article-list-item {
     font-size: 14px;
     font-weight: bolder;
@@ -201,10 +199,7 @@
 }
 
 @media only screen and (min-width: 860px) {
-
 }
 
 @media only screen and (min-width: 1000px) {
-
-
 }

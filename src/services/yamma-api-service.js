@@ -19,11 +19,11 @@ const YammaApiService = {
     return fetch(`${config.API_ENDPOINT}/events/${eventId}`, {
       method: 'GET',
       headers: {
-        'content-type': 'application/json'
-      }
-    }).then( res => 
-      res.ok ? res.json() : res.json().then( e => Promise.reject(e))
-      );
+        'content-type': 'application/json',
+      },
+    }).then((res) =>
+      res.ok ? res.json() : res.json().then((e) => Promise.reject(e))
+    );
   },
 
   fetchEventsCategory(category) {
@@ -53,14 +53,13 @@ const YammaApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'authorization': `Bearer ${TokenService.getAuthToken()}`,
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({ comment }),
     }).then((res) =>
       !res.ok ? res.json().then((err) => Promise.reject(err)) : res.json()
     );
-  }
-}
-
+  },
+};
 
 export default YammaApiService;

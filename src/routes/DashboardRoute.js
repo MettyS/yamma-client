@@ -8,30 +8,26 @@ import CategoryPage from '../components/CategoryPage/CategoryPage';
 
 class DashBoard extends Component {
   renderArticlePanel() {
-    console.log('dashboard re-render!');
     return (
-      
-          <>
-          {['/', '/event/article/:eventId/:title'].map(path => (
-
-              <Route key={path} path={path} render={() => (
-                <ArticlePanel />
-                // <EventContext.Consumer>
-                //   { val => <ArticlePanel /> }
-                // </EventContext.Consumer>
-              )}/> 
-            ) )
-          }
-                  
-            
-          
-
-        </>
-    )
+      <>
+        {['/', '/event/article/:eventId/:title'].map((path) => (
+          <Route
+            key={path}
+            path={path}
+            render={() => (
+              <ArticlePanel />
+              // <EventContext.Consumer>
+              //   { val => <ArticlePanel /> }
+              // </EventContext.Consumer>
+            )}
+          />
+        ))}
+      </>
+    );
   }
 
   renderCategoryList() {
-    return(
+    return (
       <>
         {['/', '/event/article/:title'].map((path) => (
           <Route
@@ -57,7 +53,6 @@ class DashBoard extends Component {
         ))}
       </>
     );
-    
   }
 
   render() {

@@ -10,65 +10,112 @@ import spinner from '../../images/spinner.png';
 
 export default class ArticlePage extends Component {
   state = {
+    eventId: null,
     loading: true,
+    messages: [],
+    messageLoadError: null,
   };
   static contextType = EventContext;
 
-  componentDidMount() {
+  componentDidUpdate(prevProps, state) {
+    const prevEventId = prevProps.match.params.eventId;
     const { eventId } = this.props.match.params;
-    if (this.context.ids[eventId] || this.state.loading === false) return;
 
-    YammaApiService.fetchEvent(eventId)
-      .then((eventRes) => {
-        //console.log('This is the event recieved: ', eventRes);
+    if (eventId !== prevEventId) {
+      this.getEventsAndMessages(eventId).then((newState) => {
+        this.setState({ ...newState });
+      });
+    }
+  }
 
-        const category = eventRes.categories.split(' ');
+  async getEventsAndMessages(eventId) {
+    let newState = {
+      eventId: eventId,
+    };
 
-        YammaApiService.fetchEventsCategory(category[0])
-          .then((categoryRes) => {
-            //console.log('this is the category recieved: ', categoryRes);
-            this.setState({ loading: false });
-            this.context.processEvents([eventRes, ...categoryRes.events]);
-          })
-          .catch((er) => {
-            throw er;
-          });
+    try {
+      const commentRes = await YammaApiService.fetchComments(eventId);
+
+      newState.loading = false;
+      newState.messages = commentRes.comments;
+
+      if (!this.context.ids[eventId]) {
+        const eventRes = await YammaApiService.fetchEvent(eventId);
+        const categories = eventRes.categories.split(' ');
+
+        const relatedEventsRes = await YammaApiService.fetchEventsCategory(
+          categories[0]
+        );
+
+        this.context.processEvents([eventRes, ...relatedEventsRes.events]);
+      }
+    } catch (er) {
+      console.log('ERROR: ', er);
+      newState.eventLoadError = er;
+    }
+
+    return newState;
+  }
+
+  handleSendMessage = (message) => {
+    const { eventId } = this.state;
+    const comment = {
+      content: message,
+    };
+
+    YammaApiService.postComment(comment, eventId)
+      .then((res) => {
+        this.setState({
+          messageSendError: null,
+          messages: [...this.state.messages, res],
+        });
       })
       .catch((er) => {
-        console.log('error in fetching event with id: ', eventId);
-        console.log('ERROR: ', er);
+        console.log(er);
+        this.setState({ messageSendError: er });
       });
+  };
+
+  componentDidMount() {
+    const { eventId } = this.props.match.params;
+
+    this.getEventsAndMessages(eventId).then((newState) => {
+      this.setState({ ...newState });
+    });
   }
 
   createArticleContent = (event) => {
-    console.log(event);
-    if(!event)
-      return (<div className='article-content'>'Loading...'</div>)
+    if (!event) return <div className='article-content'>'Loading...'</div>;
 
-    const date = new Date(event.date_published)
+    const date = new Date(event.date_published);
     return (
-        <div className='article-content'>
-          <div className='article-banner'>
-            <p className='source-title'>{event.source_name}</p>
-            <p>{`[ ${event.categories} ]`}</p>
-          </div>
-          <div className='head-panel'>
-            <h1>{event.title}</h1>
-            <img src={event.event_img} alt='' className='article-img' />
-          </div>
-          <div className='body-panel'>
-            <p>{event.description}</p>
-            <div className='btn'>
-              <a href={`${event.source_url}`} target='_blank' rel='noopener noreferrer' id='see-original-article' className='btn'>See Original Article</a>
-            </div>
-          </div>
-          <div className='foot-panel'>
-            <p>{`${date.toDateString()}   ${date.getHours()}:${date.getMinutes()}`}</p>
-          </div>
-
+      <div className='article-content'>
+        <div className='article-banner'>
+          <p className='source-title'>{event.source_name}</p>
+          <p>{`[ ${event.categories} ]`}</p>
         </div>
-      )
-
+        <div className='head-panel'>
+          <h1>{event.title}</h1>
+          <img src={event.event_img} alt='' className='article-img' />
+        </div>
+        <div className='body-panel'>
+          <p>{event.description}</p>
+          <div className='btn'>
+            <a
+              href={`${event.source_url}`}
+              target='_blank'
+              rel='noopener noreferrer'
+              id='see-original-article'
+              className='btn'>
+              See Original Article
+            </a>
+          </div>
+        </div>
+        <div className='foot-panel'>
+          <p>{`${date.toDateString()}   ${date.getHours()}:${date.getMinutes()}`}</p>
+        </div>
+      </div>
+    );
   };
 
   createRelatedContent = (event, numberOfRelatedArticles = 4) => {
@@ -83,28 +130,36 @@ export default class ArticlePage extends Component {
     const relatedArray = this.context[category];
     let relatedItems = new Array(numberOfRelatedArticles);
     for (let i = 0; i < numberOfRelatedArticles; i++) {
-      relatedItems[i] = relatedArray[Math.floor(Math.random() * relatedArray.length)];
+      relatedItems[i] =
+        relatedArray[Math.floor(Math.random() * relatedArray.length)];
     }
 
-    const articleCards = relatedItems.map( (id, i) => {
-      const article = ids[id]
+    const articleCards = relatedItems.map((id, i) => {
+      const article = ids[id];
 
-      return <ArticleCard key={i} className='article-related-card' article={article} />
+      return (
+        <ArticleCard
+          key={i}
+          className='article-related-card'
+          article={article}
+        />
+      );
     });
 
     return articleCards;
-
   };
-
 
   render() {
     // const { user } = this.context.userContext
 
+    const { loading, messages, messageLoadError } = this.state;
     const { eventId } = this.props.match.params;
     const event = this.context.ids[eventId];
 
     const articleContent = this.createArticleContent(event);
-    const relatedArticles = event ? this.createRelatedContent(event) : 'Loading';
+    const relatedArticles = event
+      ? this.createRelatedContent(event)
+      : 'Loading';
 
     return (
       //<div>YAY!</div>
@@ -112,7 +167,15 @@ export default class ArticlePage extends Component {
         <div className='article-body'>
           {articleContent}
 
-            <ChatApp eventId={eventId} />
+          <ChatApp
+            eventId={eventId}
+            loading={loading}
+            messages={messages}
+            messageLoadError={messageLoadError}
+            handleSendMessage={(message) => {
+              this.handleSendMessage(message);
+            }}
+          />
         </div>
 
         <br></br>
@@ -120,9 +183,7 @@ export default class ArticlePage extends Component {
         <h3 className='related-h3'>Related</h3>
 
         <div className='related-section'>
-          <ul className='related-articles-list'>
-            {relatedArticles}
-          </ul>
+          <ul className='related-articles-list'>{relatedArticles}</ul>
         </div>
       </div>
     );
