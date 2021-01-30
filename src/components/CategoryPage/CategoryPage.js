@@ -20,8 +20,7 @@ export default class CategoryPage extends Component {
   componentDidMount() {
     const { category } = this.props.match.params;
     const contextCategory = this.context.getCorrespondingCategory(category);
-
-    if (this.context[contextCategory].length) {
+    if (this.context[contextCategory] && this.context[contextCategory].length) {
       if (this.state.loading === false) return;
       else {
         this.setState({ loading: false });

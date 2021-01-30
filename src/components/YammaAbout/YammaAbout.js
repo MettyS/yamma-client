@@ -37,7 +37,7 @@ class YammaAbout extends Component {
             </p>
             <p>Join in on the yamma by browsing relevant articles and events.</p>
           </div>
-          <div classname='bottom-panel'>
+          <div className='bottom-panel'>
             <p>
               Sample Account:
             </p>
