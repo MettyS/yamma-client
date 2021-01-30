@@ -40,7 +40,9 @@ class Header extends Component {
           Login
         </button>{' '}
         <br />
-        <button className='user-button' onClick={this.props.displayRegistration}>
+        <button
+          className='user-button'
+          onClick={this.props.displayRegistration}>
           Sign-Up
         </button>{' '}
       </nav>

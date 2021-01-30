@@ -40,9 +40,15 @@ export default class CategoryPage extends Component {
   }
 
   createRelatedArticles = (events) => {
-    return events.map((eventId) => {
+    return events.map((eventId, index) => {
       const article = this.context.ids[eventId];
-      return <ArticleCard className='article-panel-card' article={article} />;
+      return (
+        <ArticleCard
+          key={index}
+          className='article-panel-card'
+          article={article}
+        />
+      );
     });
   };
 

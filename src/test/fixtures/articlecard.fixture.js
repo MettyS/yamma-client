@@ -18,5 +18,5 @@ export default {
     archived: false,
   },
 
-  className: ''
-}
+  className: '',
+};

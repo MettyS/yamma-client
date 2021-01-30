@@ -21,8 +21,12 @@ class LoginForm extends Component {
 
   closeMenu = (e) => {
     e.preventDefault();
-    const targetClasses = Object.values(e.target.classList)
-    if (!targetClasses.includes('overlay') && !targetClasses.includes('close-button')) return;
+    const targetClasses = Object.values(e.target.classList);
+    if (
+      !targetClasses.includes('overlay') &&
+      !targetClasses.includes('close-button')
+    )
+      return;
     this.props.onClose();
   };
 
@@ -57,9 +61,9 @@ class LoginForm extends Component {
     return (
       <Modal open={open} onClose={this.closeMenu}>
         <div className='modal-content'>
-        <button className='close-button' onClick={this.closeMenu}>
-          Close
-        </button>
+          <button className='close-button' onClick={this.closeMenu}>
+            Close
+          </button>
 
           <form className='log-in-form' onSubmit={this.handleSubmit}>
             <div className={`alert-info ${error ? '' : 'hidden'}`} role='alert'>

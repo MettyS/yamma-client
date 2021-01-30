@@ -33,8 +33,12 @@ class RegistrationForm extends Component {
 
   closeMenu = (e) => {
     e.preventDefault();
-    const targetClasses = Object.values(e.target.classList)
-    if (!targetClasses.includes('overlay') && !targetClasses.includes('close-button')) return;
+    const targetClasses = Object.values(e.target.classList);
+    if (
+      !targetClasses.includes('overlay') &&
+      !targetClasses.includes('close-button')
+    )
+      return;
     this.props.onClose();
   };
 
@@ -124,84 +128,84 @@ class RegistrationForm extends Component {
     return (
       <Modal open={this.props.open} onClose={this.closeMenu}>
         <div className='modal-content'>
-        <button className='close-button' onClick={this.closeMenu}>
-          Close
-        </button>
-        <form
-          className='registration-form'
-          id='registration-form'
-          onSubmit={this.handleSubmit}>
-          <div
-            className={`alert-info ${errors.length ? '' : 'hidden'}`}
-            role='alert'>
-            {/*// QUESTION: why are we checking for length twice?*/}
-            {errors.length && errors}
-          </div>
-
-          <div className='email'>
-            <label htmlFor='reg-email' className='form-text'>
-              Email
-            </label>
-            <input
-              required
-              type='text'
-              id='reg-email'
-              placeholder='Enter your email here'
-              name='email'
-              onChange={this.handleChange}
-            />
-          </div>
-
-          <div className='username'>
-            <label htmlFor='reg-username' className='form-text'>
-              Username
-            </label>
-            <input
-              required
-              type='text'
-              id='reg-username'
-              placeholder='Enter username here'
-              name='username'
-              onChange={this.handleChange}
-            />
-          </div>
-
-          <div className='password'>
-            <label htmlFor='reg-password' className='form-text'>
-              Password
-            </label>
-            <input
-              required
-              type='password'
-              id='reg-password'
-              placeholder='Enter password here'
-              name='password'
-              onChange={this.handleChange}
-            />
-          </div>
-
-          <div className='password'>
-            <label htmlFor='reg-password-repeat' className='form-text'>
-              Repeat Password
-            </label>
-            <input
-              required
-              type='password'
-              id='reg-password-repeat'
-              placeholder='Repeat password'
-              name='passwordRepeat'
-              onChange={this.handleChange}
-            />
-          </div>
-
-          <button type='submit' className='submit-button'>
-            Sign Up
+          <button className='close-button' onClick={this.closeMenu}>
+            Close
           </button>
+          <form
+            className='registration-form'
+            id='registration-form'
+            onSubmit={this.handleSubmit}>
+            <div
+              className={`alert-info ${errors.length ? '' : 'hidden'}`}
+              role='alert'>
+              {/*// QUESTION: why are we checking for length twice?*/}
+              {errors.length && errors}
+            </div>
 
-          <Link to='/login' className='need-an-acct'>
-            Already have an account?
-          </Link>
-        </form>
+            <div className='email'>
+              <label htmlFor='reg-email' className='form-text'>
+                Email
+              </label>
+              <input
+                required
+                type='text'
+                id='reg-email'
+                placeholder='Enter your email here'
+                name='email'
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className='username'>
+              <label htmlFor='reg-username' className='form-text'>
+                Username
+              </label>
+              <input
+                required
+                type='text'
+                id='reg-username'
+                placeholder='Enter username here'
+                name='username'
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className='password'>
+              <label htmlFor='reg-password' className='form-text'>
+                Password
+              </label>
+              <input
+                required
+                type='password'
+                id='reg-password'
+                placeholder='Enter password here'
+                name='password'
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className='password'>
+              <label htmlFor='reg-password-repeat' className='form-text'>
+                Repeat Password
+              </label>
+              <input
+                required
+                type='password'
+                id='reg-password-repeat'
+                placeholder='Repeat password'
+                name='passwordRepeat'
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <button type='submit' className='submit-button'>
+              Sign Up
+            </button>
+
+            <Link to='/login' className='need-an-acct'>
+              Already have an account?
+            </Link>
+          </form>
         </div>
       </Modal>
     );

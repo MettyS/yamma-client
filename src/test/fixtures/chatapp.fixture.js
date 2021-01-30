@@ -1,4 +1,4 @@
 export default {
   messages: [],
-  loading: false
-}
+  loading: false,
+};
