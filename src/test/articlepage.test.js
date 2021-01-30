@@ -8,14 +8,13 @@ import paramsFixture from './fixtures/params.fixture';
 // unable to provide props or context to the test
 // alternative defeats the purpose of the test
 
-
 describe('Article Page', () => {
   it('renders without crashing', () => {
     const div = document.createElement('root');
     ReactDOM.render(
       <BrowserRouter>
         <UserProvider>
-          <ArticlePage {...paramsFixture}/>
+          <ArticlePage {...paramsFixture} />
         </UserProvider>
       </BrowserRouter>,
       div

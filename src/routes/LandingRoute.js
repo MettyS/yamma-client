@@ -10,19 +10,14 @@ class LandingRoute extends Component {
   };
 
   handleLoginSuccess = () => {
-    console.log('IS THIS EVER CALLED')
+    console.log('IS THIS EVER CALLED');
     const { location, history } = this.props;
     const destination = (location.state || {}).from || '/';
     history.push(destination);
   };
 
   render() {
-    return (
-      <YammaAbout
-        open={this.props.open}
-        onClose={this.props.onClose}
-      />
-    );
+    return <YammaAbout open={this.props.open} onClose={this.props.onClose} />;
   }
 }
 

@@ -22,12 +22,12 @@ class App extends Component {
     hasError: false,
     displayLogin: false,
     displayRegistration: false,
-    displayLanding: true
+    displayLanding: true,
   };
 
   toggleLanding = () => {
-    this.setState({ displayLanding: !this.state.displayLanding })
-  }
+    this.setState({ displayLanding: !this.state.displayLanding });
+  };
 
   toggleLogin = () => {
     this.setState({ displayLogin: !this.state.displayLogin });
@@ -47,10 +47,20 @@ class App extends Component {
     return (
       <div className='App'>
         {hasError && <p>There was an error! Oh no!</p>}
-        <Header displayLanding={this.toggleLanding} displayLogin={this.toggleLogin} displayRegistration={this.toggleRegistration} />
+        <Header
+          displayLanding={this.toggleLanding}
+          displayLogin={this.toggleLogin}
+          displayRegistration={this.toggleRegistration}
+        />
         <main>
-          <LandingRoute open={this.state.displayLanding} onClose={this.toggleLanding} />
-          <LoginRoute open={this.state.displayLogin} onClose={this.toggleLogin} />
+          <LandingRoute
+            open={this.state.displayLanding}
+            onClose={this.toggleLanding}
+          />
+          <LoginRoute
+            open={this.state.displayLogin}
+            onClose={this.toggleLogin}
+          />
           <RegisterRoute
             open={this.state.displayRegistration}
             onClose={this.toggleRegistration}
@@ -66,7 +76,7 @@ class App extends Component {
           <Route path={'/event/:event'} component={EventPageRoute} />
           <Route path={'/about'} component={YammaAbout} />
         </main>
-        <Footer displayLanding={this.toggleLanding}/>
+        <Footer displayLanding={this.toggleLanding} />
       </div>
     );
   }

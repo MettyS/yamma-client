@@ -7,21 +7,23 @@ import CategoryList from '../components/CategoryList/CategoryList';
 // import CategoryPage from '../components/CategoryPage/CategoryPage';
 
 class DashBoard extends Component {
-  
   renderArticlePanel() {
     return (
-          <>
-          {['/', '/event/article/:eventId/:title'].map(path => (
-              <Route key={path} path={path} render={() => (
-                <ArticlePanel />
-                // <EventContext.Consumer>
-                //   { val => <ArticlePanel /> }
-                // </EventContext.Consumer>
-              )}/> 
-            ) )
-          }
-        </>
-    )
+      <>
+        {['/', '/event/article/:eventId/:title'].map((path) => (
+          <Route
+            key={path}
+            path={path}
+            render={() => (
+              <ArticlePanel />
+              // <EventContext.Consumer>
+              //   { val => <ArticlePanel /> }
+              // </EventContext.Consumer>
+            )}
+          />
+        ))}
+      </>
+    );
   }
 
   renderCategoryList() {

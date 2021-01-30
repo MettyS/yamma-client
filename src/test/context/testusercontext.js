@@ -22,7 +22,7 @@ export default UserContext;
 export class UserProvider extends Component {
   constructor(props) {
     super(props);
-    const state = { user: {id: 2, username: "BobbyJoe"}, error: null };
+    const state = { user: { id: 2, username: 'BobbyJoe' }, error: null };
 
     this.state = state;
   }

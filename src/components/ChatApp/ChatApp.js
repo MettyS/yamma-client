@@ -8,7 +8,6 @@ import Input from './Input';
 
 import './ChatApp.css';
 
-
 class ChatApp extends Component {
   static contextType = UserContext;
 

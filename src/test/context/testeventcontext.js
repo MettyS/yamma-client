@@ -31,7 +31,7 @@ export class EventProvider extends Component {
     super(props);
     const state = {
       ids: {
-        '1' : {
+        1: {
           id: 1,
           title:
             'Man killed by Lakewood police fired on law enforcement, police say ',
@@ -48,7 +48,7 @@ export class EventProvider extends Component {
           date_created: '2021-01-13T23:05:57.950Z',
           date_published: '2021-01-13T22:19:00.000Z',
           archived: false,
-        }
+        },
       }, // obj of key=event.id value=event
       us: [], // event.id's with category 'US'
       usWest: ['1'], // event.id's with category 'US_West',
@@ -98,7 +98,7 @@ export class EventProvider extends Component {
       case 'Health':
         return 'health';
     }
-    console.log('INVALID CATEGORY :(')
+    console.log('INVALID CATEGORY :(');
     throw new Error('not a valid category:' + rawCategory);
   };
 
