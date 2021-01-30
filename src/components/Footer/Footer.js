@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Footer.css';
-import { Link } from 'react-router-dom';
 
 class Footer extends Component {
   mybutton = document.getElementById('myBtn');
@@ -9,9 +8,12 @@ class Footer extends Component {
     return (
       <ul className='footer-links'>
         <li>
-          <Link to='/about' className='li-links'>
+          <div
+            onClick={this.props.displayLanding}
+            className='li-links fake-link'
+            to='/about'>
             About
-          </Link>
+          </div>
         </li>
         {/* <li className='footer-bars'>|</li> */}
         {/* <li>
@@ -25,7 +27,7 @@ class Footer extends Component {
             onClick={() => (document.documentElement.scrollTop = 0)}
             id='myBtn'
             title='Go to top'
-            className='li-links'>
+            className='li-links fake-link'>
             ▲ Top ▲
           </p>
         </li>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import LoginForm from '../../src/components/LoginForm/LoginForm';
+import YammaAbout from '../../src/components/YammaAbout/YammaAbout';
 
-class LoginRoute extends Component {
+class LandingRoute extends Component {
   static defaultProps = {
     location: {},
     history: {
@@ -18,8 +18,7 @@ class LoginRoute extends Component {
 
   render() {
     return (
-      <LoginForm
-        onLoginSuccess={this.handleLoginSuccess}
+      <YammaAbout
         open={this.props.open}
         onClose={this.props.onClose}
       />
@@ -27,4 +26,4 @@ class LoginRoute extends Component {
   }
 }
 
-export default LoginRoute;
+export default LandingRoute;

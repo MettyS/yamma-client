@@ -33,7 +33,8 @@ class RegistrationForm extends Component {
 
   closeMenu = (e) => {
     e.preventDefault();
-    if (!Object.values(e.target.classList).includes('overlay')) return;
+    const targetClasses = Object.values(e.target.classList)
+    if (!targetClasses.includes('overlay') && !targetClasses.includes('close-button')) return;
     this.props.onClose();
   };
 
@@ -122,6 +123,10 @@ class RegistrationForm extends Component {
     const errors = this.createErrors();
     return (
       <Modal open={this.props.open} onClose={this.closeMenu}>
+        <div className='modal-content'>
+        <button className='close-button' onClick={this.closeMenu}>
+          Close
+        </button>
         <form
           className='registration-form'
           id='registration-form'
@@ -197,6 +202,7 @@ class RegistrationForm extends Component {
             Already have an account?
           </Link>
         </form>
+        </div>
       </Modal>
     );
   }

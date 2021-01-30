@@ -41,6 +41,45 @@ section {
   display: none;
 }
 
+.modal-content {
+  text-align: center;
+}
+
+.close-button {
+  align-self: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  padding: 10px;
+  margin: 5px;
+  margin-bottom: 20px;
+  width: 160px;
+  color: white;
+  background-color: rgb(32, 32, 32);
+  border-color: #333333;
+  border-radius: 15px;
+}
+
+.close-button:hover {
+  cursor: pointer;
+  color: #999999;
+}
+
+.fake-link {
+  font-size: 16px;
+}
+
+.fake-link:hover {
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: white 1px solid;
+}
+
+@media only screen and (min-width: 615px) {
+  .close-button {
+    display: none;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   /* .App {
     margin-top: 32px;

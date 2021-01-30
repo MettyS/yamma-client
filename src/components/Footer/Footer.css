@@ -13,7 +13,7 @@
 .footer-group {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 
 .footer-copyright {
@@ -21,6 +21,7 @@
   color: white;
   font-size: 12px;
   margin-top: 20px;
+  margin-left: px;
 }
 
 .footer-title {
@@ -46,23 +47,22 @@
 }
 
 .footer-links {
+  padding: 0px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+
   font-family: 'Poppins', sans-serif;
   text-align: justify;
   font-size: 14px;
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  margin-right: 30px;
   margin-bottom: 10px;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .footer-bars {
   color: red;
-}
-
-ul.footer-links li a:hover {
-  color: #999999;
 }
 
 .li-links {
