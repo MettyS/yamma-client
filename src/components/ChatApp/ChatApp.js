@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import UserContext from '../../context/UserContext';
 import YammaApiService from '../../services/yamma-api-service';
-import TokenService from '../../services/token-service';
+// import TokenService from '../../services/token-service';
 
 import Messages from './Messages';
 import Input from './Input';

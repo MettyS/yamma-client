@@ -23,7 +23,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='subregion-img'
-                alt='west-category-image'
+                alt='west-category'
               />
               West
             </Link>
@@ -35,7 +35,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='subregion-img'
-                alt='midwest-category-image'
+                alt='midwest-category'
               />
               Midwest
             </Link>
@@ -47,7 +47,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='subregion-img'
-                alt='south-category-image'
+                alt='south-category'
               />
               South
             </Link>
@@ -59,7 +59,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='subregion-img'
-                alt='east-category-image'
+                alt='east-category'
               />
               East
             </Link>
@@ -77,7 +77,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='category-img'
-                alt='politics-category-image'
+                alt='politics-category'
               />
             </Link>
           </li>
@@ -89,7 +89,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='category-img'
-                alt='business-category-image'
+                alt='business-category'
               />
             </Link>
           </li>
@@ -101,7 +101,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='category-img'
-                alt='health-category-image'
+                alt='health-category'
               />
             </Link>
           </li>
@@ -113,7 +113,7 @@ export class CategoryList extends Component {
                 width='80px'
                 height='80px'
                 className='category-img'
-                alt='tech-category-image'
+                alt='tech-category'
               />
             </Link>
           </li>

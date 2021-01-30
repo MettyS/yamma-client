@@ -1,18 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import CategoryPage from '../components/CategoryPage/CategoryPage';
+import YammaAbout from '../components/YammaAbout/YammaAbout';
+import RegisterForm from '../components/YammaAbout/YammaAbout';
 
-// unable to provide props or context to the test
-// alternative defeats the purpose of the test
-
-
-describe.skip('Category Page', () => {
+describe('Yamma about page', () => {
   it('renders without crashing', () => {
     const div = document.createElement('root');
     ReactDOM.render(
       <BrowserRouter>
-        <CategoryPage />
+        <YammaAbout />
       </BrowserRouter>,
       div
     );
