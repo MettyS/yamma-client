@@ -4,6 +4,7 @@ import DashboardRoute from '../../routes/DashboardRoute';
 import EventPageRoute from '../../routes/EventPageRoute';
 import LoginRoute from '../../routes/LoginRoute';
 import RegisterRoute from '../../routes/RegisterRoute';
+import LandingRoute from '../../routes/LandingRoute';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import DummyData from '../../dummy-variables';
@@ -19,15 +20,20 @@ class App extends Component {
     articles: DummyData.articles,
     categories: DummyData.categories,
     hasError: false,
-    logIn: false,
-    isSigningUp: false,
+    displayLogin: false,
+    displayRegistration: false,
+    displayLanding: true
   };
 
-  toggleLogIn = () => {
-    this.setState({ logIn: !this.state.logIn });
+  toggleLanding = () => {
+    this.setState({ displayLanding: !this.state.displayLanding })
+  }
+
+  toggleLogin = () => {
+    this.setState({ displayLogin: !this.state.displayLogin });
   };
-  toggleSignUp = () => {
-    this.setState({ isSigningUp: !this.state.isSigningUp });
+  toggleRegistration = () => {
+    this.setState({ displayRegistration: !this.state.displayRegistration });
   };
 
   static getDerivedStateFromError(error) {
@@ -41,12 +47,13 @@ class App extends Component {
     return (
       <div className='App'>
         {hasError && <p>There was an error! Oh no!</p>}
-        <Header logIn={this.toggleLogIn} signUp={this.toggleSignUp} />
+        <Header displayLanding={this.toggleLanding} displayLogin={this.toggleLogin} displayRegistration={this.toggleRegistration} />
         <main>
-          <LoginRoute open={this.state.logIn} onClose={this.toggleLogIn} />
+          <LandingRoute open={this.state.displayLanding} onClose={this.toggleLanding} />
+          <LoginRoute open={this.state.displayLogin} onClose={this.toggleLogin} />
           <RegisterRoute
-            open={this.state.isSigningUp}
-            onClose={this.toggleSignUp}
+            open={this.state.displayRegistration}
+            onClose={this.toggleRegistration}
           />
 
           {/* <Route exact path={'/'} >
@@ -59,7 +66,7 @@ class App extends Component {
           <Route path={'/event/:event'} component={EventPageRoute} />
           <Route path={'/about'} component={YammaAbout} />
         </main>
-        <Footer />
+        <Footer displayLanding={this.toggleLanding}/>
       </div>
     );
   }

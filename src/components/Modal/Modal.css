@@ -31,5 +31,6 @@
 @media only screen and (max-width: 615px) {
   .modal {
     width: 75%;
+    padding-top: 20px;
   }
 }

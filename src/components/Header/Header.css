@@ -25,6 +25,21 @@ a {
   text-decoration: none;
 }
 
+.header .left-panel {
+  display: flex;
+  flex-flow: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.header .left-panel > div {
+  height: 100%;
+}
+
+.header .fake-link {
+  margin-left: 5px;
+}
+
 .title {
   text-align: center;
   font-size: 12px;
@@ -69,6 +84,12 @@ a {
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 500px) {
+  .header .fake-link {
+    margin-left: 30px;
+  }
 }
 
 @media only screen and (min-width: 768px) {

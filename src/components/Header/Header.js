@@ -36,11 +36,11 @@ class Header extends Component {
   renderLoginLink() {
     return (
       <nav className='login-links'>
-        <button className='user-button' onClick={this.props.logIn}>
+        <button className='user-button' onClick={this.props.displayLogin}>
           Login
         </button>{' '}
         <br />
-        <button className='user-button' onClick={this.props.signUp}>
+        <button className='user-button' onClick={this.props.displayRegistration}>
           Sign-Up
         </button>{' '}
       </nav>
@@ -50,11 +50,17 @@ class Header extends Component {
   render() {
     return (
       <header className='header'>
-        <div>
+        <div className='left-panel'>
           <Link to='/' className='title'>
             <img className='logo' src={yammalogored} alt='Yamma-Logo' />
             <h1>Yamma</h1>
           </Link>
+          <div
+            onClick={this.props.displayLanding}
+            className='li-links fake-link'
+            to='/about'>
+            About
+          </div>
         </div>
         <div>
           {TokenService.hasAuthToken()
