@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import RegisterForm from '../components/RegisterForm'
-import Header from '../components/Header'
+import React, { Component } from 'react';
+import RegistrationForm from '../../src/components/RegistrationForm/RegisterForm';
 
-
-class Register extends Component {
+class RegistrationRoute extends Component {
+  static defaultProps = {
+    history: {
+      push: () => {},
+    },
+    open: false,
+  };
 
   render() {
-    
     return (
-      <div className='register-container'>
-        Implement me!
-      </div>
-      )
-      
+      <RegistrationForm open={this.props.open} onClose={this.props.onClose} />
+    );
   }
 }
 
-export default Register;
+export default RegistrationRoute;

@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
-import ArticlePanel from '../components/ArticlePanel';
-import ChatPanel from '../components/ChatPanel';
-import RelatedArticleList from '../components/RelatedArticleList';
-
-import Header from '../components/Header';
+import { Route } from 'react-router-dom';
+import ArticlePage from '../components/ArticlePage/ArticlePage';
+import CategoryPage from '../components/CategoryPage/CategoryPage';
 
 class EventPage extends Component {
-    render() {
-        return (
-            <div className='eventpage-container'>
-              Implement me!
-            </div>
-        )
-    }
+  renderArticlePage() {
+    return (
+      <Route
+        exact
+        path='/event/article/:eventId/:title'
+        component={ArticlePage}
+      />
+    );
+  }
 
+  renderCategoryPage() {
+    return (
+      <Route exact path='/event/category/:category' component={CategoryPage} />
+    );
+  }
+
+  render() {
+    return (
+      <div className='eventpage-container app-body'>
+        {this.renderArticlePage()}
+        {this.renderCategoryPage()}
+      </div>
+    );
+  }
 }
 
 export default EventPage;

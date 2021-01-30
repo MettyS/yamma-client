@@ -1,0 +1,36 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url('../../images/emergency-response-symbols.jpg'); */
+  z-index: 1000;
+  width: 50%;
+  height: auto;
+  padding: 40px;
+  box-shadow: 6px -1px 20px 1px rgba(0, 0, 0, 0.75);
+  background-color: #333333;
+  border-radius: 20px;
+}
+
+.overlay {
+  min-height: 100vh;
+  padding: 24px 36px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: #555555; */
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+@media only screen and (max-width: 615px) {
+  .modal {
+    width: 75%;
+    padding-top: 20px;
+  }
+}

@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+.header {
+  justify-content: space-between;
+  background-color: rgb(23, 23, 23);
+  /* background-color: rgb(32,32,32); */
+  /* filter: drop-shadow(0 0 10px black); */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+}
+
+.logo {
+  max-height: 32px;
+  margin: 5px;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header .left-panel {
+  display: flex;
+  flex-flow: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.header .left-panel > div {
+  height: 100%;
+}
+
+.header .fake-link {
+  margin-left: 5px;
+}
+
+.title {
+  text-align: center;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  padding: 5px;
+}
+
+.title h1 {
+  font-family: 'MuseoModerno', cursive;
+  display: block;
+  margin: 5px;
+  color: red;
+}
+
+.user-button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  padding: 5px;
+  margin: 5px;
+  width: 60px;
+  color: white;
+  background-color: rgb(32, 32, 32);
+  border-color: #333333;
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.user-button:hover {
+  cursor: pointer;
+  color: #999999;
+}
+
+.bars {
+  color: red;
+}
+
+.login-links {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 500px) {
+  .header .fake-link {
+    margin-left: 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(23, 23, 23);
+    /* background-color: rgb(32,32,32); */
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .logo {
+    /* align-items: left;
+        margin-left: auto;
+        margin-right: auto;
+        height: 60px;
+        width: 70px;
+        margin: 5px;
+        padding: 0; */
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .title {
+    /* text-align: left;
+        margin: 0;
+        padding: 5px; */
+    font-size: 20px;
+  }
+
+  .title h1 {
+    font-family: 'MuseoModerno', cursive;
+    font-size: 32px;
+    margin: 5px;
+    color: red;
+  }
+
+  .user-button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    padding: 10px;
+    margin: 0;
+    width: 160px;
+    color: white;
+    background-color: rgb(32, 32, 32);
+    border-color: #333333;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 5px;
+  }
+
+  .bars {
+    color: red;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .login-links {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+
+  .li-links {
+    color: white;
+  }
+}

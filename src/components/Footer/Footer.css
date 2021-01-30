@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+.footer {
+  justify-content: space-between;
+  background-color: rgb(23, 23, 23);
+  /* background-color: rgb(32,32,32); */
+  width: 100%;
+  height: 10%;
+  /* filter: drop-shadow(0 -5px 10px black); */
+}
+
+.footer-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.footer-copyright {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 12px;
+  margin-top: 20px;
+  margin-left: px;
+}
+
+.footer-title {
+  /* margin-block-start: 0.67em;
+  margin-block-end: 0.67em; */
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+
+  font-family: 'MuseoModerno', cursive;
+  color: red;
+  text-align: left;
+  font-size: 22px;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  margin-left: 10px;
+  margin-top: 5px;
+  padding: 5px;
+  font-family: 'MuseoModerno', cursive;
+}
+
+.footer-links {
+  padding: 0px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+
+  font-family: 'Poppins', sans-serif;
+  text-align: justify;
+  font-size: 14px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  justify-content: space-evenly;
+}
+
+.footer-bars {
+  color: red;
+}
+
+.li-links {
+  color: white;
+}
+
+#myBtn {
+  padding: 0;
+  margin: 0;
+}
+
+#myBtn:hover {
+  cursor: pointer;
+  color: #999999;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(23, 23, 23);
+    /* background-color: rgb(32,32,32); */
+    width: 100%;
+    height: 10%;
+  }
+
+  .footer-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .footer-copyright {
+    color: white;
+    font-size: 8px;
+    margin: 0;
+    margin-left: 10px;
+    padding: 5px;
+  }
+
+  .footer-title {
+    font-family: 'MuseoModerno', cursive;
+    color: red;
+    text-align: left;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    margin-left: 10px;
+  }
+
+  .footer-links {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    align-items: center;
+    font-size: 10px;
+    list-style-type: none;
+    margin-right: 30px;
+    margin-top: 15px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    margin-bottom: 3px;
+  }
+
+  .footer-bars {
+    display: none;
+    color: red;
+  }
+
+  .li-links {
+    color: white;
+  }
+}

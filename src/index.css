@@ -1,13 +1,99 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #2c2c2c;
 }
 
 :root {
   --font-size: calc(10px + 1vmin);
+}
+
+.App {
+  /* margin-top: 72px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .App > div.app-body { */
+main {
+  min-height: 100vh;
+  /* padding: 8px 12px; */
+  margin-bottom: 95px;
+  margin-top: 72px;
+}
+
+section {
+  min-height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.close-button {
+  align-self: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  padding: 10px;
+  margin: 5px;
+  margin-bottom: 20px;
+  width: 160px;
+  color: white;
+  background-color: rgb(32, 32, 32);
+  border-color: #333333;
+  border-radius: 15px;
+}
+
+.close-button:hover {
+  cursor: pointer;
+  color: #999999;
+}
+
+.fake-link {
+  font-size: 16px;
+}
+
+.fake-link:hover {
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: white 1px solid;
+}
+
+@media only screen and (min-width: 615px) {
+  .close-button {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* .App {
+    margin-top: 32px;
+  } */
+
+  /* .App > div.app-body { */
+  main {
+    min-height: 100vh;
+    padding: 24px 5%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  main {
+    padding: 24px 10%;
+  }
 }

@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../../src/components/LoginForm/LoginForm';
 
-import Header from '../components/Header';
+class LoginRoute extends Component {
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {},
+    },
+  };
 
-class Login extends Component {
-    render() {
-        return (
-            <div className='login-container'>
-              Implement me!
-            </div>
-        )
-    }
+  handleLoginSuccess = () => {
+    console.log('IS THIS EVER CALLED');
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || '/';
+    history.push(destination);
+  };
 
+  render() {
+    return (
+      <LoginForm
+        onLoginSuccess={this.handleLoginSuccess}
+        open={this.props.open}
+        onClose={this.props.onClose}
+      />
+    );
+  }
 }
 
-export default Login;
+export default LoginRoute;
