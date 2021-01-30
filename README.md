@@ -4,7 +4,7 @@ Yamma provides users with a compilation of up-to-date U.S. news. Users can commu
 
 ### 1. Working Prototype
 
-You can access a working prototype of the React app here: https://nonexistent.com/ and Node app here: https://nonexistent.com/
+You can access a working prototype of the React app here: https://yamma-client.vercel.app/ and Node app here: https://yamma-server.herokuapp.com/
 
 ### 2. User Stories
 
