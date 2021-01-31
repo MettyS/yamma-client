@@ -9,7 +9,7 @@ export default class ArticleCard extends Component {
     return (
       <li className='article-list-item' key={article.id}>
         <Link
-          to={`/event/article/${article.id}/${article.title}`}
+          to={`/event/article/${article.id}`}
           className={'article-card ' + className}
           key={article.id}>
           <img src={article.event_img} alt='' className='article-img' />
