@@ -8,7 +8,7 @@ class EventPage extends Component {
     return (
       <Route
         exact
-        path='/event/article/:eventId/:title'
+        path='/event/article/:eventId'
         component={ArticlePage}
       />
     );
