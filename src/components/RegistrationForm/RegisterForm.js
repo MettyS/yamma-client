@@ -202,9 +202,12 @@ class RegistrationForm extends Component {
               Sign Up
             </button>
 
-            <Link to='/login' className='need-an-acct'>
+            <div className='need-an-acct fake-a-tag' onClick={() => {
+              this.props.onClose();
+              this.props.displayLogin();
+            }}>
               Already have an account?
-            </Link>
+            </div>
           </form>
         </div>
       </Modal>
