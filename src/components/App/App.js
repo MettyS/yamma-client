@@ -60,10 +60,12 @@ class App extends Component {
           <LoginRoute
             open={this.state.displayLogin}
             onClose={this.toggleLogin}
+            toggleRegistration={this.toggleRegistration}
           />
           <RegisterRoute
             open={this.state.displayRegistration}
             onClose={this.toggleRegistration}
+            toggleLogin={this.toggleLogin}
           />
 
           {/* <Route exact path={'/'} >

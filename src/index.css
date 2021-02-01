@@ -64,6 +64,10 @@ section {
   color: #999999;
 }
 
+.fake-a-tag:hover {
+  cursor: pointer;
+}
+
 .fake-link {
   font-size: 16px;
 }

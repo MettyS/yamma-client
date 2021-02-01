@@ -66,6 +66,13 @@
   padding: 0 0.5em;
 }
 
+.bottom-panel {
+  color: white;
+}
+.bottom-panel p {
+  margin: 1px;
+}
+
 label {
   display: block;
   text-align: center;
