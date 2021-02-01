@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import './LoginForm.css';
 import UserContext from '../../context/UserContext';
@@ -103,9 +103,17 @@ class LoginForm extends Component {
                 Login
               </button>
             </div>
-            <Link to='/register' className='need-an-acct'>
+            <div className='bottom-panel'>
+              <p>Sample Account:</p>
+              <p>Username | BobbyJoe</p>
+              <p>Password | My123!@#</p>
+            </div>
+            <div className='need-an-acct fake-a-tag' onClick={() => {
+              this.props.onClose();
+              this.props.displayRegistration();
+            }}>
               Don't have an account yet?
-            </Link>
+            </div>
           </form>
         </div>
       </Modal>

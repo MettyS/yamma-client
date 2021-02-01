@@ -22,6 +22,7 @@ class LoginRoute extends Component {
         onLoginSuccess={this.handleLoginSuccess}
         open={this.props.open}
         onClose={this.props.onClose}
+        displayRegistration={this.props.toggleRegistration}
       />
     );
   }
