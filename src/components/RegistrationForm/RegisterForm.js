@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
 import AuthApiService from '../../services/auth-api-service';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import validate, {
   ValidationError,
